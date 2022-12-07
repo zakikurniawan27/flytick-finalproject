@@ -1,0 +1,45 @@
+.profile {
+  background-color: white;
+  margin: 50px 80px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 1px;
+  display: flex;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+.leftSide {
+  width: 30%;
+  margin: 30px 0px;
+  margin-left: 20px;
+}
+
+.user {
+  text-align: center;
+}
+
+.photos {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img-top {
+  width: 50%;
+}
+
+.rightSide {
+  overflow: auto;
+  width: 60%;
+  margin: 30px 0px;
+}
+
+.buttonAcc {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn.btn-primary {
+  margin: 8px;
+}
