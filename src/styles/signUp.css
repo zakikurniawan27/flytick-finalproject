@@ -1,0 +1,105 @@
+.signUp {
+  height: 100vh;
+  display: flex;
+  color: white;
+}
+
+.signUpAside {
+  width: 50%;
+  background-color: #5dec6b;
+}
+
+.signUpForm {
+  width: 50%;
+  background-color: white;
+  padding: 25px 40px;
+  overflow: auto;
+}
+
+.signUpCenter {
+  margin-bottom: 100px;
+}
+
+.signUpTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.signUpTitle h1 {
+  color: black;
+  font-weight: 500;
+}
+.signUpField {
+  margin-bottom: 40px;
+}
+
+.signUpFieldLabel {
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: black;
+  margin-top: 20px;
+}
+
+.signUpFieldInput {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: black;
+  outline: none;
+  border-bottom: 1px solid #5dec6b;
+  font-size: 1em;
+  font-weight: 300;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.signUpFieldsInput::placeholder {
+  color: black;
+}
+
+.signUpFieldbutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signUpFieldButton {
+  background-color: #5dec6b;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px 40px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.signUpFieldLink {
+  color: #66707d;
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: 1.5px solid rgb(60, 176, 106);
+  padding-bottom: 5px;
+}
+
+.googleButton button {
+  background: #5dec6b;
+  border: none;
+  border-radius: 2px;
+  margin: 10px;
+}
+
+.googleButton svg {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.signUpFieldbutton label {
+  color: #66707d;
+  font-size: 0.8rem;
+}
