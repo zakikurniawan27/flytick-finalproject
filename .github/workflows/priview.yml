@@ -22,4 +22,4 @@ jobs:
         id: vercel-deployment
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
       - name: Assign Domain to Vercel Preview (Staging)
-        run: vercel alias https://terbangkuy-falfareza-binaracademy.vercel.app ${{ secrets.VERCEL_STAGING }} --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel alias https://flytick-falfareza-binaracademy.vercel.app ${{ secrets.VERCEL_STAGING }} --token=${{ secrets.VERCEL_TOKEN }}
