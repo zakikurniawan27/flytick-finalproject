@@ -1,10 +1,58 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import axios from "axios";
 
 import "../../styles/signIn.css";
 
-function SignIn() {
+const SignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [token, setToken] = useState(null);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getToken = localStorage.getItem("token");
+    setToken(getToken);
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (email === "") {
+      alert("Email is required");
+      return;
+    }
+    if (password === "") {
+      alert("Password is required");
+      return;
+    }
+    if (email !== "" && password !== "") {
+      const data = {
+        email,
+        password,
+      };
+      try {
+        const result = await axios.post("https://flytick-development.up.railway.app/api/auth/login", data, {
+          headers: { "Access-Control-Allow-Origin": "*" },
+        });
+        console.log(result);
+        if (result.data.data.token) {
+          // Set token from backend to local storage
+          // {"data": { "token": "ini token" }}
+          localStorage.setItem("token", result.data.data.token);
+          setToken(result.data.data.token);
+
+          navigate("/");
+        }
+      } catch (error) {
+        // If there are any error it will show the error message from backend
+        // { "message": "Password salah" }
+        alert(error.response.data.message);
+      }
+    }
+  };
+
   return (
     <div className="signIn">
       <div className="signInAside" />
@@ -13,15 +61,15 @@ function SignIn() {
           <h1>Sign In</h1>
         </div>
         <div className="signInCenter">
-          <form className="signInField">
+          <form className="signInField" onSubmit={handleSubmit}>
             <div className="signInField">
               <label className="signInFieldLabel">Email</label>
-              <input type="email" id="email" className="signInFieldInput" placeholder="Enter your email" name="email" />
+              <input type="email" id="email" className="signInFieldInput" placeholder="Enter your email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
 
             <div className="signInField">
               <label className="signInFieldLabel">Password</label>
-              <input type="password" id="password" className="signInFieldInput" placeholder="Enter your password" name="password" />
+              <input type="password" id="password" className="signInFieldInput" placeholder="Enter your password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             </div>
 
             <div className="signInField">
@@ -50,6 +98,6 @@ function SignIn() {
       </div>
     </div>
   );
-}
+};
 
 export default SignIn;
