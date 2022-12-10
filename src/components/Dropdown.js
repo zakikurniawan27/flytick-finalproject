@@ -1,40 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import iconDepature from "../assets/departure.png";
 import iconArrival from "../assets/arrival.png";
 import iconPerson from "../assets/person.png";
+import axios from "axios"
+
 
 function Dropdown() {
-  const [checkRoundTrip, setCheckRoundTrip] = useState(false)
+  const [checkTrip, setCheckTrip] = useState(false)
+  const [airport, setAirport] = useState([])
 
   const RoundTrip = () =>{
-    setCheckRoundTrip(true)
+    setCheckTrip(false)
   }
 
   const OneWay = () =>{
-    setCheckRoundTrip(false)
+    setCheckTrip(true)
   }
-  const test = [
-    {
-      nama: "test",
-      Umur: "10",
-    },
-    {
-      nama: "test",
-      Umur: "10",
-    },
-    {
-      nama: "test",
-      Umur: "10",
-    },
-    {
-      nama: "test",
-      Umur: "10",
-    },
-    {
-      nama: "test",
-      Umur: "10",
-    },
-  ];
+
+  const test = async () =>{
+    try {
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/airport`)
+      setAirport(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  const currentDate = new Date().toISOString().split("T")[0]
+
+  useEffect(() => {
+    test()
+  },[])
+  
   return (
     <>
       <div className="row">
@@ -71,9 +68,9 @@ function Dropdown() {
             </span>
             <select className="form-control ps-5">
               <option selected disabled hidden>from Where?</option>
-              {test.map((index) => (
+              {airport?.data?.map((index) => (
                 <>
-                  <option>{index.nama}</option>
+                  <option>{index.code}</option>
                 </>
               ))}
             </select>
@@ -86,24 +83,24 @@ function Dropdown() {
             </span>
             <select className="form-control ps-5">
               <option selected disabled hidden>Where To?</option>
-              {test.map((index) => (
+              {airport?.data?.map((index) => (
                 <>
-                  <option>{index.nama}</option>
+                  <option>{index.code}</option>
                 </>
               ))}
             </select>
           </div>
         </div>
-        {checkRoundTrip ? (
+        {checkTrip ? (
           <>
             <div className="col-4">
               <div className="input-group">
-                <input type="date" className="form-control" />
+                <input type="date" min={currentDate} className="form-control" />
               </div>
             </div>
             <div className="col-4">
               <div className="input-group">
-                <input type="date" className="form-control" disabled/>
+                <input type="date" min={currentDate} className="form-control" disabled/>
               </div>
             </div>
           </>
@@ -111,23 +108,38 @@ function Dropdown() {
           <>
             <div className="col-4">
               <div className="input-group">
-                <input type="date" className="form-control" />
+                <input type="date" min={currentDate} className="form-control" />
               </div>
             </div>
             <div className="col-4">
               <div className="input-group">
-                <input type="date" className="form-control" />
+                <input type="date" min={currentDate} className="form-control" />
               </div>
             </div>
           </>
         )}
         <div className="col-4">
-          <div className="input-group input-group-sm">
-            <span className="input-group-text">
+          <div className="d-flex flex-row align-items-center">
+            <span className="position-absolute ps-2">
               <img src={iconPerson} alt="icon" />
             </span>
-            <select className="form-control">
+            <select className="form-control ps-5">
               <option selected disabled hidden>Adult</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+        <div className="col-4">
+          <div className="d-flex flex-row align-items-center">
+            <span className="position-absolute ps-2">
+              <img src={iconPerson} alt="icon" className="fs-6"/>
+            </span>
+            <select className="form-control ps-5">
+              <option selected disabled hidden>Child</option>
               <option>1</option>
               <option>2</option>
               <option>3</option>
