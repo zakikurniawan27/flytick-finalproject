@@ -31,28 +31,7 @@ function Dropdown() {
   useEffect(() => {
     test()
   },[])
-  // const test = [
-  //   {
-  //     nama: "test",
-  //     Umur: "10",
-  //   },
-  //   {
-  //     nama: "test",
-  //     Umur: "10",
-  //   },
-  //   {
-  //     nama: "test",
-  //     Umur: "10",
-  //   },
-  //   {
-  //     nama: "test",
-  //     Umur: "10",
-  //   },
-  //   {
-  //     nama: "test",
-  //     Umur: "10",
-  //   },
-  // ];
+  
   return (
     <>
       <div className="row">
