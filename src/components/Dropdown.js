@@ -25,28 +25,13 @@ function Dropdown() {
       console.log(error)
     }
   }
-  const test = [
-    {
-      nama: "test",
-      Umur: "10",
-    },
-    {
-      nama: "test",
-      Umur: "10",
-    },
-    {
-      nama: "test",
-      Umur: "10",
-    },
-    {
-      nama: "test",
-      Umur: "10",
-    },
-    {
-      nama: "test",
-      Umur: "10",
-    },
-  ];
+  
+  const currentDate = new Date().toISOString().split("T")[0]
+
+  useEffect(() => {
+    test()
+  },[])
+  
   return (
     <>
       <div className="row">
