@@ -28,7 +28,7 @@ function Home() {
               All <img src={iconArrow} alt="iconarrow" />
             </p>
           </div>
-          <div className="row gap-1 mt-5 mx-auto">
+          <div className="row gap-3 mt-5 mx-auto">
             <Cards />
           </div>
         </div>
@@ -42,7 +42,7 @@ function Home() {
               All <img src={iconArrow} alt="iconarrow" />
             </p>
           </div>
-          <div className="row gap-4 mt-5 mx-auto">
+          <div className="row gap-3 mt-5 mx-auto">
             <CardsExplore />
           </div>
         </div>
