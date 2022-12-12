@@ -5,10 +5,9 @@ import axios from "axios";
 
 import "../../styles/signIn.css";
 
-const SignIn = () => {
+const SignIn = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState(null);
 
   const navigate = useNavigate();
 
@@ -33,8 +32,8 @@ const SignIn = () => {
         password,
       };
       try {
-        const result = await axios.post("https://flytick-development.up.railway.app/api/auth/login", data, {
-          headers: { "Access-Control-Allow-Origin": "*" },
+        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/login`, data, {
+          // headers: { "Access-Control-Allow-Origin": "*" },
         });
         console.log(result);
         if (result.data.data.token) {
