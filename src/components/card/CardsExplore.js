@@ -4,10 +4,10 @@ import imageCardExplore from "../../assets/card-explore.png";
 function CardsExplore() {
   return (
     <>
-      <div className="card card-explore" role="button">
+      <div className="card card-border" role="button">
         <img
           src={imageCardExplore}
-          className="card-img-top img-explore"
+          className="card-img"
           alt="imagecard1"
         />
         <div className="card-body">
@@ -19,10 +19,10 @@ function CardsExplore() {
           </p>
         </div>
       </div>
-      <div className="card card-explore" role="button">
+      <div className="card card-border" role="button">
         <img
           src={imageCardExplore}
-          className="card-img-top img-explore"
+          className="card-img"
           alt="imagecard1"
         />
         <div className="card-body">
@@ -34,10 +34,10 @@ function CardsExplore() {
           </p>
         </div>
       </div>
-      <div className="card card-explore" role="button">
+      <div className="card card-border" role="button">
         <img
           src={imageCardExplore}
-          className="card-img-top img-explore"
+          className="card-img"
           alt="imagecard1"
         />
         <div className="card-body">
