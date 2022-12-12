@@ -7,18 +7,22 @@ import SignUp from "./pages/SignUp/SignUp";
 import User from "./pages/Account/User";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { Provider } from "react-redux";
+import store from "./Redux/store";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/user" element={<User />} />
-      </Routes>
-      <Footer />
+      <Provider store={store}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/user" element={<User />} />
+        </Routes>
+        <Footer />
+      </Provider>
     </>
   );
 }
