@@ -9,15 +9,18 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
+import { useState } from "react";
 
 function App() {
+  const tokenLocalStorage = localStorage.getItem("token")
+  const [token, setToken] = useState(tokenLocalStorage)
   return (
     <>
       <Provider store={store}>
-        <Navbar />
+        <Navbar setToken={setToken} token={token}/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signin" element={<SignIn setToken={setToken}/>} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/user" element={<User />} />
         </Routes>
