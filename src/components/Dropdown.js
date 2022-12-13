@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import iconDepature from "../assets/departure.png";
 import iconArrival from "../assets/arrival.png";
 import iconPerson from "../assets/person.png";
-import axios from "axios"
+import { useDispatch, useSelector} from "react-redux";
+import { getAllAirport } from "../Redux/Actions/allAirportActions";
 
 
 function Dropdown() {
   const [checkTrip, setCheckTrip] = useState(false)
-  const [airport, setAirport] = useState([])
+  
+  const dispatch = useDispatch()
 
   const RoundTrip = () =>{
     setCheckTrip(false)
@@ -17,20 +19,13 @@ function Dropdown() {
     setCheckTrip(true)
   }
 
-  const test = async () =>{
-    try {
-      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/airport`)
-      setAirport(res.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const {allAirports} = useSelector((state) => state.allAirport)
   
   const currentDate = new Date().toISOString().split("T")[0]
 
   useEffect(() => {
-    test()
-  },[])
+    dispatch(getAllAirport())
+  },[dispatch])
   
   return (
     <>
@@ -68,9 +63,9 @@ function Dropdown() {
             </span>
             <select className="form-control ps-5">
               <option selected disabled hidden>from Where?</option>
-              {airport?.data?.map((index) => (
+              {allAirports?.data?.map((index) => (
                 <>
-                  <option>{index.code}</option>
+                  <option key={index.id}>{index.code}</option>
                 </>
               ))}
             </select>
@@ -83,9 +78,9 @@ function Dropdown() {
             </span>
             <select className="form-control ps-5">
               <option selected disabled hidden>Where To?</option>
-              {airport?.data?.map((index) => (
+              {allAirports?.data?.map((index) => (
                 <>
-                  <option>{index.code}</option>
+                  <option key={index.id}>{index.code}</option>
                 </>
               ))}
             </select>
