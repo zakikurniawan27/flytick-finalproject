@@ -11,11 +11,6 @@ const SignIn = ({ setToken }) => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const getToken = localStorage.getItem("token");
-    setToken(getToken);
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email === "") {
