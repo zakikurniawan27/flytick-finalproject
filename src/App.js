@@ -19,7 +19,7 @@ function App() {
       <Provider store={store}>
         <Navbar setToken={setToken} token={token}/>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home token={token} setToken={setToken} />} />
           <Route path="/signin" element={<SignIn setToken={setToken}/>} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/user" element={<User />} />

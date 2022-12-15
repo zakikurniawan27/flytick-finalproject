@@ -67,7 +67,7 @@ function Navbar({token, setToken}) {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <button className="btn bttn mt-1 text-white" onClick={() => navigate("/signup")}>Sign Up</button>
+                    <button className="btn bttn mt-1" onClick={() => navigate("/signup")}>Sign Up</button>
                   </li>
                 </>
               ):(
