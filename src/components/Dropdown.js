@@ -109,7 +109,7 @@ function Dropdown(props) {
               <div className="input-group">
                 <input 
                   type="date" 
-                  min={currentDate} 
+                  // min={currentDate} 
                   className="form-control" 
                   value={departureTime} 
                   onChange={(e) =>{
@@ -122,7 +122,7 @@ function Dropdown(props) {
               <div className="input-group">
                 <input
                   type="date"
-                  min={currentDate}
+                  // min={currentDate}
                   className="form-control"
                   disabled
                 />
@@ -135,7 +135,7 @@ function Dropdown(props) {
               <div className="input-group">
                 <input 
                   type="date" 
-                  min={currentDate} 
+                  // min={currentDate} 
                   className="form-control" 
                   value={departureTime}
                   onChange={(e) => {
@@ -149,7 +149,7 @@ function Dropdown(props) {
               <div className="input-group">
                 <input 
                   type="date" 
-                  min={currentDate} 
+                  // min={currentDate} 
                   className="form-control" 
                 />
               </div>

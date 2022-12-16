@@ -1,9 +1,12 @@
 import React from "react";
 import logoAirplane from "../../assets/logoAirplane.png";
 import Moment from 'react-moment'
+import { useNavigate } from "react-router-dom";
 
 function CardSchedule(props) {
   const { loading, search } = props;
+
+  const navigate = useNavigate()
 
   const dataMaskapai = [
     {
@@ -48,7 +51,7 @@ function CardSchedule(props) {
                   <div><Moment format="hh:mm a">{item.arrival_time}</Moment></div>
                 </div>
                 <div className="col">
-                  <button className="btn bttn">Detail</button>
+                  <button className="btn bttn" onClick={() => navigate(`/detail/${item.id}`)}>Detail</button>
                 </div>
               </div>
             </div>

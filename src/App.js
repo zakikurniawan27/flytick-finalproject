@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 import { useState } from "react";
+import DetailSchedule from "./pages/Detail/DetailSchedule";
 
 function App() {
   const tokenLocalStorage = localStorage.getItem("token")
@@ -23,6 +24,7 @@ function App() {
           <Route path="/signin" element={<SignIn setToken={setToken}/>} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/user" element={<User />} />
+          <Route path="/detail/:id" element={<DetailSchedule token={token}/>}/>
         </Routes>
         <Footer />
       </Provider>

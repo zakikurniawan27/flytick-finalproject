@@ -46,7 +46,7 @@ function Home({ token }) {
       );
       setSearch(res.data);
     } catch (err) {
-      console.log(err)
+      alert(err.response.data.message)
     } finally{
       setLoading(false)
     }
