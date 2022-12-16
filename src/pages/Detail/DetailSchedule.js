@@ -20,8 +20,7 @@ const DetailSchedule = (props) => {
                     headers: {
                         Authorization: `${token}`
                     }
-                }
-                )
+                })
             setDetail(res?.data)
         } catch (error) {
             alert(error.response.data.message)
