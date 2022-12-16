@@ -13,12 +13,18 @@
 }
 .bttn{
   background-color: #5DEC6B;
+  color: white;
 }
 .bttn:hover{
   background-color: green;
+  color: white;
 }
+
 .logo{
   width: 12%;
+}
+.logoAirplane{
+  width: 50%;
 }
 .mt-10{
   margin-top: 10rem;
@@ -54,6 +60,9 @@
 }
 .card-img{
   width: 24rem;
+}
+.card-schedule{
+  width: 70rem;
 }
 .text-all{
   font-family: 'Nunito Sans';
