@@ -1,3 +1,6 @@
+#logoFooter{
+  width: 12%;
+}
 .tag-line{
     font-family: 'Nunito Sans';
     font-size: 96px;
@@ -18,10 +21,6 @@
 .bttn:hover{
   background-color: green;
   color: white;
-}
-
-.logo{
-  width: 12%;
 }
 .logoAirplane{
   width: 50%;
