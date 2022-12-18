@@ -1,5 +1,6 @@
 import "./App.css";
 import "./styles/style.css";
+import "./styles/responsiveHomePage.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";

@@ -25,14 +25,14 @@ function CardSchedule(props) {
         search?.data?.schedules?.map((item, index) => (
           <div className="card card-schedule">
             <div className="card-body">
-              <div className="row" key={index}>
-                {dataMaskapai.map((item, index) => (
+              <div className="row">
+                {dataMaskapai.map((itm, ind) => (
                   <>
-                    <div className="col" key={index}>
-                      <div>{item.image}</div>
+                    <div className="col" key={ind}>
+                      <div>{itm.image}</div>
                     </div>
-                    <div className="col" key={index}>
-                      <p>{item.nama}</p>
+                    <div className="col" key={ind}>
+                      <p>{itm.nama}</p>
                     </div>
                   </>
                 ))}
@@ -42,7 +42,7 @@ function CardSchedule(props) {
                 <div className="col">
                   <p>{search?.data.toAirport.name}</p>
                 </div>
-                <div className="col text-uppercase">
+                <div className="col text-uppercase" key={index}>
                   <div><Moment format="YYYY-MM-DD">{item.departure_time}</Moment></div>
                   <div><Moment format="hh:mm a">{item.departure_time}</Moment></div>
                 </div>
@@ -51,7 +51,7 @@ function CardSchedule(props) {
                   <div><Moment format="hh:mm a">{item.arrival_time}</Moment></div>
                 </div>
                 <div className="col">
-                  <button className="btn bttn" onClick={() => navigate(`/detail/${item.id}`)}>Detail</button>
+                  <button className="btn bttn" onClick={() => navigate(`/detail/${item.id}`)}>SELECT</button>
                 </div>
               </div>
             </div>

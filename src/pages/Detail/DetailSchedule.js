@@ -9,11 +9,8 @@ const DetailSchedule = (props) => {
     const navigate = useNavigate()
     const params = useParams()
     const [detail, setDetail] = useState([])
-    console.log(detail)
-    const [loading, setLoading] = useState(false)
 
     const getDetailSchedule = async () => {
-        setLoading(true)
         try {
             const res = await axios.get(
                 `${process.env.REACT_APP_BASE_URL}/api/schedule/${params.id}`,{
@@ -24,9 +21,7 @@ const DetailSchedule = (props) => {
             setDetail(res?.data)
         } catch (error) {
             alert(error.response.data.message)
-        } finally{
-            setLoading(false)
-        }
+        } 
     }
     useEffect(() => {
         getDetailSchedule()
