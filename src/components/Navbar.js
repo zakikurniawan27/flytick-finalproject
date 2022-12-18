@@ -39,7 +39,7 @@ function Navbar({token, setToken}) {
       <nav className="navbar navbar-expand-md">
         <div className="container-fluid">
           <a className="navbar-brand ms-2" href="/">
-            <img src={logo} alt="logo" width="120" height="75" />
+            <img src={logo} alt="logo" width="120" height="75" id="logo"/>
           </a>
           <button
             className="navbar-toggler"
