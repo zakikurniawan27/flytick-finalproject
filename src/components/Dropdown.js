@@ -30,7 +30,7 @@ function Dropdown(props) {
 
   return (
     <>
-      <div className="row">
+      <div className="row gap-3">
         <div className="col-2 radio-check">
           <input
             type="radio"
