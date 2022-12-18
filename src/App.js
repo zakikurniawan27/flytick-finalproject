@@ -9,8 +9,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
+import Transaction from './pages/Transaction/Transaction'
 import { useState } from "react";
-import DetailSchedule from "./pages/Detail/DetailSchedule";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
             <Route path="/signin" element={<SignIn setToken={setToken} />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/user" element={<User />} />
-            <Route path="/detail/:id" element={<DetailSchedule token={token}/>}/>
+            <Route path="/transaction/:id" element={<Transaction token={token}/>}/>
           </Routes>
           <Footer />
         </Provider>

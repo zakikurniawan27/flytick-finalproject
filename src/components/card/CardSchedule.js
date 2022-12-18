@@ -18,7 +18,9 @@ function CardSchedule(props) {
   return (
     <>
       {loading ? (
-        <p> Loading... </p>
+        <div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       ) : search?.data?.schedules?.length === 0 ? (
         <p className="fw-bold text-center">NO SCHEDULE</p>
       ) : (
@@ -51,7 +53,7 @@ function CardSchedule(props) {
                   <div><Moment format="hh:mm a">{item.arrival_time}</Moment></div>
                 </div>
                 <div className="col">
-                  <button className="btn bttn" onClick={() => navigate(`/detail/${item.id}`)}>Detail</button>
+                  <button className="btn bttn" onClick={() => navigate(`/transaction/${item.id}`)}>Detail</button>
                 </div>
               </div>
             </div>

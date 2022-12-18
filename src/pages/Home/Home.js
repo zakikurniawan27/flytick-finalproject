@@ -9,7 +9,9 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import CardSchedule from "../../components/card/CardSchedule";
 
-function Home({ token }) {
+function Home(props) {
+
+  const { token } = props
   // const [schedule, setSchedule] = useState([]);
   const [search, setSearch] = useState([]);
   const [fromAirport, setFromAirport] = useState("");
@@ -23,9 +25,7 @@ function Home({ token }) {
 
   const navigate = useNavigate()
   const departureTimeNew = departureTime.toString().split('T')[0]
-
   
-
   const handleSearchSchedule = async () => {
     setLoading(true)
     try {
