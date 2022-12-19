@@ -8,11 +8,13 @@ import FormTransaction from '../../components/FormTransaction'
 
 const Transaction = (props) => {
     
-    const { token} = props
+    const { token, adult, child } = props
     const [detail, setDetail] = useState([])
     const [detailFromAirport, setDetailFromAirport] = useState([])
-    const [detailToAirport, setDetailToAirport] = useState([])
-
+    // const [detailToAirport, setDetailToAirport] = useState([])
+    const dws = parseInt(adult)
+    const ank = parseInt(child)
+    console.log(dws, ank)
     const navigate = useNavigate()
     const params = useParams()
 
@@ -22,7 +24,16 @@ const Transaction = (props) => {
     }
     const cost = `${detail?.schedule?.cost}`
     const costRupiah = formatRupiah(cost)
-    
+
+    useEffect(() =>{
+        if(!detail){
+            console.log("kosong")
+        }
+        // getDetailFromAirport()
+        getDetailSchedule()
+    },[])
+
+
     const getDetailSchedule = async () => {
         try {
             const res = await axios.get(
@@ -37,51 +48,112 @@ const Transaction = (props) => {
         }
     }
 
-    const getDetailFromAirport = async () => {
-        try {
-            const res = await axios.get(
-                `https://flytick-development.up.railway.app/api/airport/${detail?.data?.schedule?.from_airport}`,{
-                    headers:{
-                        Authorization: `${token}`
-                    }
-                }
-            )
-            setDetailFromAirport(res.data)
-        } catch (error) {
-            alert(error.response.data.message)
-        }
-    }
+    // const getDetailFromAirport = async () => { 
+    //     try {
+    //         const res = await axios.get(
+    //             `${process.env.REACT_APP_BASE_URL}/api/airport/${detail?.schedule?.from_airport}`,{
+    //                 headers:{
+    //                     Authorization: `${token}`
+    //                 }
+    //             }
+    //         )
+    //         setDetailFromAirport(res.data)
+    //     } catch (error) {
+    //         alert(error.response?.data.message)
+    //     }
+    // }
 
-    const getDetailToAirport = async () => {
-        try {
-            const res = await axios.get(
-                `${process.env.REACT_APP_BASE_URL}/api/airport/3`,{
-                    headers:{
-                        Authorization: `${token}`
-                    }
-                }
-            )
-            setDetailToAirport(res.data)
-        } catch (error) {
-            alert(error.response.data.message)
-        }
-    }
-
-    useEffect(() =>{
-        getDetailSchedule()
-        getDetailFromAirport()
-        getDetailToAirport()
-    },[])
+    // const getDetailToAirport = async () => {
+    //     try {
+    //         const res = await axios.get(
+    //             `${process.env.REACT_APP_BASE_URL}/api/airport/3`,{
+    //                 headers:{
+    //                     Authorization: `${token}`
+    //                 }
+    //             }
+    //         )
+    //         setDetailToAirport(res.data)
+    //     } catch (error) {
+    //         alert(error.response.data.message)
+    //     }
+    // }
 
   return (
     <div className='container'>
         <div className='row'>
             <div className='col-8'>
-                {}
-                <FormTransaction token={token}/>
-                <div className='d-flex justify-content-end mt-3'>
-                    <button className='btn bttn'>PESAN</button>
-                </div>
+                {dws === 1 && ank === 0 &&
+                    <>
+                        <FormTransaction token={token}/>
+                        <div className='d-flex justify-content-end mt-3'>
+                            <button className='btn bttn'>PESAN</button>
+                        </div>
+                    </>
+                }
+                {dws === 2 && ank === 0 &&
+                    <>
+                        <FormTransaction token={token}/>
+                        <div className='mt-5'>
+                            <FormTransaction token={token}/>
+                        </div>
+                        <div className='d-flex justify-content-end mt-3'>
+                            <button className='btn bttn'>PESAN</button>
+                        </div>
+                    </>
+                }
+                {dws === 1 && ank === 1 &&
+                    <>
+                        <FormTransaction token={token}/>
+                        <div className='mt-5'>
+                            <FormTransaction token={token}/>
+                        </div>
+                        <div className='d-flex justify-content-end mt-3'>
+                            <button className='btn bttn'>PESAN</button>
+                        </div>
+                    </>
+                }
+                {dws === 3 && ank === 0 &&
+                    <>
+                        <FormTransaction token={token}/>
+                        <div className='mt-5'>
+                            <FormTransaction token={token}/>
+                        </div>
+                        <div className='mt-5'>
+                            <FormTransaction token={token}/>
+                        </div>
+                        <div className='d-flex justify-content-end mt-3'>
+                            <button className='btn bttn'>PESAN</button>
+                        </div>
+                    </>
+                }
+                {dws === 2 && ank === 1 &&
+                    <>
+                        <FormTransaction token={token}/>
+                        <div className='mt-5'>
+                            <FormTransaction token={token}/>
+                        </div>
+                        <div className='mt-5'>
+                            <FormTransaction token={token}/>
+                        </div>
+                        <div className='d-flex justify-content-end mt-3'>
+                            <button className='btn bttn'>PESAN</button>
+                        </div>
+                    </>
+                }
+                {dws === 1 && ank === 2 &&
+                    <>
+                        <FormTransaction token={token}/>
+                        <div className='mt-5'>
+                            <FormTransaction token={token}/>
+                        </div>
+                        <div className='mt-5'>
+                            <FormTransaction token={token}/>
+                        </div>
+                        <div className='d-flex justify-content-end mt-3'>
+                            <button className='btn bttn'>PESAN</button>
+                        </div>
+                    </>
+                }
             </div>
             <div className='col-4'>
                 <div className='card'>

@@ -10,7 +10,7 @@ import CardSchedule from "../../components/card/CardSchedule";
 
 function Home(props) {
 
-  const { token } = props
+  const { token, adult, setAdult, child, setChild} = props
   // const [schedule, setSchedule] = useState([]);
   const [search, setSearch] = useState([]);
   const [fromAirport, setFromAirport] = useState("");
@@ -18,12 +18,12 @@ function Home(props) {
   const [departureTime, setDepartureTime] = useState("");
   
   // const [returnTime, setReturnTime] = useState('')
-  const [adult, setAdult] = useState("");
-  const [child, setChild] = useState("");
+  
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate()
   const departureTimeNew = departureTime.toString().split('T')[0]
+  
   
   const handleSearchSchedule = async () => {
     setLoading(true)

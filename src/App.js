@@ -12,10 +12,11 @@ import { Provider } from "react-redux";
 import store from "./Redux/store";
 import Transaction from './pages/Transaction/Transaction'
 import { useState } from "react";
-import DetailSchedule from "./pages/Detail/DetailSchedule";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
+  const [adult, setAdult] = useState("");
+  const [child, setChild] = useState("");
   const tokenLocalStorage = localStorage.getItem("token");
   const [token, setToken] = useState(tokenLocalStorage);
   return (
@@ -24,11 +25,11 @@ function App() {
         <Provider store={store}>
           <Navbar setToken={setToken} token={token} />
           <Routes>
-            <Route path="/" element={<Home token={token} setToken={setToken} />} />
+            <Route path="/" element={<Home token={token} setToken={setToken} adult={adult} child={child} setAdult={setAdult} setChild={setChild}/>} />
             <Route path="/signin" element={<SignIn setToken={setToken} />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/user" element={<User />} />
-            <Route path="/transaction/:id" element={<Transaction token={token}/>}/>
+            <Route path="/transaction/:id" element={<Transaction token={token} adult={adult} child={child}/>}/>
           </Routes>
           <Footer />
         </Provider>

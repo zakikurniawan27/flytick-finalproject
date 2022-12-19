@@ -18,8 +18,8 @@ function CardSchedule(props) {
   return (
     <>
       {loading ? (
-        <div class="spinner-border text-success" role="status">
-          <span class="visually-hidden">Loading...</span>
+        <div className="spinner-border text-success" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
       ) : search?.data?.schedules?.length === 0 ? (
         <p className="fw-bold text-center">NO SCHEDULE</p>
