@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import User from "./pages/Account/User";
+import EditUser from "./pages/Account/EditUser";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Provider } from "react-redux";
@@ -22,6 +23,7 @@ function App() {
   return (
     <>
       <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         <Provider store={store}>
           <Navbar setToken={setToken} token={token} />
           <Routes>
@@ -31,8 +33,9 @@ function App() {
             <Route path="/user" element={<User />} />
             <Route path="/transaction/:id" element={<Transaction token={token} adult={adult} child={child}/>}/>
           </Routes>
-          <Footer />
-        </Provider>
+            <Footer />
+          </Provider>
+      </GoogleOAuthProvider>
       </GoogleOAuthProvider>
     </>
   );
