@@ -1,19 +1,45 @@
-import React from "react";
-import logo from "../assets/logo.png";
+import React, { useEffect } from "react"
+import logo from "../assets/logo.png"
 import { useNavigate } from "react-router-dom"
 import { BsPersonCircle, BsBell } from "react-icons/bs"
+import axios from 'axios'
 
-
-function Navbar({token}) {
+function Navbar({token, setToken}) {
 
   const navigate = useNavigate()
+
+  useEffect(() =>{
+    (async () => {
+      if (token) {
+        try {
+          await axios.get(`${process.env.REACT_APP_BASE_URL}/api/auth/whoami`, {
+            headers: {
+              Authorization: `${token}`,
+            },
+          });
+        } catch (error) {
+          if (error.response.status === 401) {
+            localStorage.removeItem("token");
+            setToken(null);
+            navigate("/");
+          }
+        }
+      }
+    })();
+  }, [token, navigate, setToken])
+
+  const handleLogout = (e) =>{
+    e.preventDefault()
+    localStorage.removeItem("token")
+    setToken(null)
+  }
 
   return (
     <>
       <nav className="navbar navbar-expand-md">
         <div className="container-fluid">
           <a className="navbar-brand ms-2" href="/">
-            <img src={logo} alt="logo" width="120" height="75" />
+            <img src={logo} alt="logo" width="120" height="75" id="logo"/>
           </a>
           <button
             className="navbar-toggler"
@@ -41,7 +67,7 @@ function Navbar({token}) {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <button className="btn bttn mt-1 text-white" onClick={() => navigate("/signup")}>Sign Up</button>
+                    <button className="btn bttn mt-1" onClick={() => navigate("/signup")}>Sign Up</button>
                   </li>
                 </>
               ):(
@@ -55,7 +81,7 @@ function Navbar({token}) {
                     </button>
                     <ul className="dropdown-menu dropdown-menu-lg-end">
                       <li><a className="dropdown-item" href="/user">My Profil</a></li>
-                      <li><button className="dropdown-item" href="/">Logout</button></li>
+                      <li><button className="dropdown-item" onClick={handleLogout}>Logout</button></li>
                     </ul>
                   </div>
                 </>
