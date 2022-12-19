@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import User from "./pages/Account/User";
+import EditUser from "./pages/Account/EditUser";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Provider } from "react-redux";
@@ -20,17 +21,20 @@ function App() {
   return (
     <>
       <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         <Provider store={store}>
-          <Navbar setToken={setToken} token={token} />
-          <Routes>
-            <Route path="/" element={<Home token={token} setToken={setToken} />} />
-            <Route path="/signin" element={<SignIn setToken={setToken} />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/user" element={<User />} />
+            <Navbar setToken={setToken} token={token}  />
+            <Routes>
+              <Route path="/" element={<Home token={token} setToken={setToken} />} />
+              <Route path="/signin" element={<SignIn setToken={setToken}  />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/user" element={<User />} />
             <Route path="/detail/:id" element={<DetailSchedule token={token}/>}/>
+              <Route path="/edit-user" element={<EditUser />} />
           </Routes>
-          <Footer />
-        </Provider>
+            <Footer />
+          </Provider>
+      </GoogleOAuthProvider>
       </GoogleOAuthProvider>
     </>
   );
