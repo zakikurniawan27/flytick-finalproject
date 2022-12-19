@@ -4,7 +4,7 @@ import logo from '../assets/logo.png'
 function Footer() {
   return (
     <>
-        <div className='mt-10 mb-auto'>
+        <div className='fixed mt-auto mb-auto'>
             <div className='mx-auto row'>
                 <img src={logo} alt='logo' className='ms-auto'height='75' id='logoFooter'/>
                 <div className='ms-auto col-3 content-footer'>
