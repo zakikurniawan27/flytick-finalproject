@@ -10,7 +10,7 @@ const Transaction = (props) => {
     
     const { token, adult, child } = props
     const [detail, setDetail] = useState([])
-    const [detailFromAirport, setDetailFromAirport] = useState([])
+    // const [detailFromAirport, setDetailFromAirport] = useState([])
     // const [detailToAirport, setDetailToAirport] = useState([])
     const dws = parseInt(adult)
     const ank = parseInt(child)
@@ -26,9 +26,6 @@ const Transaction = (props) => {
     const costRupiah = formatRupiah(cost)
 
     useEffect(() =>{
-        if(!detail){
-            console.log("kosong")
-        }
         // getDetailFromAirport()
         getDetailSchedule()
     },[])
