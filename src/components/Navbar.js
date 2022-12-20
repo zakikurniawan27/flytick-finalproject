@@ -2,36 +2,28 @@ import React, { useEffect } from "react"
 import logo from "../assets/logo.png"
 import { useNavigate } from "react-router-dom"
 import { BsPersonCircle, BsBell } from "react-icons/bs"
-import axios from 'axios'
 
-function Navbar({token, setToken}) {
+import { logout, me } from "../Redux/Actions/authActions"
+import { useDispatch, useSelector } from "react-redux"
 
+function Navbar() {
+
+  const {token, user} = useSelector((state) => state.auth) 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   useEffect(() =>{
     (async () => {
       if (token) {
-        try {
-          await axios.get(`${process.env.REACT_APP_BASE_URL}/api/auth/whoami`, {
-            headers: {
-              Authorization: `${token}`,
-            },
-          });
-        } catch (error) {
-          if (error.response.status === 401) {
-            localStorage.removeItem("token");
-            setToken(null);
-            navigate("/");
-          }
-        }
+        dispatch(me(() => {}))
       }
     })();
-  }, [token, navigate, setToken])
+  }, [token, dispatch])
 
   const handleLogout = (e) =>{
     e.preventDefault()
-    localStorage.removeItem("token")
-    setToken(null)
+    
+    dispatch(logout())
   }
 
   return (
@@ -72,15 +64,23 @@ function Navbar({token, setToken}) {
                 </>
               ):(
                 <>
-                  <div className="btn-group me-auto">
+                  <div className="btn-group btn-group-sm me-auto">
                     <button className="btn" type="button">
                       <BsBell className="fs-6"/>
                     </button>
-                    <button className="btn " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <BsPersonCircle className="fs-3"/> 
+                    <button className="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <div className="row">
+                        <div className="col-4">
+                          <BsPersonCircle className="fs-3"/>
+                        </div>
+                        <div className="col-8">
+                          <p>{user?.data?.name}</p>
+                        </div>
+                      </div>
                     </button>
                     <ul className="dropdown-menu dropdown-menu-lg-end">
                       <li><a className="dropdown-item" href="/user">My Profil</a></li>
+                      <li><a className="dropdown-item" href="/history">History</a></li>
                       <li><button className="dropdown-item" onClick={handleLogout}>Logout</button></li>
                     </ul>
                   </div>
