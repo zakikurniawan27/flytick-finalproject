@@ -18,20 +18,17 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 function App() {
   const [adult, setAdult] = useState("");
   const [child, setChild] = useState("");
-  const tokenLocalStorage = localStorage.getItem("token");
-  const [token, setToken] = useState(tokenLocalStorage);
-
   return (
     <>
       <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         <Provider store={store}>
-          <Navbar setToken={setToken} token={token} />
+          <Navbar />
           <Routes>
-            <Route path="/" element={<Home token={token} setToken={setToken} adult={adult} child={child} setAdult={setAdult} setChild={setChild} />} />
-            <Route path="/signin" element={<SignIn setToken={setToken} />} />
+            <Route path="/" element={<Home adult={adult} child={child} setAdult={setAdult} setChild={setChild} />} />
+            <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/transaction/:id" element={<Transaction adult={adult} child={child} />} />
             <Route path="/user/:id" element={<User />} />
-            <Route path="/transaction/:id" element={<Transaction token={token} adult={adult} child={child} />} />
             <Route path="/edit-user" element={<EditUser />} />
           </Routes>
           <Footer />
