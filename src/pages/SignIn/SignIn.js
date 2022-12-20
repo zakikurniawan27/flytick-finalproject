@@ -28,21 +28,15 @@ const SignIn = ({ setToken }) => {
         password,
       };
       try {
-        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/login`, data, {
-          // headers: { "Access-Control-Allow-Origin": "*" },
-        });
-        console.log(result);
+        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/login`, data, {});
+
         if (result.data.data.token) {
-          // Set token from backend to local storage
-          // {"data": { "token": "ini token" }}
           localStorage.setItem("token", result.data.data.token);
           setToken(result.data.data.token);
 
           navigate("/");
         }
       } catch (error) {
-        // If there are any error it will show the error message from backend
-        // { "message": "Password salah" }
         alert(error.response.data.message);
       }
     }
@@ -50,25 +44,17 @@ const SignIn = ({ setToken }) => {
 
   const googleLogin = useGoogleLogin({
     onSuccess: async (response) => {
-      // console.log(response);
-      // Send access token to backend
       try {
         const data = {
           access_token: response.access_token,
         };
-        // console.log(data);
+
         const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/oauth/login/google`, data);
         if (result.data.data.token) {
-          // Set token from backend to local storage
-          // {"data": { "token": "ini token" }}
           localStorage.setItem("token", result.data.data.token);
-          // setToken(datas.data.token);
-          window.location.reload();
+          console.log(result);
         }
-        console.log(result);
       } catch (error) {
-        // If there are any error it will show the error message from backend
-        // { "message": "Password salah" }
         alert(error.response.data.message);
       }
     },

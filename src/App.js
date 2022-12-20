@@ -27,8 +27,8 @@ function App() {
             <Route path="/" element={<Home adult={adult} child={child} setAdult={setAdult} setChild={setChild} />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/user" element={<User />} />
             <Route path="/transaction/:id" element={<Transaction adult={adult} child={child} />} />
+            <Route path="/user/:id" element={<User />} />
             <Route path="/edit-user" element={<EditUser />} />
           </Routes>
           <Footer />
