@@ -38,8 +38,9 @@ export const me = (callback) => async (dispatch, getState) => {
     }
 };
 
-export const logout = () => async (dispatch) => {
+export const logout = (navigate) => async (dispatch) => {
     localStorage.removeItem("token");
     dispatch(setToken(null));
+    navigate('/')
     dispatch(setUser(null));
 }
