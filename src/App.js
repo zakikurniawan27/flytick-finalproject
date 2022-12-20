@@ -14,6 +14,9 @@ import store from "./Redux/store";
 import Transaction from "./pages/Transaction/Transaction";
 import { useState } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import Dashboard from "./pages/Admin/Dashboard";
+import Users from "./pages/Admin/Users"
+import Airport from "./pages/Admin/Airport";
 
 function App() {
   const [adult, setAdult] = useState("");
@@ -33,6 +36,9 @@ function App() {
             <Route path="/user/:id" element={<User />} />
             <Route path="/transaction/:id" element={<Transaction token={token} adult={adult} child={child} />} />
             <Route path="/edit-user" element={<EditUser />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/airports" element={<Airport />} />
           </Routes>
           <Footer />
         </Provider>
