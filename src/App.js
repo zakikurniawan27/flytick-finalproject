@@ -20,6 +20,7 @@ function App() {
   const [child, setChild] = useState("");
   const tokenLocalStorage = localStorage.getItem("token");
   const [token, setToken] = useState(tokenLocalStorage);
+
   return (
     <>
       <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
@@ -29,7 +30,7 @@ function App() {
             <Route path="/" element={<Home token={token} setToken={setToken} adult={adult} child={child} setAdult={setAdult} setChild={setChild} />} />
             <Route path="/signin" element={<SignIn setToken={setToken} />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/user" element={<User />} />
+            <Route path="/user/:id" element={<User />} />
             <Route path="/transaction/:id" element={<Transaction token={token} adult={adult} child={child} />} />
             <Route path="/edit-user" element={<EditUser />} />
           </Routes>
