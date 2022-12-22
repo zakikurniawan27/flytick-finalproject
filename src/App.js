@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import User from "./pages/Account/User";
 import EditUser from "./pages/Account/EditUser";
+import Notification from "./pages/Notification/Notification";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Provider } from "react-redux";
@@ -32,7 +33,8 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/user/:id" element={<User />} />
             <Route path="/transaction/:id" element={<Transaction token={token} adult={adult} child={child} />} />
-            <Route path="/edit-user" element={<EditUser />} />
+            <Route path="/edit-user/:id" element={<EditUser />} />
+            <Route path="/notification" element={<Notification />} />
           </Routes>
           <Footer />
         </Provider>
