@@ -12,11 +12,7 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-<<<<<<< HEAD
-  const dispatch = useDispatch()
-=======
   const dispatch = useDispatch();
->>>>>>> fbabdb394fb3dae15d1b3b2e37c695db661a1abd
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -34,11 +30,7 @@ const SignIn = () => {
         email,
         password,
       };
-<<<<<<< HEAD
-      dispatch(login(data, navigate))
-=======
       dispatch(login(data, navigate));
->>>>>>> fbabdb394fb3dae15d1b3b2e37c695db661a1abd
     }
   };
 

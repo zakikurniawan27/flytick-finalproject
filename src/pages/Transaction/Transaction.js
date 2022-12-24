@@ -98,6 +98,96 @@ const Transaction = (props) => {
     ]
   })
 
+  const data2 = JSON.stringify({
+    user_id: user?.data?.id,
+    schedule_id: searchSchedule?.detail?.data?.schedule?.id,
+    adult: dws,
+    child: ank,
+    round_trip: false,
+    biodataList: [
+      {
+        body:{
+          email,
+          name: nama,
+          nik,
+          birth_place: birthPlace,
+          birth_date: birthDateNew,
+          telp,
+          nationality,
+          no_passport: passport,
+          issue_date: issueDateNew,
+          expire_date: expireDateNew
+        }
+      },
+      {
+        body:{
+          email2,
+          name: nama2,
+          nik2,
+          birth_place: birthPlace2,
+          birth_date: birthDateNew2,
+          telp2,
+          nationality2,
+          no_passport: passport2,
+          issue_date: issueDateNew2,
+          expire_date: expireDateNew2
+        }
+      }
+    ]
+  })
+
+  const data3 = JSON.stringify({
+    user_id: user?.data?.id,
+    schedule_id: searchSchedule?.detail?.data?.schedule?.id,
+    adult: dws,
+    child: ank,
+    round_trip: false,
+    biodataList: [
+      {
+        body:{
+          email,
+          name: nama,
+          nik,
+          birth_place: birthPlace,
+          birth_date: birthDateNew,
+          telp,
+          nationality,
+          no_passport: passport,
+          issue_date: issueDateNew,
+          expire_date: expireDateNew
+        }
+      },
+      {
+        body:{
+          email2,
+          name: nama2,
+          nik2,
+          birth_place: birthPlace2,
+          birth_date: birthDateNew2,
+          telp2,
+          nationality2,
+          no_passport: passport2,
+          issue_date: issueDateNew2,
+          expire_date: expireDateNew2
+        }
+      },
+      {
+        body:{
+          email3,
+          name: nama3,
+          nik3,
+          birth_place: birthPlace3,
+          birth_date: birthDateNew3,
+          telp3,
+          nationality3,
+          no_passport: passport3,
+          issue_date: issueDateNew3,
+          expire_date: expireDateNew3
+        }
+      }
+    ]
+  })
+
   const formatRupiah = (angka) => {
     const rupiah = angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     return `Rp ${rupiah}`;
@@ -203,7 +293,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn">PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>PESAN</button>
               </div>
             </>
           )}
@@ -256,7 +346,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn">PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>PESAN</button>
               </div>
             </>
           )}
@@ -333,7 +423,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn">PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>PESAN</button>
               </div>
             </>
           )}
@@ -410,7 +500,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn">PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>PESAN</button>
               </div>
             </>
           )}
@@ -487,7 +577,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn">PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>PESAN</button>
               </div>
             </>
           )}
