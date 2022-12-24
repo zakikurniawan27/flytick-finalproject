@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import CardSchedule from "../../components/card/CardSchedule";
 import { useSelector } from "react-redux";
 
-function Home(props) {
+const Home = (props) => {
 
   const {adult, setAdult, child, setChild} = props
   const [fromAirport, setFromAirport] = useState("");
