@@ -1,13 +1,73 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBBreadcrumb, MDBBreadcrumbItem, MDBIcon, MDBListGroup, MDBListGroupItem, MDBCardLink, MDBInput } from "mdb-react-ui-kit";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { BsBellFill } from "react-icons/bs";
 import { Button, Form } from "react-bootstrap";
+import axios from "axios";
 
 export default function User() {
+  const { id } = useParams();
+
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  // const [profile, setProfile] = useState([]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [nik, setNIK] = useState("");
+  const [birth_place, setBirthPlace] = useState("");
+  const [birth_date, setBirthDate] = useState("");
+  const [telp, setTelp] = useState("");
+  const [nationality, setNationality] = useState("");
+  const [no_passport, setNoPassport] = useState("");
+  const [issue_date, setIssueDate] = useState("");
+  const [expire_date, setExpireDate] = useState("");
+
+  // useEffect(() => {
+  //   editData();
+  // }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (name === "") {
+      alert("Name is required");
+      return;
+    }
+    if (email === "") {
+      alert("email is required");
+      return;
+    }
+    if (name !== "" && email !== "") {
+      const data = {
+        name,
+        email,
+      };
+      try {
+        // const editData = async () =>
+        await axios.put(`${process.env.REACT_APP_BASE_URL}/api/user/${id}`, data, {
+          headers: {
+            Authorization: `${token}`,
+          },
+        });
+      } catch (error) {
+        alert(error.response.data.message);
+        console.log(error.response.data);
+      }
+    }
+  };
+
+  // const editData = async () => {
+  //   const dataProfile = await axios.put(`${process.env.REACT_APP_BASE_URL}/api/user/${id}`, {
+  //     headers: {
+  //       Authorization: `${token}`,
+  //     },
+  //   });
+
+  //   setProfile(dataProfile.data.data);
+  // };
+
   return (
     <section>
       <MDBContainer className="py-5">
@@ -73,39 +133,69 @@ export default function User() {
                     <a href="/">Home</a>
                   </MDBBreadcrumbItem>
                   <MDBBreadcrumbItem>
-                    <a href="/user">Profile</a>
+                    <a>Profile</a>
                   </MDBBreadcrumbItem>
                   <MDBBreadcrumbItem active>Edit Profile</MDBBreadcrumbItem>
                 </MDBBreadcrumb>
               </MDBCol>
             </MDBRow>
-            <MDBCard className="mb-4" style={{ width: "auto" }}>
-              <MDBCardBody>
-                <form>
-                  <Form.Group className="mb-4" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                  </Form.Group>
-                  <Form.Group className="mb-4" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                  </Form.Group>
-                  <Form.Group className="mb-4" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                  </Form.Group>
-                  <Form.Group className="mb-4" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                  </Form.Group>
-                  <div className="text-center">
-                    <Button className="px-4" variant="success" type="submit">
-                      Submit
-                    </Button>
-                  </div>
-                </form>
-              </MDBCardBody>
-            </MDBCard>
+
+            {localStorage.getItem("token") ? (
+              <MDBCard className="mb-4" style={{ width: "auto" }}>
+                <MDBCardBody>
+                  <form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Name</Form.Label>
+                      <Form.Control type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Email address</Form.Label>
+                      <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>NIK</Form.Label>
+                      <Form.Control type="text" placeholder="Enter NIK" value={nik} onChange={(e) => setNIK(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Birth Place</Form.Label>
+                      <Form.Control type="text" placeholder="Enter Birth Place" value={birth_place} onChange={(e) => setBirthPlace(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Birth Date</Form.Label>
+                      <Form.Control type="date" placeholder="Enter Birth Date" value={birth_date} onChange={(e) => setBirthDate(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Telp</Form.Label>
+                      <Form.Control type="text" placeholder="Enter Telp" value={telp} onChange={(e) => setTelp(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Nationality</Form.Label>
+                      <Form.Control type="text" placeholder="Enter Nationality" value={nationality} onChange={(e) => setNationality(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>No Passport</Form.Label>
+                      <Form.Control type="text" placeholder="Enter No Passport" value={no_passport} onChange={(e) => setNoPassport(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Issue Date</Form.Label>
+                      <Form.Control type="date" placeholder="Enter Issue Date" value={issue_date} onChange={(e) => setIssueDate(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Expire Date</Form.Label>
+                      <Form.Control type="date" placeholder="Enter Expire Date" value={expire_date} onChange={(e) => setExpireDate(e.target.value)} required />
+                    </Form.Group>
+
+                    <div className="text-center">
+                      <Button className="px-4" variant="success" type="submit">
+                        Save
+                      </Button>
+                    </div>
+                  </form>
+                </MDBCardBody>
+              </MDBCard>
+            ) : (
+              alert("Edit Profile error!!")
+            )}
           </MDBCol>
         </MDBRow>
       </MDBContainer>
