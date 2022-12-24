@@ -1,6 +1,5 @@
 import axios from "axios";
-import { getAllAirportReducer } from "../Reducers/allAirportReducer";
-
+import { getAllAirportReducer, getDetailAirportReducer, getDetailAirport2Reducer } from "../Reducers/allAirportReducer";
 
 
 export const getAllAirport = () => async(dispatch) => {
@@ -11,5 +10,39 @@ export const getAllAirport = () => async(dispatch) => {
         dispatch(getAllAirportReducer(data))
     } catch (error) {
         console.log(error)
+    }
+}
+
+export const getDetailAirport = (id) => async(dispatch, getState) => {
+    try {
+        if(!id)return
+        const {token} = getState().auth
+        const {data} = await axios.get(
+            `${process.env.REACT_APP_BASE_URL}/api/airport/${id}`,{
+                headers:{
+                    Authorization: `${token}`
+                }
+            }
+        )
+        dispatch(getDetailAirportReducer(data))
+    } catch (error) {
+        alert(error.response.data.message)
+    }
+}
+
+export const getDetail2Airport = (id) => async(dispatch, getState) => {
+    try {
+        if(!id)return
+        const {token} = getState().auth
+        const {data} = await axios.get(
+            `${process.env.REACT_APP_BASE_URL}/api/airport/${id}`,{
+                headers:{
+                    Authorization: `${token}`
+                }
+            }
+        )
+        dispatch(getDetailAirport2Reducer(data))
+    } catch (error) {
+        alert(error.response.data.message)
     }
 }

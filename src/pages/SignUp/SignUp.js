@@ -33,17 +33,15 @@ const SignUp = () => {
         email,
         password,
       };
-      // console.log(data);
       try {
-        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/register`, data, {});
-        // console.log(result);
-        alert(result.data.message);
+        // const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/register`, data, {});
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/register`, data, {});
+
+        // alert(result.data.message);
         navigate("/signin");
       } catch (error) {
-        // If there are any error it will show the error message from backend
-        // { "message": "Password salah" }
         alert(error.response.data.message);
-        // console.log(error.response.data.message);
+        console.log(error.response.data.message);
       }
     }
   };

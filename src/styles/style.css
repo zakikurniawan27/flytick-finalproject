@@ -51,6 +51,12 @@
 .text-success-900{
   color: #63D471;
 }
+<<<<<<< HEAD
+=======
+.price{
+  font-family: 'Gill Sans';
+}
+>>>>>>> fbabdb394fb3dae15d1b3b2e37c695db661a1abd
 .card-border{
   width: 26rem;
 }
