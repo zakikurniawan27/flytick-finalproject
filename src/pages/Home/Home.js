@@ -4,52 +4,25 @@ import iconArrow from "../../assets/arrow.png";
 import Cards from "../../components/card/Cards";
 import CardsExplore from "../../components/card/CardsExplore";
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CardSchedule from "../../components/card/CardSchedule";
+import { useSelector } from "react-redux";
 
 function Home(props) {
 
-  const { token, adult, setAdult, child, setChild} = props
-  // const [schedule, setSchedule] = useState([]);
-  const [search, setSearch] = useState([]);
+  const {adult, setAdult, child, setChild} = props
   const [fromAirport, setFromAirport] = useState("");
   const [toAirport, setToAirport] = useState("");
   const [departureTime, setDepartureTime] = useState("");
   
-  // const [returnTime, setReturnTime] = useState('')
-  
-  const [loading, setLoading] = useState(false);
+  const {token} = useSelector((state) => state.auth)
+  const [loading] = useState(false);
 
   const navigate = useNavigate()
   const departureTimeNew = departureTime.toString().split('T')[0]
   
   
-  const handleSearchSchedule = async () => {
-    setLoading(true)
-    try {
-      const res = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/api/schedule?`,
-        { 
-          headers: {
-            Authorization: `${token}`,
-          },
-          params: {
-            departure_time: departureTimeNew,
-            from_airport: fromAirport,
-            to_airport: toAirport,
-            adult: adult,
-            child: child,
-          },
-        }
-      );
-      setSearch(res.data);
-    } catch (err) {
-      alert(err.response.data.message)
-    } finally{
-      setLoading(false)
-    }
-  };
+  
 
 
   return (
@@ -63,6 +36,7 @@ function Home(props) {
           {token ? (
             <>
               <Dropdown
+                departureTimeNew={departureTimeNew}
                 fromAirport={fromAirport}
                 setFromAirport={setFromAirport}
                 toAirport={toAirport}
@@ -73,7 +47,6 @@ function Home(props) {
                 setAdult={setAdult}
                 child={child}
                 setChild={setChild}
-                handleSearchSchedule={handleSearchSchedule}
               />
             </>
           ): (
@@ -88,7 +61,7 @@ function Home(props) {
           <div className="container">
             <div className="mt-5">
               <div className="row gap-3 d-flex justify-content-center mb-5">
-                <CardSchedule loading={loading} search={search}/>
+                <CardSchedule loading={loading}/>
               </div>
             </div>
           </div>
