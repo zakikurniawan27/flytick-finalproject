@@ -33,6 +33,7 @@ function App() {
             <Route path="/transactionSuccess" element={<TransactionSucces />}/>
             <Route path="/user/:id" element={<User />} />
             <Route path="/edit-user" element={<EditUser />} />
+            <Route path="/notification" element={<Notification />} />
           </Routes>
           <Footer />
         </Provider>
