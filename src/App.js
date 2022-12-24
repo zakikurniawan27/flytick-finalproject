@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import User from "./pages/Account/User";
 import EditUser from "./pages/Account/EditUser";
+import Notification from "./pages/Notification/Notification";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Provider } from "react-redux";

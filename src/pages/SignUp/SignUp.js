@@ -34,9 +34,10 @@ const SignUp = () => {
         password,
       };
       try {
-        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/register`, data, {});
+        // const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/register`, data, {});
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/register`, data, {});
 
-        alert(result.data.message);
+        // alert(result.data.message);
         navigate("/signin");
       } catch (error) {
         alert(error.response.data.message);
