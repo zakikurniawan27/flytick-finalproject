@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import User from "./pages/Account/User";
 import EditUser from "./pages/Account/EditUser";
+import Notification from "./pages/Notification/Notification";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Provider } from "react-redux";
@@ -21,6 +22,7 @@ import Schedule from "./pages/Admin/Schedule";
 import Flight from "./pages/Admin/Flight"
 import City from "./pages/Admin/City"
 import Country from "./pages/Admin/Country"
+import TransactionSucces from "./pages/Transaction/TransactionSucces";
 
 function App() {
   const [adult, setAdult] = useState("");
@@ -35,15 +37,9 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/transaction/:id" element={<Transaction adult={adult} child={child} />} />
+            <Route path="/transactionSuccess" element={<TransactionSucces />}/>
             <Route path="/user/:id" element={<User />} />
             <Route path="/edit-user" element={<EditUser />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/airports" element={<Airport />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/flight" element={<Flight />} />
-            <Route path="/city" element={<City />} />
-            <Route path="/country" element={<Country />} />
           </Routes>
           <Footer />
         </Provider>

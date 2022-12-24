@@ -1,19 +1,37 @@
-import { React, useState } from "react";
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBBreadcrumb, MDBBreadcrumbItem, MDBIcon, MDBListGroup, MDBListGroupItem, MDBCardLink } from "mdb-react-ui-kit";
+import { React, useState, useEffect } from "react";
+import {
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+  MDBCard,
+  MDBCardText,
+  MDBCardBody,
+  MDBCardImage,
+  MDBBtn,
+  MDBBreadcrumb,
+  MDBBreadcrumbItem,
+  MDBIcon,
+  MDBListGroup,
+  MDBListGroupItem,
+  MDBCardLink,
+  MDBAccordion,
+  MDBAccordionItem,
+} from "mdb-react-ui-kit";
 import { useNavigate, useParams } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { BsBellFill } from "react-icons/bs";
-import { useEffect } from "react";
 import axios from "axios";
 
-export default function User(props) {
+export default function User() {
   const { id } = useParams();
   // console.log(id);
 
   const navigate = useNavigate();
 
   const [profile, setProfile] = useState([]);
+  const [biodata, setBiodata] = useState([]);
+  const [photo, setPhoto] = useState([]);
 
   const token = localStorage.getItem("token");
 
@@ -30,6 +48,12 @@ export default function User(props) {
 
     setProfile(dataProfile.data.data);
     // console.log(dataProfile.data.data);
+
+    setPhoto(dataProfile.data.data.avatar);
+    // console.log(dataProfile.data.data.avatar);
+
+    setBiodata(dataProfile.data.data.biodata);
+    // console.log(dataProfile.data.data.biodata);
   };
 
   return (
@@ -41,9 +65,10 @@ export default function User(props) {
               <MDBCard className="mb-4" style={{ width: "auto" }}>
                 <MDBCardBody className="text-center">
                   <MDBCardImage
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                    // src={profile.avatar_id}
-                    alt={profile.avatar_id}
+                    alt={photo.filename}
+                    src="https://flytick-dev.up.railway.app/api/images/default.jpg"
+                    // src={photo.imagekit_url}
+                    // alt={profile.avatar_id}
                     className="rounded-circle"
                     style={{ width: "150px" }}
                     fluid
@@ -52,7 +77,7 @@ export default function User(props) {
                 <p className="text-muted mb-4">Bay Area, San Francisco, CA</p> */}
                   <div className="d-flex justify-content-center mb-2 mt-3">
                     {/* <MDBBtn>Edit Profile</MDBBtn> */}
-                    <MDBBtn outline className="ms-1" onClick={() => navigate("/edit-user")}>
+                    <MDBBtn outline className="ms-1" onClick={() => navigate(`/edit-user/${profile.id}`)}>
                       <MdEdit /> Edit Profile
                     </MDBBtn>
                   </div>
@@ -65,25 +90,29 @@ export default function User(props) {
                     <MDBListGroupItem className="d-flex justify-content-center align-items-center p-3">
                       <MDBIcon />
                       <MDBCardText>
-                        <MDBCardLink onClick={() => navigate("/user")}>
+                        <MDBCardLink onClick={() => navigate(`/user/${profile.id}`)}>
                           <FaUser className="mx-2" />
                           Profile
                         </MDBCardLink>
                       </MDBCardText>
                     </MDBListGroupItem>
+                    {/* <MDBListGroupItem className="d-flex justify-content-center align-items-center p-3">
+                      <BsBellFill className="mx-2" />
+                      <MDBAccordion flush>
+                        <MDBAccordionItem collapseId={2} headerTitle="Notification">
+                          <MDBCardText>
+                            <MDBCardLink>All Notification</MDBCardLink>
+                          </MDBCardText>
+                          <MDBCardText>
+                            <MDBCardLink>All Notification</MDBCardLink>
+                          </MDBCardText>
+                        </MDBAccordionItem>
+                      </MDBAccordion>
+                    </MDBListGroupItem> */}
                     <MDBListGroupItem className="d-flex justify-content-center align-items-center p-3">
                       <MDBIcon />
                       <MDBCardText>
-                        <MDBCardLink onClick={() => navigate("/")}>
-                          <BsBellFill className="mx-2" />
-                          Notification
-                        </MDBCardLink>
-                      </MDBCardText>
-                    </MDBListGroupItem>
-                    <MDBListGroupItem className="d-flex justify-content-center align-items-center p-3">
-                      <MDBIcon />
-                      <MDBCardText>
-                        <MDBCardLink>-</MDBCardLink>
+                        <MDBCardLink onClick={() => navigate(`/notification`)}>Notification</MDBCardLink>
                       </MDBCardText>
                     </MDBListGroupItem>
                     <MDBListGroupItem className="d-flex justify-content-center align-items-center p-3">
@@ -143,6 +172,78 @@ export default function User(props) {
                     </MDBCol>
                     <MDBCol sm="9">
                       <MDBCardText className="text-muted">{profile.role}</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>NIK</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">{biodata.nik}</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>Birth Place</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">{biodata.birth_place}</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>Birth Date</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">{biodata.birth_date}</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>Telp</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">{biodata.telp}</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>Nationality</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">{biodata.nationality}</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>No Passport</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">{biodata.no_passport}</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>Issue Date</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">{biodata.issue_date}</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <hr />
+                  <MDBRow>
+                    <MDBCol sm="3">
+                      <MDBCardText>Expire Date</MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="9">
+                      <MDBCardText className="text-muted">{biodata.expire_date}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                 </MDBCardBody>
