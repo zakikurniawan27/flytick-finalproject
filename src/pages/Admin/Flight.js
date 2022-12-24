@@ -2,33 +2,33 @@ import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { useDispatch, useSelector} from "react-redux";
-import { getAllUser } from "../../Redux/Actions/allUserActions";
+import { getAllFlight } from "../../Redux/Actions/allDataActions";
 import { useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 
 const Users = () => {
   const dispatch = useDispatch()
-  const { allUsers } = useSelector((state) => state.allUser);
+  const { allFlights } = useSelector((state) => state.allData);
 
   useEffect(() => {
-    dispatch(getAllUser())
+    dispatch(getAllFlight())
   },[dispatch])
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
     {
-        field: "name",
-        headerName: "Name",
+        field: "code",
+        headerName: "Code",
         flex: 1,
     },
     {
-        field: "email",
-        headerName: "Email",
+        field: "capacity",
+        headerName: "Capacity",
         flex: 1,
     },
     {
-        field: "role",
-        headerName: "Role",
+        field: "current_airport",
+        headerName: "Current Airport",
         flex: 1,
     },
   ];
@@ -38,17 +38,17 @@ const Users = () => {
     <Sidebar>
     <Box m="20px">
       <Header
-        title="USERS"
-        subtitle="List of User"
+        title="FLIGHTS"
+        subtitle="List of Flight"
       />
         <Box sx={{ height: 400, width: '100%' }}>
-        {allUsers?.data?.length > 0 ? (
+        {allFlights?.data?.length > 0 ? (
             <DataGrid checkboxSelection
-            rows={allUsers?.data}
+            rows={allFlights?.data}
             columns={columns}
             components={{ Toolbar: GridToolbar }}
           />
-        ) : <h2>No user</h2>}
+        ) : <h2>No flight</h2>}
         
         </Box>
     </Box>

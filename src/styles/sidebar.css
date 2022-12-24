@@ -11,7 +11,7 @@ main{
     padding: 20px;
 }
 .sidebar{
-    background: #000;
+    background: #63D471;
     color: #fff;
     height: 100vh;
     width: 200px;
@@ -20,7 +20,7 @@ main{
 .top_section{
     display: flex;
     align-items:center;
-    padding:20px 15px;
+    padding:5px;
 }
 .logo{
     font-size: 30px;
@@ -47,5 +47,5 @@ main{
     color: #000;
 }
 .icon, .link_text{
-    font-size: 20px;
+    font-size: 15px;
 }

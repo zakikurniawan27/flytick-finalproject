@@ -17,6 +17,10 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import Dashboard from "./pages/Admin/Dashboard";
 import Users from "./pages/Admin/Users"
 import Airport from "./pages/Admin/Airport";
+import Schedule from "./pages/Admin/Schedule";
+import Flight from "./pages/Admin/Flight"
+import City from "./pages/Admin/City"
+import Country from "./pages/Admin/Country"
 
 function App() {
   const [adult, setAdult] = useState("");
@@ -36,6 +40,10 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/users" element={<Users />} />
             <Route path="/airports" element={<Airport />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/flight" element={<Flight />} />
+            <Route path="/city" element={<City />} />
+            <Route path="/country" element={<Country />} />
           </Routes>
           <Footer />
         </Provider>

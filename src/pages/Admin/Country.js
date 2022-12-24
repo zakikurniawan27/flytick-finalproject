@@ -2,16 +2,16 @@ import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { useDispatch, useSelector} from "react-redux";
-import { getAllUser } from "../../Redux/Actions/allUserActions";
+import { getAllCountry } from "../../Redux/Actions/allDataActions";
 import { useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 
 const Users = () => {
   const dispatch = useDispatch()
-  const { allUsers } = useSelector((state) => state.allUser);
+  const { allCountries } = useSelector((state) => state.allData);
 
   useEffect(() => {
-    dispatch(getAllUser())
+    dispatch(getAllCountry())
   },[dispatch])
 
   const columns = [
@@ -22,13 +22,8 @@ const Users = () => {
         flex: 1,
     },
     {
-        field: "email",
-        headerName: "Email",
-        flex: 1,
-    },
-    {
-        field: "role",
-        headerName: "Role",
+        field: "code",
+        headerName: "Code",
         flex: 1,
     },
   ];
@@ -38,17 +33,17 @@ const Users = () => {
     <Sidebar>
     <Box m="20px">
       <Header
-        title="USERS"
-        subtitle="List of User"
+        title="COUNTRIES"
+        subtitle="List of Country"
       />
         <Box sx={{ height: 400, width: '100%' }}>
-        {allUsers?.data?.length > 0 ? (
+        {allCountries?.data?.length > 0 ? (
             <DataGrid checkboxSelection
-            rows={allUsers?.data}
+            rows={allCountries?.data}
             columns={columns}
             components={{ Toolbar: GridToolbar }}
           />
-        ) : <h2>No user</h2>}
+        ) : <h2>No country</h2>}
         
         </Box>
     </Box>

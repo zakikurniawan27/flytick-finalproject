@@ -9,8 +9,6 @@ import Sidebar from "../../components/Sidebar";
 const Airport = () => {
   const dispatch = useDispatch()
   const { allAirports } = useSelector((state) => state.allAirport);
-  const rows = allAirports
-  console.log(rows)
 
   useEffect(() => {
     dispatch(getAllAirport())
@@ -41,11 +39,13 @@ const Airport = () => {
         subtitle="List of Airport"
       />
         <Box sx={{ height: 400, width: '100%' }}>
-        <DataGrid checkboxSelection
-          rows={rows}
-          columns={columns}
-          components={{ Toolbar: GridToolbar }}
-        />
+        {allAirports?.data?.length > 0 ? (
+           <DataGrid checkboxSelection
+           rows={allAirports?.data}
+           columns={columns}
+           components={{ Toolbar: GridToolbar }}
+         />
+        ): <h2>No airport</h2>}
         </Box>
     </Box>
     </Sidebar>
