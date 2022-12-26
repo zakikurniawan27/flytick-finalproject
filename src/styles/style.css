@@ -1,3 +1,6 @@
+#logoFooter{
+  width: 12%;
+}
 .tag-line{
     font-family: 'Nunito Sans';
     font-size: 96px;
@@ -13,12 +16,14 @@
 }
 .bttn{
   background-color: #5DEC6B;
+  color: white;
 }
 .bttn:hover{
   background-color: green;
+  color: white;
 }
-.logo{
-  width: 12%;
+.logoAirplane{
+  width: 50%;
 }
 .mt-10{
   margin-top: 10rem;
@@ -46,14 +51,17 @@
 .text-success-900{
   color: #63D471;
 }
-.card{
-  width: 24rem;
+.price{
+  font-family: 'Gill Sans';
 }
 .card-border{
   width: 26rem;
 }
 .card-img{
   width: 24rem;
+}
+.card-schedule{
+  width: 70rem;
 }
 .text-all{
   font-family: 'Nunito Sans';
@@ -75,4 +83,7 @@
 .rating{
   width: 8%;
   height: 8%;
+}
+.transuc{
+  width: 30rem;
 }

@@ -11,7 +11,7 @@ function GoogleLogin({ label }) {
         const data = {
           access_token: response.access_token,
         };
-        const datas = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/login`, data);
+        const datas = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/oauth/login/google`, data);
         if (datas.data.token) {
           // Set token from backend to local storage
           // {"data": { "token": "ini token" }}
@@ -32,8 +32,8 @@ function GoogleLogin({ label }) {
   return (
     <div className="signInFieldbutton">
       <div className="googleButton">
-        <button className="google">
-          <FaGoogle color="white" />
+        <button className="google" onClick={googleLogin}>
+          <FaGoogle color="white" /> {label}
         </button>
       </div>
     </div>
