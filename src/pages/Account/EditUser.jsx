@@ -35,14 +35,53 @@ export default function User() {
       alert("Name is required");
       return;
     }
-    if (email === "") {
+    // if (email === "") {
+    //   alert("email is required");
+    //   return;
+    // }
+    if (nik === "") {
       alert("email is required");
       return;
     }
-    if (name !== "" && email !== "") {
+    if (birth_place === "") {
+      alert("birth place is required");
+      return;
+    }
+    if (birth_date === "") {
+      alert("birth date is required");
+      return;
+    }
+    if (telp === "") {
+      alert("telp is required");
+      return;
+    }
+    if (nationality === "") {
+      alert("nationality is required");
+      return;
+    }
+    if (no_passport === "") {
+      alert("no passport is required");
+      return;
+    }
+    if (issue_date === "") {
+      alert("issue date is required");
+      return;
+    }
+    if (expire_date === "") {
+      alert("expire date is required");
+      return;
+    }
+    if (name !== "" && nik !== "nik" && birth_place !== "" && birth_date !== "" && telp !== "" && nationality !== "" && no_passport !== "" && issue_date !== "" && expire_date !== "") {
       const data = {
         name,
-        email,
+        nik,
+        birth_place,
+        birth_date,
+        telp,
+        nationality,
+        no_passport,
+        issue_date,
+        expire_date,
       };
       try {
         // const editData = async () =>
@@ -57,16 +96,6 @@ export default function User() {
       }
     }
   };
-
-  // const editData = async () => {
-  //   const dataProfile = await axios.put(`${process.env.REACT_APP_BASE_URL}/api/user/${id}`, {
-  //     headers: {
-  //       Authorization: `${token}`,
-  //     },
-  //   });
-
-  //   setProfile(dataProfile.data.data);
-  // };
 
   return (
     <section>
@@ -150,7 +179,7 @@ export default function User() {
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Email address</Form.Label>
-                      <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                      <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} disabled />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>NIK</Form.Label>
@@ -183,6 +212,10 @@ export default function User() {
                     <Form.Group className="mb-4">
                       <Form.Label>Expire Date</Form.Label>
                       <Form.Control type="date" placeholder="Enter Expire Date" value={expire_date} onChange={(e) => setExpireDate(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Edit Photo Profile</Form.Label>
+                      <Form.Control type="file" placeholder="Enter Expire Date" value={expire_date} onChange={(e) => setExpireDate(e.target.value)} required />
                     </Form.Group>
 
                     <div className="text-center">
