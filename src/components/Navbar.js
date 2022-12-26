@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { BsPersonCircle, BsBell } from "react-icons/bs";
-import axios from "axios";
 import { logout, me } from "../Redux/Actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -73,9 +72,9 @@ function Navbar() {
                     </button>
                     <ul className="dropdown-menu dropdown-menu-lg-end">
                       <li>
-                        <a className="dropdown-item" href="/user/:id">
+                        <div className="dropdown-item" onClick={() => navigate(`/user/${user?.data?.id}`)}>
                           My Profil
-                        </a>
+                        </div>
                       </li>
                       <li>
                         <a className="dropdown-item" href="/history">
