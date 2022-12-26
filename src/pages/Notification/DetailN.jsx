@@ -18,51 +18,34 @@ import {
   MDBAccordionItem,
   MDBTypography,
 } from "mdb-react-ui-kit";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-// import { useSelector } from "react-redux";
 
-const Notification = () => {
-  const [notification, setNotification] = useState([]);
+const DetailN = () => {
+  const { id } = useParams();
+  const [detailNotif, setDetailNotif] = useState([]);
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/api/notification`, {
+      .get(`${process.env.REACT_APP_BASE_URL}/api/notification/${id}`, {
         headers: {
           Authorization: `${token}`,
         },
       })
       .then((response) => {
-        setNotification(response.data.data);
+        console.log(response);
+        setDetailNotif(response.data.data);
       });
   }, []);
-
-  //   useEffect(() => {
-  //     (async () => {
-  //       //   if () {
-  //       try {
-  //         const data = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/notification`, {
-  //           // headers: {
-  //           //   Authorization: `${token}`,
-  //           // },
-  //         });
-  //         setNotification(data);
-  //         console.log(data);
-  //       } catch (error) {
-  //         if (error.response.status === 401) {
-  //         }
-  //       }
-  //       //   }
-  //     })();
-  //   }, []);
 
   return (
     <MDBContainer className="py-5">
       <MDBRow>
         <MDBCol lg="3" md="4">
+          {/* Photo Profile */}
           <MDBCard className="mb-4" style={{ width: "auto" }}>
             <MDBCardBody className="text-center">
               <MDBCardImage
@@ -83,7 +66,7 @@ const Notification = () => {
               </div>
             </MDBCardBody>
           </MDBCard>
-
+          {/* Href */}
           <MDBCard className="mb-4 mb-lg-0" style={{ width: "auto" }}>
             <MDBCardBody className="p-0 text-center">
               <MDBListGroup flush className="rounded-3">
@@ -125,7 +108,7 @@ const Notification = () => {
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-
+        {/* BreadCrumb */}
         <MDBCol lg="9" md="8">
           <MDBRow>
             <MDBCol>
@@ -133,39 +116,33 @@ const Notification = () => {
                 <MDBBreadcrumbItem>
                   <a href="/">Home</a>
                 </MDBBreadcrumbItem>
-                {/* <MDBBreadcrumbItem>
-                    <a href="#">User</a>
-                  </MDBBreadcrumbItem> */}
-                <MDBBreadcrumbItem active>Notification</MDBBreadcrumbItem>
+                <MDBBreadcrumbItem>
+                  <a href="/notification">Notification</a>
+                </MDBBreadcrumbItem>
+                <MDBBreadcrumbItem active>
+                  <a>Detail Notifikasi</a>
+                </MDBBreadcrumbItem>
               </MDBBreadcrumb>
             </MDBCol>
           </MDBRow>
 
           <MDBCard>
-            <>
-              {notification &&
-                notification?.length > 0 &&
-                notification.map((result, index) => {
-                  return (
-                    <MDBCardBody key={index}>
-                      <MDBCard className="mb-3" onClick={() => navigate(`/detail-notification/${result.id}`)}>
-                        <MDBCardBody>
-                          <div className="d-flex flex-start">
-                            <div className="w-100">
-                              <div className="d-flex justify-content-between align-items-center mb-3">
-                                <MDBTypography tag="h5" className="text-primary fw-bold mb-0">
-                                  {result.topic}
-                                  <p className="text-dark my-3">{result.message}</p>
-                                </MDBTypography>
-                              </div>
-                            </div>
-                          </div>
-                        </MDBCardBody>
-                      </MDBCard>
-                    </MDBCardBody>
-                  );
-                })}
-            </>
+            <MDBCardBody>
+              <MDBCard className="mb-3">
+                <MDBCardBody>
+                  <div className="d-flex flex-start">
+                    <div className="w-100">
+                      <div className="d-flex justify-content-between align-items-center mb-3">
+                        <MDBTypography tag="h5" className="text-primary fw-bold mb-0">
+                          {detailNotif.topic}
+                          <p className="text-dark my-3">{detailNotif.message}</p>
+                        </MDBTypography>
+                      </div>
+                    </div>
+                  </div>
+                </MDBCardBody>
+              </MDBCard>
+            </MDBCardBody>
           </MDBCard>
         </MDBCol>
       </MDBRow>
@@ -173,4 +150,4 @@ const Notification = () => {
   );
 };
 
-export default Notification;
+export default DetailN;
