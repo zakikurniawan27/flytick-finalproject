@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import User from "./pages/Account/User";
 import EditUser from "./pages/Account/EditUser";
 import Notification from "./pages/Notification/Notification";
+import DetailNotification from "./pages/Notification/DetailN";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Provider } from "react-redux";
@@ -32,6 +33,7 @@ function App() {
             <Route path="/user/:id" element={<User />} />
             <Route path="/edit-user/:id" element={<EditUser />} />
             <Route path="/notification" element={<Notification />} />
+            <Route path="/detail-notification/:id" element={<DetailNotification />} />
           </Routes>
           <Footer />
         </Provider>

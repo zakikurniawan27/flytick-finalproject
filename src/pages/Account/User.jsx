@@ -66,8 +66,8 @@ export default function User() {
                 <MDBCardBody className="text-center">
                   <MDBCardImage
                     alt={photo.filename}
-                    src="https://flytick-dev.up.railway.app/api/images/default.jpg"
-                    // src={photo.imagekit_url}
+                    // src="https://flytick-dev.up.railway.app/api/images/default.jpg"
+                    src={photo.imagekit_url}
                     // alt={profile.avatar_id}
                     className="rounded-circle"
                     style={{ width: "150px" }}
@@ -144,13 +144,10 @@ export default function User() {
                 <MDBCardBody>
                   <MDBRow>
                     <MDBCol sm="3">
-                      <MDBCardText>Full Name</MDBCardText>
+                      <MDBCardText>Name</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">
-                        {/* Johnatan Smith */}
-                        {profile.name}
-                      </MDBCardText>
+                      <MDBCardText className="text-muted">{profile.name}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />

@@ -73,7 +73,7 @@ function Navbar() {
                     </button>
                     <ul className="dropdown-menu dropdown-menu-lg-end">
                       <li>
-                        <a className="dropdown-item" href="/user">
+                        <a className="dropdown-item" href="/user/:id">
                           My Profil
                         </a>
                       </li>
