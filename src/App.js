@@ -16,6 +16,7 @@ import Transaction from "./pages/Transaction/Transaction";
 import { useState } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import TransactionSucces from "./pages/Transaction/TransactionSucces";
+import History from "./pages/History/History";
 
 function App() {
   const [adult, setAdult] = useState("");
@@ -34,6 +35,7 @@ function App() {
             <Route path="/user/:id" element={<User />} />
             <Route path="/edit-user" element={<EditUser />} />
             <Route path="/notification" element={<Notification />} />
+            <Route path="/history/:id" element={<History />}/>
           </Routes>
           <Footer />
         </Provider>

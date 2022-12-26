@@ -6,10 +6,6 @@ import Moment from "react-moment";
 import FormTransaction1 from "../../components/FormTransaction1";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailSchedule } from "../../Redux/Actions/scheduleActions";
-import {
-  getDetailAirport,
-  getDetail2Airport,
-} from "../../Redux/Actions/allAirportActions";
 import FormTransaction2 from "../../components/FormTransaction2";
 import FormTransaction3 from "../../components/FormTransaction3";
 import { createTransaction } from "../../Redux/Actions/createTransactionAction";
@@ -72,7 +68,6 @@ const Transaction = (props) => {
 
   const {user, token} = useSelector((state) => state.auth)
   const { searchSchedule } = useSelector((state) => state);
-  const { allAirport } = useSelector((state) => state);
 
   const data = JSON.stringify({
     user_id: user?.data?.id,
@@ -197,18 +192,9 @@ const Transaction = (props) => {
 
   useEffect(() => {
     dispatch(getDetailSchedule(params.id));
-    dispatch(
-      getDetailAirport(searchSchedule?.detail?.data?.schedule?.from_airport)
-    );
-    dispatch(
-      getDetail2Airport(searchSchedule?.detail?.data?.schedule?.to_airport)
-    );
   }, [
     dispatch,
     params,
-    searchSchedule?.detail?.data?.schedule?.from_airport,
-    searchSchedule?.detail?.data?.schedule?.to_airport,
-    data,
   ]);
 
   return (
@@ -240,7 +226,7 @@ const Transaction = (props) => {
                 setExpireDate={setExpireDate}
               />
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -293,7 +279,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -346,7 +332,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -423,7 +409,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -500,7 +486,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -577,7 +563,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -602,7 +588,7 @@ const Transaction = (props) => {
               </p>
               <div className="row ms-5">
                 <div className="col">
-                  <p>{allAirport?.details?.data?.name}</p>
+                  <p>{searchSchedule?.searchSchedules?.data?.fromAirport?.name}</p>
                   <p>
                     <Moment format="hh:mm a">
                       {searchSchedule?.detail?.data?.schedule?.departure_time}
@@ -613,7 +599,7 @@ const Transaction = (props) => {
                   <img src={iconArrow} alt="icon" />
                 </div>
                 <div className="col">
-                  <p>{allAirport?.details2?.data?.name}</p>
+                  <p>{searchSchedule?.searchSchedules?.data?.toAirport?.name}</p>
                   <p>
                     <Moment format="hh:mm a">
                       {searchSchedule?.detail?.data?.schedule?.arrival_time}
