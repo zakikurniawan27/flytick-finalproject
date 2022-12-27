@@ -66,25 +66,30 @@ const Transaction = (props) => {
   const dispatch = useDispatch();
   const params = useParams();
 
+  const intNationality = parseInt(nationality)
+  const intNationality2 = parseInt(nationality2)
+  const intNationality3 = parseInt(nationality3)
+
+
   const {user, token} = useSelector((state) => state.auth)
   const { searchSchedule } = useSelector((state) => state);
 
   const data = JSON.stringify({
     user_id: user?.data?.id,
-    schedule_id: searchSchedule?.detail?.data?.schedule?.id,
+    schedule_id: [searchSchedule?.detail?.data?.schedule?.id],
     adult: dws,
     child: ank,
     round_trip: false,
     biodataList: [
       {
         body:{
-          email,
+          email: email,
           name: nama,
-          nik,
+          nik: nik,
           birth_place: birthPlace,
           birth_date: birthDateNew,
-          telp,
-          nationality,
+          telp: telp,
+          nationality: intNationality,
           no_passport: passport,
           issue_date: issueDateNew,
           expire_date: expireDateNew
@@ -95,20 +100,20 @@ const Transaction = (props) => {
 
   const data2 = JSON.stringify({
     user_id: user?.data?.id,
-    schedule_id: searchSchedule?.detail?.data?.schedule?.id,
+    schedule_id: [searchSchedule?.detail?.data?.schedule?.id],
     adult: dws,
     child: ank,
     round_trip: false,
     biodataList: [
       {
         body:{
-          email,
+          email: email,
           name: nama,
-          nik,
+          nik: nik,
           birth_place: birthPlace,
           birth_date: birthDateNew,
-          telp,
-          nationality,
+          telp: telp,
+          nationality: intNationality,
           no_passport: passport,
           issue_date: issueDateNew,
           expire_date: expireDateNew
@@ -116,13 +121,13 @@ const Transaction = (props) => {
       },
       {
         body:{
-          email2,
+          email: email2,
           name: nama2,
-          nik2,
+          nik: nik2,
           birth_place: birthPlace2,
           birth_date: birthDateNew2,
-          telp2,
-          nationality2,
+          telp: telp2,
+          nationality: intNationality2,
           no_passport: passport2,
           issue_date: issueDateNew2,
           expire_date: expireDateNew2
@@ -133,20 +138,20 @@ const Transaction = (props) => {
 
   const data3 = JSON.stringify({
     user_id: user?.data?.id,
-    schedule_id: searchSchedule?.detail?.data?.schedule?.id,
+    schedule_id: [searchSchedule?.detail?.data?.schedule?.id],
     adult: dws,
     child: ank,
     round_trip: false,
     biodataList: [
       {
         body:{
-          email,
+          email: email,
           name: nama,
-          nik,
+          nik: nik,
           birth_place: birthPlace,
           birth_date: birthDateNew,
-          telp,
-          nationality,
+          telp: telp,
+          nationality: intNationality,
           no_passport: passport,
           issue_date: issueDateNew,
           expire_date: expireDateNew
@@ -154,13 +159,13 @@ const Transaction = (props) => {
       },
       {
         body:{
-          email2,
+          email: email2,
           name: nama2,
-          nik2,
+          nik: nik2,
           birth_place: birthPlace2,
           birth_date: birthDateNew2,
-          telp2,
-          nationality2,
+          telp: telp2,
+          nationality: intNationality2,
           no_passport: passport2,
           issue_date: issueDateNew2,
           expire_date: expireDateNew2
@@ -168,13 +173,13 @@ const Transaction = (props) => {
       },
       {
         body:{
-          email3,
+          email: email3,
           name: nama3,
-          nik3,
+          nik: nik3,
           birth_place: birthPlace3,
           birth_date: birthDateNew3,
-          telp3,
-          nationality3,
+          telp: telp3,
+          nationality: intNationality3,
           no_passport: passport3,
           issue_date: issueDateNew3,
           expire_date: expireDateNew3
