@@ -1,6 +1,20 @@
 import axios from "axios";
-import { getDetailScheduleReducer, getSearchScheduleReducer } from "../Reducers/scheduleReducer";
+import { getAllScheduleReducer, getDetailScheduleReducer, getSearchScheduleReducer } from "../Reducers/scheduleReducer";
 
+export const getAllSchedule  = () => async(dispatch, getState) => {
+  try {
+    const {token} = getState().auth
+    const {data}= await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/api/schedule`,{
+          headers: {
+              Authorization: `${token}`
+          }
+      })
+      dispatch(getAllScheduleReducer(data))
+  } catch (error) {
+    alert(error.response.data.message)
+  }
+}
 
 export const getDetailSchedule  = (id) => async(dispatch, getState) => {
   try {
