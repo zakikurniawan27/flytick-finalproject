@@ -29,6 +29,8 @@ const DetailN = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/api/notification/${id}`, {
         headers: {
@@ -36,8 +38,21 @@ const DetailN = () => {
         },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setDetailNotif(response.data.data);
+      });
+    axios
+      .put(
+        `${process.env.REACT_APP_BASE_URL}/api/notification/${id}/read`,
+        {},
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
       });
   }, []);
 

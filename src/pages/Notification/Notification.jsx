@@ -18,6 +18,7 @@ import {
   MDBAccordionItem,
   MDBTypography,
 } from "mdb-react-ui-kit";
+import { Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // import { useSelector } from "react-redux";
@@ -40,24 +41,22 @@ const Notification = () => {
       });
   }, []);
 
-  //   useEffect(() => {
-  //     (async () => {
-  //       //   if () {
-  //       try {
-  //         const data = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/notification`, {
-  //           // headers: {
-  //           //   Authorization: `${token}`,
-  //           // },
-  //         });
-  //         setNotification(data);
-  //         console.log(data);
-  //       } catch (error) {
-  //         if (error.response.status === 401) {
-  //         }
-  //       }
-  //       //   }
-  //     })();
-  //   }, []);
+  const handleReadAll = () => {
+    axios
+      .put(
+        `${process.env.REACT_APP_BASE_URL}/api/notification/read-all`,
+        {},
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      });
+    navigate(`/notification`);
+  };
 
   return (
     <MDBContainer className="py-5">
@@ -142,6 +141,11 @@ const Notification = () => {
           </MDBRow>
 
           <MDBCard>
+            <div className="d-flex justify-content-end px-3 pt-3">
+              <MDBBtn color="tertiary" rippleColor="light" onClick={handleReadAll}>
+                Read All
+              </MDBBtn>
+            </div>
             <>
               {notification &&
                 notification?.length > 0 &&
@@ -155,6 +159,16 @@ const Notification = () => {
                               <div className="d-flex justify-content-between align-items-center mb-3">
                                 <MDBTypography tag="h5" className="text-primary fw-bold mb-0">
                                   {result.topic}
+                                  {result.is_read ? (
+                                    <Badge className="ms-2" bg="success">
+                                      Sudah Dibaca
+                                    </Badge>
+                                  ) : (
+                                    <Badge className="ms-2" bg="danger">
+                                      Belum Dibaca
+                                    </Badge>
+                                  )}
+
                                   <p className="text-dark my-3">{result.message}</p>
                                 </MDBTypography>
                               </div>
