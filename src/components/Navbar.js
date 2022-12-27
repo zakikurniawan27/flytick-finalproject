@@ -58,7 +58,7 @@ function Navbar() {
               ) : (
                 <>
                   <div className="btn-group btn-group-sm me-auto">
-                    <button className="btn" type="button">
+                    <button className="btn" type="button" onClick={() => navigate(`/notification`)}>
                       <BsBell className="fs-6" />
                     </button>
                     <button className="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">

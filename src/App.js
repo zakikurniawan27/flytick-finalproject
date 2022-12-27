@@ -16,6 +16,13 @@ import store from "./Redux/store";
 import Transaction from "./pages/Transaction/Transaction";
 import { useState } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import Dashboard from "./pages/Admin/Dashboard";
+import Users from "./pages/Admin/Users"
+import Airport from "./pages/Admin/Airport";
+import Schedule from "./pages/Admin/Schedule";
+import Flight from "./pages/Admin/Flight"
+import City from "./pages/Admin/City"
+import Country from "./pages/Admin/Country"
 import TransactionSucces from "./pages/Transaction/TransactionSucces";
 import History from "./pages/History/History";
 
@@ -34,6 +41,14 @@ function App() {
             <Route path="/transaction/:id" element={<Transaction adult={adult} child={child} />} />
             <Route path="/transactionSuccess" element={<TransactionSucces />} />
             <Route path="/user/:id" element={<User />} />
+            <Route path="/edit-user" element={<EditUser />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/airports" element={<Airport />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/flight" element={<Flight />} />
+            <Route path="/city" element={<City />} />
+            <Route path="/country" element={<Country />} />
             <Route path="/edit-user/:id" element={<EditUser />} />
             <Route path="/notification" element={<Notification />} />
             <Route path="/history/:id" element={<History />}/>
