@@ -13,6 +13,10 @@ export default function User() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
+  const [profile, setProfile] = useState([]);
+  const [biodata, setBiodata] = useState([]);
+  const [photo, setPhoto] = useState([]);
+
   // const [profile, setProfile] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,10 +28,32 @@ export default function User() {
   const [no_passport, setNoPassport] = useState("");
   const [issue_date, setIssueDate] = useState("");
   const [expire_date, setExpireDate] = useState("");
+  const [avatar_id, setAvatar] = useState("");
 
-  // useEffect(() => {
-  //   editData();
-  // }, []);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    console.log(biodata);
+  }, [biodata]);
+
+  const getData = async () => {
+    const dataProfile = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/${id}`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    });
+
+    setProfile(dataProfile.data.data);
+    // console.log(dataProfile.data.data);
+
+    setPhoto(dataProfile.data.data.avatar);
+    // console.log(dataProfile.data.data.avatar);
+
+    setBiodata(dataProfile.data.data.biodata);
+    setBirthDate(dataProfile.data.data.biodata.birth_date.substring(0, 10));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,14 +61,58 @@ export default function User() {
       alert("Name is required");
       return;
     }
-    if (email === "") {
+    // if (email === "") {
+    //   alert("email is required");
+    //   return;
+    // }
+    if (nik === "") {
       alert("email is required");
       return;
     }
-    if (name !== "" && email !== "") {
+    if (birth_place === "") {
+      alert("birth place is required");
+      return;
+    }
+    if (birth_date === "") {
+      alert("birth date is required");
+      return;
+    }
+    if (telp === "") {
+      alert("telp is required");
+      return;
+    }
+    if (nationality === "") {
+      alert("nationality is required");
+      return;
+    }
+    if (no_passport === "") {
+      alert("no passport is required");
+      return;
+    }
+    if (issue_date === "") {
+      alert("issue date is required");
+      return;
+    }
+    if (expire_date === "") {
+      alert("expire date is required");
+      return;
+    }
+    if (avatar_id === "") {
+      alert("expire date is required");
+      return;
+    }
+    if (name !== "" && nik !== "nik" && birth_place !== "" && birth_date !== "" && telp !== "" && nationality !== "" && no_passport !== "" && issue_date !== "" && expire_date !== "" && avatar_id !== "") {
       const data = {
         name,
-        email,
+        nik,
+        birth_place,
+        birth_date,
+        telp,
+        nationality,
+        no_passport,
+        issue_date,
+        expire_date,
+        avatar_id,
       };
       try {
         // const editData = async () =>
@@ -57,16 +127,6 @@ export default function User() {
       }
     }
   };
-
-  // const editData = async () => {
-  //   const dataProfile = await axios.put(`${process.env.REACT_APP_BASE_URL}/api/user/${id}`, {
-  //     headers: {
-  //       Authorization: `${token}`,
-  //     },
-  //   });
-
-  //   setProfile(dataProfile.data.data);
-  // };
 
   return (
     <section>
@@ -146,19 +206,19 @@ export default function User() {
                   <form onSubmit={handleSubmit}>
                     <Form.Group className="mb-4">
                       <Form.Label>Name</Form.Label>
-                      <Form.Control type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} required />
+                      <Form.Control type="text" placeholder="Enter name" value={profile.name} onChange={(e) => setName(e.target.value)} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Email address</Form.Label>
-                      <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                      <Form.Control type="email" placeholder="Enter email" value={profile.email} onChange={(e) => setEmail(e.target.value)} disabled />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>NIK</Form.Label>
-                      <Form.Control type="text" placeholder="Enter NIK" value={nik} onChange={(e) => setNIK(e.target.value)} required />
+                      <Form.Control type="text" placeholder="Enter NIK" value={biodata.nik} onChange={(e) => setNIK(e.target.value)} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Birth Place</Form.Label>
-                      <Form.Control type="text" placeholder="Enter Birth Place" value={birth_place} onChange={(e) => setBirthPlace(e.target.value)} required />
+                      <Form.Control type="text" placeholder="Enter Birth Place" value={biodata.birth_place} onChange={(e) => setBirthPlace(e.target.value)} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Birth Date</Form.Label>
@@ -166,23 +226,31 @@ export default function User() {
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Telp</Form.Label>
-                      <Form.Control type="text" placeholder="Enter Telp" value={telp} onChange={(e) => setTelp(e.target.value)} required />
+                      <Form.Control type="text" placeholder="Enter Telp" value={biodata.telp} onChange={(e) => setTelp(e.target.value)} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Nationality</Form.Label>
-                      <Form.Control type="text" placeholder="Enter Nationality" value={nationality} onChange={(e) => setNationality(e.target.value)} required />
+                      <Form.Control type="text" placeholder="Enter Nationality" value={biodata.nationality} onChange={(e) => setNationality(e.target.value)} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>No Passport</Form.Label>
-                      <Form.Control type="text" placeholder="Enter No Passport" value={no_passport} onChange={(e) => setNoPassport(e.target.value)} required />
+                      <Form.Control type="text" placeholder="Enter No Passport" value={biodata.no_passport} onChange={(e) => setNoPassport(e.target.value)} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Issue Date</Form.Label>
-                      <Form.Control type="date" placeholder="Enter Issue Date" value={issue_date} onChange={(e) => setIssueDate(e.target.value)} required />
+                      <Form.Control type="date" placeholder="Enter Issue Date" value={biodata.issue_date} onChange={(e) => setIssueDate(e.target.value)} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Expire Date</Form.Label>
-                      <Form.Control type="date" placeholder="Enter Expire Date" value={expire_date} onChange={(e) => setExpireDate(e.target.value)} required />
+                      <Form.Control type="date" placeholder="Enter Expire Date" value={biodata.expire_date} onChange={(e) => setExpireDate(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Edit Photo Profile</Form.Label>
+                      <Form.Control type="file" placeholder="Enter Expire Date" value={avatar_id} onChange={(e) => setAvatar(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Edit Photo Profile</Form.Label>
+                      <Form.Control type="file" placeholder="Enter Expire Date" value={expire_date} onChange={(e) => setExpireDate(e.target.value)} required />
                     </Form.Group>
 
                     <div className="text-center">
