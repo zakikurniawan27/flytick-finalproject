@@ -248,6 +248,10 @@ export default function User() {
                       <Form.Label>Edit Photo Profile</Form.Label>
                       <Form.Control type="file" placeholder="Enter Expire Date" value={avatar_id} onChange={(e) => setAvatar(e.target.value)} required />
                     </Form.Group>
+                    <Form.Group className="mb-4">
+                      <Form.Label>Edit Photo Profile</Form.Label>
+                      <Form.Control type="file" placeholder="Enter Expire Date" value={expire_date} onChange={(e) => setExpireDate(e.target.value)} required />
+                    </Form.Group>
 
                     <div className="text-center">
                       <Button className="px-4" variant="success" type="submit">
