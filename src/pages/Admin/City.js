@@ -2,16 +2,16 @@ import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { useDispatch, useSelector} from "react-redux";
-import { getAllCity } from "../../Redux/Actions/allDataActions";
+import { getAllcity } from "../../Redux/Actions/cityActions";
 import { useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 
 const Users = () => {
   const dispatch = useDispatch()
-  const { allCities } = useSelector((state) => state.allData);
+  const { cities } = useSelector((state) => state.city);
 
   useEffect(() => {
-    dispatch(getAllCity())
+    dispatch(getAllcity())
   },[dispatch])
 
   const columns = [
@@ -37,9 +37,9 @@ const Users = () => {
         subtitle="List of City"
       />
         <Box sx={{ height: 400, width: '100%' }}>
-        {allCities?.data?.length > 0 ? (
+        {cities?.data?.length > 0 ? (
             <DataGrid checkboxSelection
-            rows={allCities?.data}
+            rows={cities?.data}
             columns={columns}
             components={{ Toolbar: GridToolbar }}
           />

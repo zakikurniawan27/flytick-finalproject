@@ -2,13 +2,13 @@ import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { useDispatch, useSelector} from "react-redux";
-import { getAllFlight } from "../../Redux/Actions/allDataActions";
+import { getAllFlight } from "../../Redux/Actions/flightActions";
 import { useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 
 const Users = () => {
   const dispatch = useDispatch()
-  const { allFlights } = useSelector((state) => state.allData);
+  const { flights } = useSelector((state) => state.allFlight);
 
   useEffect(() => {
     dispatch(getAllFlight())
@@ -42,9 +42,9 @@ const Users = () => {
         subtitle="List of Flight"
       />
         <Box sx={{ height: 400, width: '100%' }}>
-        {allFlights?.data?.length > 0 ? (
+        {flights?.data?.length > 0 ? (
             <DataGrid checkboxSelection
-            rows={allFlights?.data}
+            rows={flights?.data}
             columns={columns}
             components={{ Toolbar: GridToolbar }}
           />

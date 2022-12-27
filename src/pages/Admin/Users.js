@@ -5,6 +5,7 @@ import { useDispatch, useSelector} from "react-redux";
 import { getAllUser } from "../../Redux/Actions/allUserActions";
 import { useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
+import UserActions from "../../components/Actions/UserActions"
 
 const Users = () => {
   const dispatch = useDispatch()
@@ -30,6 +31,15 @@ const Users = () => {
         field: "role",
         headerName: "Role",
         flex: 1,
+    },
+    {
+        field: "actions",
+        headerName: "Actions",
+        type: "actions",
+        flex: 1,
+        renderCell: (params) => (
+          <UserActions { ... { params }} />
+        ),
     },
   ];
 

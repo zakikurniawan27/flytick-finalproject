@@ -40,6 +40,14 @@ function App() {
             <Route path="/transactionSuccess" element={<TransactionSucces />}/>
             <Route path="/user/:id" element={<User />} />
             <Route path="/edit-user" element={<EditUser />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/airports" element={<Airport />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/flight" element={<Flight />} />
+            <Route path="/city" element={<City />} />
+            <Route path="/country" element={<Country />} />
+            <Route path="/notification" element={<Notification />} />
           </Routes>
           <Footer />
         </Provider>
