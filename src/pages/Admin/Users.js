@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { useDispatch, useSelector} from "react-redux";
@@ -6,14 +6,20 @@ import { getAllUser } from "../../Redux/Actions/allUserActions";
 import { useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import UserActions from "../../components/Actions/UserActions"
+import { useNavigate } from "react-router-dom";
 
 const Users = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { allUsers } = useSelector((state) => state.allUser);
 
   useEffect(() => {
     dispatch(getAllUser())
   },[dispatch])
+
+  const addUser = (() => {
+    navigate("/cuser")
+  })
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
@@ -61,6 +67,7 @@ const Users = () => {
         ) : <h2>No user</h2>}
         
         </Box>
+        <Button onClick={addUser}>Add User</Button>
     </Box>
     </Sidebar>
     </>

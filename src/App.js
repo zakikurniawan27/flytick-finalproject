@@ -24,6 +24,7 @@ import Flight from "./pages/Admin/Flight"
 import City from "./pages/Admin/City"
 import Country from "./pages/Admin/Country"
 import TransactionSucces from "./pages/Transaction/TransactionSucces";
+import CreateUsers from "./pages/Admin/Form/UsersForm"
 
 function App() {
   const [adult, setAdult] = useState("");
@@ -51,6 +52,7 @@ function App() {
             <Route path="/edit-user/:id" element={<EditUser />} />
             <Route path="/notification" element={<Notification />} />
             <Route path="/detail-notification/:id" element={<DetailNotification />} />
+            <Route path="/cuser" element={<CreateUsers />} />
           </Routes>
           <Footer />
         </Provider>
