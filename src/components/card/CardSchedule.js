@@ -3,6 +3,7 @@ import logoAirplane from "../../assets/logoAirplane.png";
 import Moment from 'react-moment'
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 function CardSchedule() {
 
@@ -36,10 +37,15 @@ function CardSchedule() {
                   </>
                 ))}
                 <div className="col">
-                  <p>{searchSchedules?.data.fromAirport?.name}</p>
+                  {searchSchedules?.data.fromAirport?.name}
+                </div>
+                <div className="col text-center">
+                  <p className="fs-4 iconFillArrow">
+                    <BsFillArrowRightCircleFill />
+                  </p>
                 </div>
                 <div className="col">
-                  <p>{searchSchedules?.data.toAirport?.name}</p>
+                  {searchSchedules?.data.toAirport?.name}
                 </div>
                 <div className="col text-uppercase" key={index}>
                   <div><Moment format="YYYY-MM-DD">{item.departure_time}</Moment></div>

@@ -218,37 +218,6 @@ function FormTransaction3(props) {
                             }}
                             />
                     </div>
-                </div><div className='row mt-4'>
-                    <div className='col'>
-                    <label for="penerbitan" className='form-label'>
-                            Tanggal Penerbitan
-                        </label>
-                        <input 
-                            id='penerbitan'
-                            type="date" 
-                            className='form-control'
-                            // value={nik}
-                            // onChange={(e) => {
-                            //     e.preventDefault()
-                            //     setNik(e.target.value)
-                            // }}
-                            />
-                    </div>
-                    <div className='col'>
-                        <label for="tanggalLahir" className='form-label'>
-                            Tanggal berakhir
-                        </label>
-                        <input 
-                            id='tanggalLahir'
-                            type="date" 
-                            className='form-control'
-                            // value={telp}
-                            // onChange={(e) => {
-                            //     e.preventDefault()
-                            //     setTelp(e.target.value)
-                            // }}
-                            />
-                    </div>
                 </div>
             </div>
         </div>

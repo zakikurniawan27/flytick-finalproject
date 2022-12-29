@@ -1,4 +1,3 @@
-import iconArrow from "../../assets/arrow.png";
 import logoAirplane from "../../assets/logoAirplane.png";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -9,6 +8,7 @@ import { getDetailSchedule } from "../../Redux/Actions/scheduleActions";
 import FormTransaction2 from "../../components/FormTransaction2";
 import FormTransaction3 from "../../components/FormTransaction3";
 import { createTransaction } from "../../Redux/Actions/createTransactionAction";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 const Transaction = (props) => {
   const { adult, child } = props;
@@ -574,7 +574,7 @@ const Transaction = (props) => {
           )}
         </div>
         <div className="col-6">
-          <div className="card">
+          <div className="card card-detail-schedule">
             <div className="card-body">
               <div className="row">
                 <div className="col-8">
@@ -591,20 +591,28 @@ const Transaction = (props) => {
               <p className="fw-bold">
                 {searchSchedule?.detail?.data?.flight?.code}
               </p>
-              <div className="row ms-5">
+              <div className="row mt-3">
                 <div className="col">
                   <p>{searchSchedule?.searchSchedules?.data?.fromAirport?.name}</p>
+                </div>
+                <div className="col text-center">
+                  <p className="fs-4 iconFillArrow">
+                    <BsFillArrowRightCircleFill />
+                  </p>
+                </div>
+                <div className="col text-end">
+                  <p>{searchSchedule?.searchSchedules?.data?.toAirport?.name}</p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
                   <p>
                     <Moment format="hh:mm a">
                       {searchSchedule?.detail?.data?.schedule?.departure_time}
                     </Moment>
                   </p>
                 </div>
-                <div className="col">
-                  <img src={iconArrow} alt="icon" />
-                </div>
-                <div className="col">
-                  <p>{searchSchedule?.searchSchedules?.data?.toAirport?.name}</p>
+                <div className="col text-end">
                   <p>
                     <Moment format="hh:mm a">
                       {searchSchedule?.detail?.data?.schedule?.arrival_time}

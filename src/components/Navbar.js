@@ -38,7 +38,7 @@ function Navbar() {
           <div className="collapse navbar-collapse " id="navbarScroll">
             <div className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link active mt-1" aria-current="page" href="/">
+                <a className="nav-link mt-1" aria-current="page" href="/">
                   Home
                 </a>
               </li>

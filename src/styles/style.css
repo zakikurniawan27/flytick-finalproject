@@ -67,6 +67,12 @@ p{
 .card-schedule{
   width: 70rem;
 }
+.card-detail-schedule{
+  width: 43rem;
+}
+.card-history{
+  width: 50rem;
+}
 .text-all{
   font-family: 'Nunito Sans';
   font-weight: bold;
@@ -90,4 +96,7 @@ p{
 }
 .transuc{
   width: 30rem;
+}
+.iconFillArrow{
+  color:#5DEC6B;
 }

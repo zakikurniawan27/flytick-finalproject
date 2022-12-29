@@ -1,41 +1,38 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
-import CardHistory from '../../components/card/CardHistory'
+import React, { useState, useEffect} from 'react'
+import { useNavigate} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import CardHistory from '../../components/card/History/CardHistory'
+import Pagination from '../../components/Pagination'
+import { getAllTransaction } from '../../Redux/Actions/createTransactionAction';
 
 const History = () => {
+
+    const {token} = useSelector((state) =>  state.auth)
+    const {transactions} = useSelector((state) => state.transaction)
+    
+    const [currentPage, setCurrentPage] = useState(1)
+    const totalPage = `${transactions?.pagination?.totalPages}`
+    
+    const dispatch = useDispatch()
     const navigate = useNavigate()
-    const params = useParams()
-    const intParam = parseInt(params.id)
 
-    const {token} = useSelector((state) => state.auth)
+    useEffect(() => {
+        dispatch(getAllTransaction(token, currentPage))
+    },[dispatch, token, currentPage])
 
-    const [history, setHistory] = useState([])
+    const formatRupiah = (angka) => {
+        const rupiah = angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        return `Rp ${rupiah}`;
+    };
 
-    const getAllHistory = async() =>{
-        try {
-            const res = await axios.get(
-                `${process.env.REACT_APP_BASE_URL}/api/transaction`,{
-                    headers:{
-                        Authorization: `${token}`
-                    }
-                }
-            )
-            setHistory(res.data.data.filter((item) => item.user_id === intParam))
-        } catch (error) {
-            alert(error.response?.data.message)
-        }
-    }
-
-    useEffect(() =>{
-        getAllHistory()
-    },[])
   return (
     <>
         <div className='container'>
             <div className='row gap-3 d-flex justify-content-center mb-5'>
-                <CardHistory history={history}/>
+                <CardHistory transactions={transactions} formatRupiah={formatRupiah}/>
+            </div>
+            <div className='d-flex justify-content-center'>
+                <Pagination currentPage={currentPage} totalPage={totalPage} setCurrentPage={setCurrentPage}/>
             </div>
             <button className='btn' onClick={() => navigate('/')}>
                 back

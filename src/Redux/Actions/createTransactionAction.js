@@ -1,5 +1,34 @@
 import axios from "axios";
-import { createTransactionReducer } from "../Reducers/createTransactionReducer";
+import { createTransactionReducer, getAllTransactionsReducer, getDetailTransactionReducer} from "../Reducers/createTransactionReducer";
+
+
+export const getAllTransaction = (token,no) => async(dispatch) =>{
+    try {
+        axios.defaults.headers['Authorization'] = token;
+        const {data} = await axios.get(
+            `${process.env.REACT_APP_BASE_URL}/api/transaction`,{
+                params:{
+                    page: no
+                }
+            }
+        )
+        dispatch(getAllTransactionsReducer(data))
+    } catch (error) {
+        alert(error.response.data.message)
+    }
+}
+
+export const getDetailTransaction = (id, token) => async(dispatch) =>{
+    try {
+        axios.defaults.headers['Authorization'] = token
+        const {data} = await axios.get(
+            `${process.env.REACT_APP_BASE_URL}/api/transaction/${id}`
+        )
+        dispatch(getDetailTransactionReducer(data))
+    } catch (error) {
+        alert(error.response.data.message)
+    }
+}
 
 export const createTransaction = (data, token, navigate) => async(dispatch) =>{
     try {
