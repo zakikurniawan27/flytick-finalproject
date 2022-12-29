@@ -7,7 +7,7 @@ export const getAllcity = () => async(dispatch, getState) =>{
         const {data} = await axios.get(
             `${process.env.REACT_APP_BASE_URL}/api/city`,{
                 headers:{
-                    Authorization: token
+                    Authorization: `${token}`
                 }
             }
         )

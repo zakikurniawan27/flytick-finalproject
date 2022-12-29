@@ -76,7 +76,7 @@ function Dropdown(props) {
               }}
             >
               <option value='' hidden>
-                from Where?
+                From ?
               </option>
               {allAirports?.data?.map((item, index) => (
                 <>
@@ -99,7 +99,7 @@ function Dropdown(props) {
               }}
             >
               <option value='' hidden>
-                Where To?
+                To ?
               </option>
               {allAirports?.data?.map((item, index) => (
                 <>
@@ -115,7 +115,7 @@ function Dropdown(props) {
               <div className="input-group">
                 <input 
                   type="date" 
-                  // min={currentDate}
+                  min={currentDate}
                   className="form-control input-date" 
                   value={departureTime} 
                   onChange={(e) =>{
@@ -128,7 +128,7 @@ function Dropdown(props) {
               <div className="input-group">
                 <input
                   type="date"
-                  // min={currentDate}
+                  min={currentDate}
                   className="form-control input-date"
                   disabled
                 />
@@ -141,7 +141,7 @@ function Dropdown(props) {
               <div className="input-group">
                 <input 
                   type="date" 
-                  // min={currentDate} 
+                  min={currentDate} 
                   className="form-control input-date" 
                   value={departureTime}
                   onChange={(e) => {
@@ -155,7 +155,7 @@ function Dropdown(props) {
               <div className="input-group">
                 <input 
                   type="date" 
-                  // min={currentDate} 
+                  min={currentDate} 
                   className="form-control input-date" 
                 />
               </div>

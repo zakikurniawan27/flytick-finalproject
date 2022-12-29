@@ -1,19 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState ={
-    transactions: []
+    transactions: [],
+    details: null,
 }
 
 const createTransactionSlicer = createSlice({
     name: "transaction",
     initialState,
     reducers:{
+        getAllTransactionsReducer: (state, actions) => {
+            state.transactions = actions.payload
+        },
+        getDetailTransactionReducer: (state, actions) =>{
+            state.details = actions.payload
+        },
         createTransactionReducer: (state, actions) =>{
             state.transactions = actions.payload
         }
     }
 })
 
-export const {createTransactionReducer} = createTransactionSlicer.actions
+export const {getAllTransactionsReducer, getDetailTransactionReducer, createTransactionReducer} = createTransactionSlicer.actions
 
 export default createTransactionSlicer.reducer
