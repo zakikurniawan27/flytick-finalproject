@@ -76,7 +76,7 @@ function Dropdown(props) {
               }}
             >
               <option value='' hidden>
-                from Where?
+                From ?
               </option>
               {allAirports?.data?.map((item, index) => (
                 <>
@@ -99,7 +99,7 @@ function Dropdown(props) {
               }}
             >
               <option value='' hidden>
-                Where To?
+                To ?
               </option>
               {allAirports?.data?.map((item, index) => (
                 <>
