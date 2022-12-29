@@ -1,25 +1,10 @@
 import { React, useState, useEffect } from "react";
-import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCardText,
-  MDBCardBody,
-  MDBCardImage,
-  MDBBtn,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem,
-  MDBCardLink,
-  MDBAccordion,
-  MDBAccordionItem,
-  MDBTypography,
-} from "mdb-react-ui-kit";
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardBody, MDBBreadcrumb, MDBBreadcrumbItem, MDBTypography } from "mdb-react-ui-kit";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { BsArrowLeft } from "react-icons/bs";
+import ProfileLeft from "../../components/ProfileLeft";
+import PhotoProfile from "../../components/PhotoProfile";
 
 const DetailN = () => {
   const { id } = useParams();
@@ -57,70 +42,14 @@ const DetailN = () => {
   }, []);
 
   return (
-    <MDBContainer className="py-5">
+    <MDBContainer className="d-block py-5">
       <MDBRow>
         <MDBCol lg="3" md="4">
-          {/* Photo Profile */}
           <MDBCard className="mb-4" style={{ width: "auto" }}>
-            <MDBCardBody className="text-center">
-              <MDBCardImage
-                src="https://flytick-dev.up.railway.app/api/images/default.jpg"
-                // src={photo.imagekit_url}
-                // alt={profile.avatar_id}
-                className="rounded-circle"
-                style={{ width: "150px" }}
-                fluid
-              />
-              {/* <p className="text-muted mb-1">Full Stack Developer</p>
-                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p> */}
-              <div className="d-flex justify-content-center mb-2 mt-3">
-                {/* <MDBBtn>Edit Profile</MDBBtn> */}
-                {/* <MDBBtn outline className="ms-1" onClick={() => navigate(`/edit-user/${profile.id}`)}>
-                  <MdEdit /> Edit Profile
-                </MDBBtn> */}
-              </div>
-            </MDBCardBody>
+            <PhotoProfile />
           </MDBCard>
-          {/* Href */}
           <MDBCard className="mb-4 mb-lg-0" style={{ width: "auto" }}>
-            <MDBCardBody className="p-0 text-center">
-              <MDBListGroup flush className="rounded-3">
-                <MDBListGroupItem className="d-flex justify-content-center align-items-center p-3">
-                  <MDBIcon />
-                  <MDBCardText>
-                    <MDBCardLink>
-                      {/* <FaUser className="mx-2" /> */}
-                      Profile
-                    </MDBCardLink>
-                  </MDBCardText>
-                </MDBListGroupItem>
-                {/* <MDBListGroupItem className="d-flex justify-content-center align-items-center p-3">
-                      <BsBellFill className="mx-2" />
-                      <MDBAccordion flush>
-                        <MDBAccordionItem collapseId={2} headerTitle="Notification">
-                          <MDBCardText>
-                            <MDBCardLink>All Notification</MDBCardLink>
-                          </MDBCardText>
-                          <MDBCardText>
-                            <MDBCardLink>All Notification</MDBCardLink>
-                          </MDBCardText>
-                        </MDBAccordionItem>
-                      </MDBAccordion>
-                    </MDBListGroupItem> */}
-                <MDBListGroupItem className="d-flex justify-content-center align-items-center p-3">
-                  <MDBIcon />
-                  <MDBCardText>
-                    <MDBCardLink>Notification</MDBCardLink>
-                  </MDBCardText>
-                </MDBListGroupItem>
-                <MDBListGroupItem className="d-flex justify-content-center align-items-center p-3">
-                  <MDBIcon />
-                  <MDBCardText>
-                    <MDBCardLink>-</MDBCardLink>
-                  </MDBCardText>
-                </MDBListGroupItem>
-              </MDBListGroup>
-            </MDBCardBody>
+            <ProfileLeft />
           </MDBCard>
         </MDBCol>
         {/* BreadCrumb */}
@@ -134,7 +63,7 @@ const DetailN = () => {
                 <MDBBreadcrumbItem>
                   <a href="/notification">Notification</a>
                 </MDBBreadcrumbItem>
-                <MDBBreadcrumbItem active>
+                <MDBBreadcrumbItem>
                   <a>Detail Notifikasi</a>
                 </MDBBreadcrumbItem>
               </MDBBreadcrumb>
@@ -143,14 +72,20 @@ const DetailN = () => {
 
           <MDBCard>
             <MDBCardBody>
+              <div className="mb-3">
+                <a href="/notification">
+                  <BsArrowLeft className="mx-1" />
+                  back
+                </a>
+              </div>
               <MDBCard className="mb-3">
                 <MDBCardBody>
                   <div className="d-flex flex-start">
                     <div className="w-100">
-                      <div className="d-flex justify-content-between align-items-center mb-3">
-                        <MDBTypography tag="h5" className="text-primary fw-bold mb-0">
-                          {detailNotif.topic}
-                          <p className="text-dark my-3">{detailNotif.message}</p>
+                      <div className=" justify-content-between align-items-center mb-3">
+                        <MDBTypography>
+                          <h5 className="fw-bold text-capitalize text-success"> {detailNotif.topic}</h5>
+                          <h6 className="text-dark my-3">{detailNotif.message}</h6>
                         </MDBTypography>
                       </div>
                     </div>
