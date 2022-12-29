@@ -4,7 +4,8 @@ import allUserReducer from "./allUserReducer";
 import authReducer from "./authReducer";
 import allCountry from "./countryReducer";
 import allCity from "./cityReducer";
-import createTransaction from "./createTransactionReducer"
+import allTransaction from "./createTransactionReducer";
+import allTicket from "./ticketReducer";
 import searchScheduleReducer from "./scheduleReducer";
 import flightReducer from "./flightReducer";
 
@@ -13,7 +14,8 @@ export default combineReducers({
     allAirport: allAirportReducer,
     allUser: allUserReducer,
     allFlight: flightReducer,
-    transaction: createTransaction,
+    transaction: allTransaction,
+    ticket: allTicket,
     country: allCountry,
     city: allCity,
     searchSchedule: searchScheduleReducer

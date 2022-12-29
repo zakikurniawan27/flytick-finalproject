@@ -3,9 +3,9 @@ import logoAirplane from "../../assets/logoAirplane.png";
 import Moment from 'react-moment'
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
-function CardSchedule(props) {
-  const { loading } = props;
+function CardSchedule() {
 
   const navigate = useNavigate()
   const {searchSchedules} = useSelector((state) => state.searchSchedule)
@@ -19,11 +19,7 @@ function CardSchedule(props) {
 
   return (
     <>
-      {loading ? (
-        <div className="spinner-border text-success" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      ) : searchSchedules?.data?.length === 0 ? (
+      {searchSchedules?.data?.length === 0 ? (
         <p className="fw-bold text-center">NO SCHEDULE</p>
       ) : (
         searchSchedules?.data?.schedules?.map((item, index) => (
@@ -41,10 +37,15 @@ function CardSchedule(props) {
                   </>
                 ))}
                 <div className="col">
-                  <p>{searchSchedules?.data.fromAirport?.name}</p>
+                  {searchSchedules?.data.fromAirport?.name}
+                </div>
+                <div className="col text-center">
+                  <p className="fs-4 iconFillArrow">
+                    <BsFillArrowRightCircleFill />
+                  </p>
                 </div>
                 <div className="col">
-                  <p>{searchSchedules?.data.toAirport?.name}</p>
+                  {searchSchedules?.data.toAirport?.name}
                 </div>
                 <div className="col text-uppercase" key={index}>
                   <div><Moment format="YYYY-MM-DD">{item.departure_time}</Moment></div>
@@ -55,7 +56,7 @@ function CardSchedule(props) {
                   <div><Moment format="hh:mm a">{item.arrival_time}</Moment></div>
                 </div>
                 <div className="col">
-                  <button className="btn bttn" onClick={() => navigate(`/transaction/${item.id}`)}>Detail</button>
+                  <button className="btn bttn" onClick={() => navigate(`/transaction/${item.id}`)}>Select</button>
                 </div>
               </div>
             </div>
