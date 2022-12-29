@@ -1,4 +1,3 @@
-import iconArrow from "../../assets/arrow.png";
 import logoAirplane from "../../assets/logoAirplane.png";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -6,13 +5,10 @@ import Moment from "react-moment";
 import FormTransaction1 from "../../components/FormTransaction1";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailSchedule } from "../../Redux/Actions/scheduleActions";
-import {
-  getDetailAirport,
-  getDetail2Airport,
-} from "../../Redux/Actions/allAirportActions";
 import FormTransaction2 from "../../components/FormTransaction2";
 import FormTransaction3 from "../../components/FormTransaction3";
 import { createTransaction } from "../../Redux/Actions/createTransactionAction";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 const Transaction = (props) => {
   const { adult, child } = props;
@@ -70,26 +66,30 @@ const Transaction = (props) => {
   const dispatch = useDispatch();
   const params = useParams();
 
+  const intNationality = parseInt(nationality)
+  const intNationality2 = parseInt(nationality2)
+  const intNationality3 = parseInt(nationality3)
+
+
   const {user, token} = useSelector((state) => state.auth)
   const { searchSchedule } = useSelector((state) => state);
-  const { allAirport } = useSelector((state) => state);
 
   const data = JSON.stringify({
     user_id: user?.data?.id,
-    schedule_id: searchSchedule?.detail?.data?.schedule?.id,
+    schedule_id: [searchSchedule?.detail?.data?.schedule?.id],
     adult: dws,
     child: ank,
     round_trip: false,
     biodataList: [
       {
         body:{
-          email,
+          email: email,
           name: nama,
-          nik,
+          nik: nik,
           birth_place: birthPlace,
           birth_date: birthDateNew,
-          telp,
-          nationality,
+          telp: telp,
+          nationality: intNationality,
           no_passport: passport,
           issue_date: issueDateNew,
           expire_date: expireDateNew
@@ -100,20 +100,20 @@ const Transaction = (props) => {
 
   const data2 = JSON.stringify({
     user_id: user?.data?.id,
-    schedule_id: searchSchedule?.detail?.data?.schedule?.id,
+    schedule_id: [searchSchedule?.detail?.data?.schedule?.id],
     adult: dws,
     child: ank,
     round_trip: false,
     biodataList: [
       {
         body:{
-          email,
+          email: email,
           name: nama,
-          nik,
+          nik: nik,
           birth_place: birthPlace,
           birth_date: birthDateNew,
-          telp,
-          nationality,
+          telp: telp,
+          nationality: intNationality,
           no_passport: passport,
           issue_date: issueDateNew,
           expire_date: expireDateNew
@@ -121,13 +121,13 @@ const Transaction = (props) => {
       },
       {
         body:{
-          email2,
+          email: email2,
           name: nama2,
-          nik2,
+          nik: nik2,
           birth_place: birthPlace2,
           birth_date: birthDateNew2,
-          telp2,
-          nationality2,
+          telp: telp2,
+          nationality: intNationality2,
           no_passport: passport2,
           issue_date: issueDateNew2,
           expire_date: expireDateNew2
@@ -138,20 +138,20 @@ const Transaction = (props) => {
 
   const data3 = JSON.stringify({
     user_id: user?.data?.id,
-    schedule_id: searchSchedule?.detail?.data?.schedule?.id,
+    schedule_id: [searchSchedule?.detail?.data?.schedule?.id],
     adult: dws,
     child: ank,
     round_trip: false,
     biodataList: [
       {
         body:{
-          email,
+          email: email,
           name: nama,
-          nik,
+          nik: nik,
           birth_place: birthPlace,
           birth_date: birthDateNew,
-          telp,
-          nationality,
+          telp: telp,
+          nationality: intNationality,
           no_passport: passport,
           issue_date: issueDateNew,
           expire_date: expireDateNew
@@ -159,13 +159,13 @@ const Transaction = (props) => {
       },
       {
         body:{
-          email2,
+          email: email2,
           name: nama2,
-          nik2,
+          nik: nik2,
           birth_place: birthPlace2,
           birth_date: birthDateNew2,
-          telp2,
-          nationality2,
+          telp: telp2,
+          nationality: intNationality2,
           no_passport: passport2,
           issue_date: issueDateNew2,
           expire_date: expireDateNew2
@@ -173,13 +173,13 @@ const Transaction = (props) => {
       },
       {
         body:{
-          email3,
+          email: email3,
           name: nama3,
-          nik3,
+          nik: nik3,
           birth_place: birthPlace3,
           birth_date: birthDateNew3,
-          telp3,
-          nationality3,
+          telp: telp3,
+          nationality: intNationality3,
           no_passport: passport3,
           issue_date: issueDateNew3,
           expire_date: expireDateNew3
@@ -197,18 +197,9 @@ const Transaction = (props) => {
 
   useEffect(() => {
     dispatch(getDetailSchedule(params.id));
-    dispatch(
-      getDetailAirport(searchSchedule?.detail?.data?.schedule?.from_airport)
-    );
-    dispatch(
-      getDetail2Airport(searchSchedule?.detail?.data?.schedule?.to_airport)
-    );
   }, [
     dispatch,
     params,
-    searchSchedule?.detail?.data?.schedule?.from_airport,
-    searchSchedule?.detail?.data?.schedule?.to_airport,
-    data,
   ]);
 
   return (
@@ -240,7 +231,7 @@ const Transaction = (props) => {
                 setExpireDate={setExpireDate}
               />
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -293,7 +284,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -346,7 +337,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -423,7 +414,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -500,7 +491,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -577,13 +568,13 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>PESAN</button>
+                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
               </div>
             </>
           )}
         </div>
         <div className="col-6">
-          <div className="card">
+          <div className="card card-detail-schedule">
             <div className="card-body">
               <div className="row">
                 <div className="col-8">
@@ -600,20 +591,28 @@ const Transaction = (props) => {
               <p className="fw-bold">
                 {searchSchedule?.detail?.data?.flight?.code}
               </p>
-              <div className="row ms-5">
+              <div className="row mt-3">
                 <div className="col">
-                  <p>{allAirport?.details?.data?.name}</p>
+                  <p>{searchSchedule?.searchSchedules?.data?.fromAirport?.name}</p>
+                </div>
+                <div className="col text-center">
+                  <p className="fs-4 iconFillArrow">
+                    <BsFillArrowRightCircleFill />
+                  </p>
+                </div>
+                <div className="col text-end">
+                  <p>{searchSchedule?.searchSchedules?.data?.toAirport?.name}</p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
                   <p>
                     <Moment format="hh:mm a">
                       {searchSchedule?.detail?.data?.schedule?.departure_time}
                     </Moment>
                   </p>
                 </div>
-                <div className="col">
-                  <img src={iconArrow} alt="icon" />
-                </div>
-                <div className="col">
-                  <p>{allAirport?.details2?.data?.name}</p>
+                <div className="col text-end">
                   <p>
                     <Moment format="hh:mm a">
                       {searchSchedule?.detail?.data?.schedule?.arrival_time}

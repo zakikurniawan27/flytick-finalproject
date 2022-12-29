@@ -24,6 +24,7 @@ function Navbar() {
     dispatch(logout(navigate));
   };
 
+
   return (
     <>
       <nav className="navbar navbar-expand-md">
@@ -37,7 +38,7 @@ function Navbar() {
           <div className="collapse navbar-collapse " id="navbarScroll">
             <div className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <a className="nav-link mt-1" aria-current="page" href="/">
                   Home
                 </a>
               </li>
@@ -96,14 +97,14 @@ function Navbar() {
                     )}
                     <ul className="dropdown-menu dropdown-menu-lg-end">
                       <li>
-                        <div className="dropdown-item" onClick={() => navigate(`/user/${user?.data?.id}`)}>
+                        <button className="dropdown-item pe-auto" onClick={() => navigate(`/user/${user?.data?.id}`)}>
                           My Profil
-                        </div>
+                        </button>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="/history">
+                        <button className="dropdown-item" onClick={() => navigate(`/history/${user?.data?.id}`)}>
                           History
-                        </a>
+                        </button>
                       </li>
                       <li>
                         <button className="dropdown-item" onClick={handleLogout}>
