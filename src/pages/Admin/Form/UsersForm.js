@@ -24,6 +24,7 @@ const CreateUsers = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [role, setRole] = useState("")
+  const [image, setImage] = useState("")
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -36,14 +37,9 @@ const CreateUsers = () => {
     setRole(event.target.value);
   };
 
-  const data = JSON.stringify({
-    body:{
-      name,
-      email,
-      password,
-      role,
-    }
-  })
+  const handleUpload = (event) => {
+    setImage(event.target.files)
+  }
 
 //   useEffect(() => {
 //     dispatch(getAllUser())
@@ -127,10 +123,32 @@ const CreateUsers = () => {
                 <MenuItem value={"user"}>User</MenuItem>
           </Select>
           </Grid>
-        </Grid>              
+        </Grid>
+        <Typography variant="body2" align="left" gutterBottom>Image : </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={5}>
+          <input
+                id="formFile"
+                className="form-control"
+                type="file"
+                label="Role"
+                onChange={handleUpload}
+                accept="image/*"
+                >
+          </input>
+          </Grid>
+        </Grid>                
         </form>
         </Box>
-        <Button variant="outlined" onClick={() => dispatch(createUser(data, token, navigate))}>Submit</Button>
+        <Button variant="outlined" onClick={() => dispatch(createUser(JSON.stringify({
+        body:{
+          name,
+          email,
+          password,
+          role,
+          image,
+          }
+        }), token, navigate))}>Submit</Button>
     </Box>
     </Sidebar>
     </>

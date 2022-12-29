@@ -6,12 +6,15 @@ import { getAllUser } from "../../Redux/Actions/allUserActions";
 import { useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import UserActions from "../../components/Actions/UserActions"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { Table } from "reactstrap";
 
 const Users = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const params = useParams()
   const { allUsers } = useSelector((state) => state.allUser);
+  const { details } = useSelector((state) => state.allUser)
 
   useEffect(() => {
     dispatch(getAllUser())
@@ -52,7 +55,37 @@ const Users = () => {
   return (
     <>
     <Sidebar>
-    <Box m="20px">
+    {params.id ? (<Box m="20px">
+      <Header
+        title="DETAILS USER"
+      />
+        <Box sx={{ height: 400, width: '100%' }}>
+        <Table striped>
+          <tbody>
+            <tr>
+              <td width="200">Nama</td>
+              <td width="10">:</td>
+              <td>{details?.data?.biodata?.name}</td>
+            </tr>
+            <tr>
+              <td width="200">Email</td>
+              <td width="10">:</td>
+              <td>{details?.data?.biodata?.email}</td>
+            </tr>
+            <tr>
+              <td width="200">NIK</td>
+              <td width="10">:</td>
+              <td>{details?.data?.biodata?.nik}</td>
+            </tr>
+            <tr>
+              <td width="200">No HP</td>
+              <td width="10">:</td>
+              <td>{details?.data?.biodata?.telp}</td>
+            </tr>
+          </tbody>
+        </Table>
+        </Box>
+    </Box>) : (<Box m="20px">
       <Header
         title="USERS"
         subtitle="List of User"
@@ -68,7 +101,7 @@ const Users = () => {
         
         </Box>
         <Button onClick={addUser}>Add User</Button>
-    </Box>
+    </Box>)}
     </Sidebar>
     </>
   );

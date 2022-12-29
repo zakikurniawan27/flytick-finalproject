@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    allUsers: []
+    allUsers: [],
+    details: null
 }
 
 const allUserSlicer = createSlice({
@@ -10,10 +11,13 @@ const allUserSlicer = createSlice({
     reducers: {
         getAllUserReducer: (state, action) => {
             state.allUsers = action.payload
-        }
+        },
+        getDetailUserReducer: (state, action) => {
+            state.details = action.payload
+        },
     }
 })
 
-export const {getAllUserReducer} = allUserSlicer.actions
+export const {getAllUserReducer, getDetailUserReducer} = allUserSlicer.actions
 
 export default allUserSlicer.reducer
