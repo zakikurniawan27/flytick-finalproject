@@ -17,15 +17,16 @@ import Transaction from "./pages/Transaction/Transaction";
 import { useState } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Dashboard from "./pages/Admin/Dashboard";
-import Users from "./pages/Admin/Users"
+import Users from "./pages/Admin/Users";
 import Airport from "./pages/Admin/Airport";
 import Schedule from "./pages/Admin/Schedule";
-import Flight from "./pages/Admin/Flight"
-import City from "./pages/Admin/City"
-import Country from "./pages/Admin/Country"
+import Flight from "./pages/Admin/Flight";
+import City from "./pages/Admin/City";
+import Country from "./pages/Admin/Country";
 import TransactionSucces from "./pages/Transaction/TransactionSucces";
 import History from "./pages/History/History";
-import DetailHistory from "./pages/History/DetailHistory"
+import DetailHistory from "./pages/History/DetailHistory";
+import NotFound from "./pages/404/404.jsx";
 
 function App() {
   const [adult, setAdult] = useState("");
@@ -52,9 +53,10 @@ function App() {
             <Route path="/country" element={<Country />} />
             <Route path="/edit-user/:id" element={<EditUser />} />
             <Route path="/notification" element={<Notification />} />
-            <Route path="/history/:id" element={<History />}/>
-            <Route path="/history/detail/:id" element={<DetailHistory/>}/>
+            <Route path="/history/:id" element={<History />} />
+            <Route path="/history/detail/:id" element={<DetailHistory />} />
             <Route path="/detail-notification/:id" element={<DetailNotification />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </Provider>
