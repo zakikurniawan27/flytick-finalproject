@@ -1,10 +1,10 @@
 import { MDBBreadcrumb, MDBBreadcrumbItem, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
-import PhotoProfile from "../../components/PhotoProfile";
 import ProfileLeft from "../../components/ProfileLeft";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import EditPhoto from "../../components/EditPhoto";
 
 function EditUser() {
   const navigate = useNavigate();
@@ -14,11 +14,11 @@ function EditUser() {
   const token = localStorage.getItem("token");
 
   const [countries, SetCountries] = useState([]);
-  // const [balance, setBalance] = useState("");
 
   const [user, setUser] = useState({
     name: "",
     email: "",
+    balance: {},
   });
 
   const [biodata, setBiodata] = useState({
@@ -39,10 +39,10 @@ function EditUser() {
     getData();
   }, []);
 
-  useEffect(() => {
-    console.log(user);
-    console.log(biodata);
-  }, [user, biodata]);
+  // useEffect(() => {
+  //   console.log(user);
+  //   console.log(biodata);
+  // }, [user, biodata]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -103,7 +103,7 @@ function EditUser() {
         <MDBRow>
           <MDBCol lg="3" md="4">
             <MDBCard className="mb-4" style={{ width: "auto" }}>
-              <PhotoProfile />
+              <EditPhoto />
             </MDBCard>
 
             <MDBCard className="mb-4 mb-lg-0" style={{ width: "auto" }}>
@@ -151,7 +151,7 @@ function EditUser() {
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Birth Place</Form.Label>
-                      <Form.Control type="text" placeholder="Enter Birth Place" name="birth_place" value={birth_place} onChange={(e) => setBiodata({ ...biodata, [e.target.birth_place]: e.target.value })} required />
+                      <Form.Control type="text" placeholder="Enter Birth Place" name="birth_place" value={birth_place} onChange={(e) => setBiodata({ ...biodata, birth_place: e.target.value })} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Birth Date</Form.Label>
@@ -159,7 +159,7 @@ function EditUser() {
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Telp</Form.Label>
-                      <Form.Control type="text" placeholder="Enter Telp" name="telp" value={telp} onChange={(e) => setBiodata({ ...biodata, [e.target.telp]: e.target.value })} required />
+                      <Form.Control type="text" placeholder="Enter Telp" name="telp" value={telp} onChange={(e) => setBiodata({ ...biodata, telp: e.target.value })} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Nationality</Form.Label>
@@ -180,11 +180,11 @@ function EditUser() {
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Issue Date</Form.Label>
-                      <Form.Control type="date" placeholder="Enter Issue Date" name="issue_date" value={issue_date} onChange={(e) => setBiodata({ ...biodata, [e.target.issue_date]: e.target.value })} required />
+                      <Form.Control type="date" placeholder="Enter Issue Date" name="issue_date" value={issue_date} onChange={(e) => setBiodata({ ...biodata, issue_date: e.target.value })} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Expire Date</Form.Label>
-                      <Form.Control type="date" placeholder="Enter Expire Date" name="expire_date" value={expire_date} onChange={(e) => setBiodata({ ...biodata, [e.target.expire_date]: e.target.value })} required />
+                      <Form.Control type="date" placeholder="Enter Expire Date" name="expire_date" value={expire_date} onChange={(e) => setBiodata({ ...biodata, expire_date: e.target.value })} required />
                     </Form.Group>
 
                     <div className="text-center">
