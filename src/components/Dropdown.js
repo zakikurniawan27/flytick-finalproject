@@ -4,11 +4,14 @@ import iconArrival from "../assets/arrival.png";
 import iconPerson from "../assets/person.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllAirport } from "../Redux/Actions/allAirportActions";
+import { getSearchSchedule } from "../Redux/Actions/scheduleActions";
 
 function Dropdown(props) {
 
-  const {fromAirport, setFromAirport, toAirport, setToAirport, departureTime, setDepartureTime, adult, setAdult, child, setChild, handleSearchSchedule} = props
+  const {adult, setAdult, child, setChild, fromAirport, toAirport, setFromAirport, setToAirport, departureTime, setDepartureTime, departureTimeNew} = props
   const [checkTrip, setCheckTrip] = useState(false);
+
+  
 
   const dispatch = useDispatch();
 
@@ -24,8 +27,11 @@ function Dropdown(props) {
 
   const currentDate = new Date().toISOString().split("T")[0];
 
+  
+
   useEffect(() => {
     dispatch(getAllAirport());
+    dispatch(getSearchSchedule(departureTimeNew, fromAirport, toAirport, adult, child))
   }, [dispatch]);
 
   return (
@@ -70,7 +76,7 @@ function Dropdown(props) {
               }}
             >
               <option value='' hidden>
-                from Where?
+                From ?
               </option>
               {allAirports?.data?.map((item, index) => (
                 <>
@@ -93,7 +99,7 @@ function Dropdown(props) {
               }}
             >
               <option value='' hidden>
-                Where To?
+                To ?
               </option>
               {allAirports?.data?.map((item, index) => (
                 <>
@@ -109,7 +115,7 @@ function Dropdown(props) {
               <div className="input-group">
                 <input 
                   type="date" 
-                  min={currentDate} 
+                  min={currentDate}
                   className="form-control input-date" 
                   value={departureTime} 
                   onChange={(e) =>{
@@ -203,7 +209,7 @@ function Dropdown(props) {
           </div>
         </div>
         <div className="input-group justify-content-center">
-          <button className="btn bttn mt-1" onClick={handleSearchSchedule}>Search</button>
+          <button className="btn bttn mt-1" onClick={() => dispatch(getSearchSchedule(departureTimeNew, fromAirport, toAirport, adult, child))}>Search</button>
         </div>
       </div>
     </>

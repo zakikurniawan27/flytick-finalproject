@@ -1,3 +1,7 @@
+p{
+  margin-top: 0;
+  margin-bottom: 0;
+}
 #logoFooter{
   width: 12%;
 }
@@ -51,8 +55,8 @@
 .text-success-900{
   color: #63D471;
 }
-.card{
-  width: 24rem;
+.price{
+  font-family: 'Gill Sans';
 }
 .card-border{
   width: 26rem;
@@ -62,6 +66,12 @@
 }
 .card-schedule{
   width: 70rem;
+}
+.card-detail-schedule{
+  width: 43rem;
+}
+.card-history{
+  width: 50rem;
 }
 .text-all{
   font-family: 'Nunito Sans';
@@ -83,4 +93,10 @@
 .rating{
   width: 8%;
   height: 8%;
+}
+.transuc{
+  width: 30rem;
+}
+.iconFillArrow{
+  color:#5DEC6B;
 }

@@ -5,11 +5,14 @@ import { FaGoogle } from "react-icons/fa";
 import axios from "axios";
 
 import "../../styles/signIn.css";
+import { useDispatch } from "react-redux";
+import { login } from "../../Redux/Actions/authActions";
 
-const SignIn = ({ setToken }) => {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -27,55 +30,30 @@ const SignIn = ({ setToken }) => {
         email,
         password,
       };
-      try {
-        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/login`, data, {
-          // headers: { "Access-Control-Allow-Origin": "*" },
-        });
-        console.log(result);
-        if (result.data.data.token) {
-          // Set token from backend to local storage
-          // {"data": { "token": "ini token" }}
-          localStorage.setItem("token", result.data.data.token);
-          setToken(result.data.data.token);
-
-          navigate("/");
-        }
-      } catch (error) {
-        // If there are any error it will show the error message from backend
-        // { "message": "Password salah" }
-        alert(error.response.data.message);
-      }
+      dispatch(login(data, navigate));
     }
   };
 
-  const googleLogin = useGoogleLogin({
-    onSuccess: async (response) => {
-      // console.log(response);
-      // Send access token to backend
-      try {
-        const data = {
-          access_token: response.access_token,
-        };
-        // console.log(data);
-        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/oauth/login/google`, data);
-        if (result.data.data.token) {
-          // Set token from backend to local storage
-          // {"data": { "token": "ini token" }}
-          localStorage.setItem("token", result.data.data.token);
-          // setToken(datas.data.token);
-          window.location.reload();
-        }
-        console.log(result);
-      } catch (error) {
-        // If there are any error it will show the error message from backend
-        // { "message": "Password salah" }
-        alert(error.response.data.message);
-      }
-    },
-    onError: (error) => {
-      alert(error);
-    },
-  });
+  // const googleLogin = useGoogleLogin({
+  //   onSuccess: async (response) => {
+  //     try {
+  //       const data = {
+  //         access_token: response.access_token,
+  //       };
+
+  //       const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/oauth/login/google`, data);
+  //       if (result.data.data.token) {
+  //         localStorage.setItem("token", result.data.data.token);
+  //         console.log(result);
+  //       }
+  //     } catch (error) {
+  //       alert(error.response.data.message);
+  //     }
+  //   },
+  //   onError: (error) => {
+  //     alert(error);
+  //   },
+  // });
 
   return (
     <div className="signIn">
@@ -112,9 +90,9 @@ const SignIn = ({ setToken }) => {
 
             <div className="signInFieldbutton">
               <div className="googleButton">
-                <button className="google" onClick={googleLogin}>
+                {/* <button className="google" onClick={googleLogin}>
                   <FaGoogle color="white" />
-                </button>
+                </button> */}
               </div>
             </div>
           </form>
