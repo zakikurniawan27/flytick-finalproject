@@ -71,7 +71,7 @@ function Navbar() {
                     <button className="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <div className="row">
                         <div className="col-4">
-                          <BsPersonCircle className="fs-3" />
+                          <BsPersonCircle className="fs-3 mb-2" />
                         </div>
                         <div className="col-8">
                           <p>{user?.data?.name}</p>
