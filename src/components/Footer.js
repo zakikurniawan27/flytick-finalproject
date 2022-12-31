@@ -4,10 +4,10 @@ import logo from "../assets/logo.png";
 function Footer() {
   return (
     <>
-      <div className="fixed mt-auto mb-auto">
+      <div className="fixed mb-auto" id="footer">
         <div className="mx-auto row">
-          <img src={logo} alt="logo" className="ms-auto" height="75" id="logoFooter" />
-          <div className="ms-auto col-3 content-footer">
+          <img src={logo} alt="logo" height="75" id="logoFooter" />
+          <div className="col-3 content-footer" id="about">
             <h6 className="fw-bold">About</h6>
             <p className="text-footer">About FlyTick</p>
             <p className="text-footer">Blog</p>

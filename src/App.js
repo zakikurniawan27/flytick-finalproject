@@ -1,6 +1,7 @@
 import "./App.css";
 import "./styles/style.css";
-import "./styles/responsiveHomePage.css";
+import "./styles/Responsive/responsiveHomePage.css";
+import "./styles/Responsive/responsiveSearchSchedule.css"
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
@@ -15,7 +16,6 @@ import { Provider } from "react-redux";
 import store from "./Redux/store";
 import Transaction from "./pages/Transaction/Transaction";
 import { useState } from "react";
-import DetailSchedule from "./pages/Detail/DetailSchedule";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Dashboard from "./pages/Admin/Dashboard";
 import Users from "./pages/Admin/Users";

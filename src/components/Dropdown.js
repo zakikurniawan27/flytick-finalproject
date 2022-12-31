@@ -209,7 +209,7 @@ function Dropdown(props) {
           </div>
         </div>
         <div className="input-group justify-content-center">
-          <button className="btn bttn mt-1" onClick={() => dispatch(getSearchSchedule(departureTimeNew, fromAirport, toAirport, adult, child))}>Search</button>
+          <button className="btn bttn mt-1 btn-gonow" onClick={() => dispatch(getSearchSchedule(departureTimeNew, fromAirport, toAirport, adult, child))}>Search</button>
         </div>
       </div>
     </>

@@ -11,6 +11,7 @@ function CardSchedule() {
   const {searchSchedules} = useSelector((state) => state.searchSchedule)
 
 
+
   const dataMaskapai = [
     {
       nama: "TickAir",
@@ -29,35 +30,35 @@ function CardSchedule() {
               <div className="row">
                 {dataMaskapai.map((itm, ind) => (
                   <>
-                    <div className="col" key={ind}>
+                    <div key={ind}>
                       <div>{itm.image}</div>
                     </div>
-                    <div className="col" key={ind}>
+                    <div className="col text-schedule" key={ind}>
                       <p>{itm.nama}</p>
                     </div>
                   </>
                 ))}
-                <div className="col">
+                <div className="col text-schedule">
                   {searchSchedules?.data.fromAirport?.name}
                 </div>
                 <div className="col text-center">
-                  <p className="fs-4 iconFillArrow">
+                  <p className="fs-4 iconFillArrow text-schedule">
                     <BsFillArrowRightCircleFill />
                   </p>
                 </div>
-                <div className="col">
+                <div className="col text-schedule">
                   {searchSchedules?.data.toAirport?.name}
                 </div>
-                <div className="col text-uppercase" key={index}>
+                <div className="col text-uppercase text-schedule" key={index}>
                   <div><Moment format="YYYY-MM-DD">{item.departure_time}</Moment></div>
                   <div><Moment format="hh:mm a">{item.departure_time}</Moment></div>
                 </div>
-                <div className="col text-uppercase">
+                <div className="col text-uppercase text-schedule">
                   <div><Moment format="YYYY-MM-DD">{item.arrival_time}</Moment></div>
                   <div><Moment format="hh:mm a">{item.arrival_time}</Moment></div>
                 </div>
-                <div className="col">
-                  <button className="btn bttn" onClick={() => navigate(`/transaction/${item.id}`)}>Select</button>
+                <div className="col" id="btn-select">
+                  <button className="btn bttn" id="btn-select-schedule" onClick={() => navigate(`/transaction/${item.id}`)}>Select</button>
                 </div>
               </div>
             </div>
