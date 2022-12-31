@@ -2,8 +2,15 @@ p{
   margin-top: 0;
   margin-bottom: 0;
 }
+#explore{
+  margin-bottom: 5rem;
+}
 #logoFooter{
   width: 12%;
+  margin-left: 0;
+}
+#about{
+  margin-left: 10rem;
 }
 .tag-line{
     font-family: 'Nunito Sans';
@@ -27,7 +34,7 @@ p{
   color: white;
 }
 .logoAirplane{
-  width: 50%;
+  width: 7%;
 }
 .mt-10{
   margin-top: 10rem;
