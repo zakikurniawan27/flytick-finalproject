@@ -71,7 +71,7 @@ function Navbar() {
                         </div>
                       </div>
                     </button>
-                    {user?.data?.role === "superadmin" && (
+                    {user?.data?.role === "admin" && (
                        <ul className="dropdown-menu dropdown-menu-lg-end">
                         <li>
                          <a className="dropdown-item" href="/dashboard">

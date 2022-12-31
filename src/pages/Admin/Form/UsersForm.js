@@ -119,7 +119,7 @@ const CreateUsers = () => {
                 label="Role"
                 onChange={handleChange}
                 >
-                <MenuItem value={"superadmin"}>Super Admin</MenuItem>
+                <MenuItem value={"admin"}>Admin</MenuItem>
                 <MenuItem value={"user"}>User</MenuItem>
           </Select>
           </Grid>
@@ -140,15 +140,16 @@ const CreateUsers = () => {
         </Grid>                
         </form>
         </Box>
-        <Button variant="outlined" onClick={() => dispatch(createUser(JSON.stringify({
-        body:{
-          name,
-          email,
-          password,
-          role,
-          image,
-          }
-        }), token, navigate))}>Submit</Button>
+        <Button variant="outlined" onClick={(e) => {
+          e.preventDefault()
+          dispatch(createUser({
+            name,
+            email,
+            password,
+            role,
+            image,
+          }, token, navigate))}
+        }>Submit</Button>
     </Box>
     </Sidebar>
     </>

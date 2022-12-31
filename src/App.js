@@ -46,35 +46,35 @@ function App() {
             <Route path="/user/:id" element={<User />} />
             <Route path="/edit-user" element={<EditUser />} />
             <Route path="/dashboard" element={
-            <Protected roles={["superadmin"]}>
+            <Protected roles={["admin"]}>
               <Dashboard />
             </Protected>} />
             <Route path="/users" element={
-            <Protected roles={["superadmin"]}>
+            <Protected roles={["admin"]}>
               <Users />
             </Protected>} />
             <Route path="/users/:id" element={
-            <Protected roles={["superadmin"]}>
+            <Protected roles={["admin"]}>
               <Users />
             </Protected>} />
             <Route path="/airports" element={
-            <Protected roles={["superadmin"]}>
+            <Protected roles={["admin"]}>
               <Airport />
             </Protected>} />
             <Route path="/schedule" element={
-            <Protected roles={["superadmin"]}>
+            <Protected roles={["admin"]}>
               <Schedule />
             </Protected>} />
             <Route path="/flight" element={
-            <Protected roles={["superadmin"]}>
+            <Protected roles={["admin"]}>
               <Flight />
             </Protected>} />
             <Route path="/city" element={
-            <Protected roles={["superadmin"]}>
+            <Protected roles={["admin"]}>
               <City />
             </Protected>} />
             <Route path="/country" element={
-            <Protected roles={["superadmin"]}>
+            <Protected roles={["admin"]}>
               <Country />
             </Protected>} />
             <Route path="/edit-user/:id" element={<EditUser />} />
@@ -83,7 +83,7 @@ function App() {
             <Route path="/history/detail/:id" element={<DetailHistory/>}/>
             <Route path="/detail-notification/:id" element={<DetailNotification />} />
             <Route path="/cuser" element={
-            <Protected roles={["superadmin"]}>
+            <Protected roles={["admin"]}>
               <CreateUsers />
             </Protected>} />
           </Routes>

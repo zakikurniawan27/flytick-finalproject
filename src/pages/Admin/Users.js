@@ -24,6 +24,10 @@ const Users = () => {
     navigate("/cuser")
   })
 
+  const back = (() => {
+    navigate("/users")
+  })
+
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
     {
@@ -85,6 +89,7 @@ const Users = () => {
           </tbody>
         </Table>
         </Box>
+        <Button variant="outlined" onClick={back}>Back</Button>
     </Box>) : (<Box m="20px">
       <Header
         title="USERS"
