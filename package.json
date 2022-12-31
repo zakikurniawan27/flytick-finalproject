@@ -18,6 +18,8 @@
     "mdb-react-ui-kit": "^5.1.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
+    "react-avatar": "^5.0.3",
+    "react-avatar-edit": "^1.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",

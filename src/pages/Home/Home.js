@@ -28,7 +28,7 @@ const Home = (props) => {
   return (
     <div className="container-fluid">
       <div className="position-relative">
-        <img src={bg} className="w-100 h-100 opacity-50" alt="bg" />
+        <img src={bg} className="w-100 h-100 opacity-50 bg" alt="bg" />
         <p className="tag-line position-absolute top-50 start-50 translate-middle px-3 text-center fw-bold">
           Fly The Best Part Of The Day
         </p>
@@ -58,8 +58,8 @@ const Home = (props) => {
       </div>
       {token ? (
         <>
-          <div className="container">
-            <div className="mt-5">
+          <div className="container-xl">
+            <div className="mt-5 " id="cardSchedule">
               <div className="row gap-3 d-flex justify-content-center mb-5">
                 <CardSchedule loading={loading}/>
               </div>
@@ -68,7 +68,7 @@ const Home = (props) => {
         </>
       ) : (
         <>
-          <div className="container">
+          <div className="container-xl">
             <div className="mt-10 content">
               <div className="row">
                 <p className="text col-11">
@@ -97,7 +97,7 @@ const Home = (props) => {
                 <CardsExplore />
               </div>
             </div>
-            <div className="mt-7 d-flex justify-content-center">
+            <div className="mt-7 d-flex justify-content-center" id="explore">
               <button className="btn bttn text-white">
                 Explore More Destination
               </button>
