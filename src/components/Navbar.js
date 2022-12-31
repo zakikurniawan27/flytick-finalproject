@@ -70,7 +70,7 @@ function Navbar() {
                     </ul>
                     <button className="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <div className="row">
-                        <div className="col-4">
+                        <div className="col-3">
                           <BsPersonCircle className="fs-3 mb-2" />
                         </div>
                         <div className="col-8">

@@ -10,7 +10,6 @@ function Dropdown(props) {
 
   const {adult, setAdult, child, setChild, fromAirport, toAirport, setFromAirport, setToAirport, departureTime, setDepartureTime, departureTimeNew} = props
   const [checkTrip, setCheckTrip] = useState(false);
-
   
 
   const dispatch = useDispatch();
@@ -80,7 +79,7 @@ function Dropdown(props) {
               </option>
               {allAirports?.data?.map((item, index) => (
                 <>
-                  <option value={item.id} key={index}>{item.name}</option>
+                  <option value={item.id} key={index}>({item.code}) {item.name}</option>
                 </>
               ))}
             </select>
@@ -103,7 +102,7 @@ function Dropdown(props) {
               </option>
               {allAirports?.data?.map((item, index) => (
                 <>
-                  <option value={item.id} key={index}>{item.name}</option>
+                  <option value={item.id} key={index}>({item.code}) {item.name}</option>
                 </>
               ))}
             </select>
@@ -209,7 +208,7 @@ function Dropdown(props) {
           </div>
         </div>
         <div className="input-group justify-content-center">
-          <button className="btn bttn mt-1" onClick={() => dispatch(getSearchSchedule(departureTimeNew, fromAirport, toAirport, adult, child))}>Search</button>
+          <button className="btn bttn mt-1 btn-gonow" onClick={() => dispatch(getSearchSchedule(departureTimeNew, fromAirport, toAirport, adult, child))}>Search</button>
         </div>
       </div>
     </>
