@@ -10,6 +10,10 @@ function CardSchedule() {
   const navigate = useNavigate()
   const {searchSchedules} = useSelector((state) => state.searchSchedule)
 
+  const formatRupiah = (angka) => {
+    const rupiah = angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return `Rp ${rupiah}`;
+  };
 
 
   const dataMaskapai = [
@@ -18,10 +22,11 @@ function CardSchedule() {
       image: <img src={logoAirplane} alt="" className="logoAirplane" />,
     },
   ];
+  
 
   return (
     <>
-      {searchSchedules?.data?.length === 0 ? (
+      {searchSchedules?.data?.schedules.length === 0 ? (
         <p className="fw-bold text-center">NO SCHEDULE</p>
       ) : (
         searchSchedules?.data?.schedules?.map((item, index) => (
@@ -30,14 +35,28 @@ function CardSchedule() {
               <div className="row">
                 {dataMaskapai.map((itm, ind) => (
                   <>
-                    <div key={ind}>
+                    <div key={ind} className="col">
                       <div>{itm.image}</div>
                     </div>
-                    <div className="col text-schedule" key={ind}>
+                    <div className="col text-schedule text-end" key={ind}>
                       <p>{itm.nama}</p>
                     </div>
                   </>
                 ))}
+              <div className="row mt-3">
+                <div className="col">
+                  <p className="text-schedule">
+                    {item.fClass}
+                  </p>
+                </div>
+                <div className="col text-end">
+                  <p className="text-schedule">
+                    {formatRupiah(item.cost)}
+                  </p>
+                </div>
+              </div>
+              </div>
+              <div className="row mt-3">
                 <div className="col text-schedule">
                   {searchSchedules?.data.fromAirport?.name}
                 </div>

@@ -16,7 +16,7 @@ const Home = (props) => {
   const [departureTime, setDepartureTime] = useState("");
   
   const {token} = useSelector((state) => state.auth)
-  const [loading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate()
   const departureTimeNew = departureTime.toString().split('T')[0]
@@ -47,6 +47,7 @@ const Home = (props) => {
                 setAdult={setAdult}
                 child={child}
                 setChild={setChild}
+                setLoading={setLoading}
               />
             </>
           ): (
