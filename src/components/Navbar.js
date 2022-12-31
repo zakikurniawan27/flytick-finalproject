@@ -58,13 +58,21 @@ function Navbar() {
               ) : (
                 <>
                   <div className="btn-group btn-group-sm me-auto">
-                    <button className="btn" type="button" onClick={() => navigate(`/notification`)}>
+                    {/* <button className="btn" type="button" onClick={() => navigate(`/notification`)}> */}
+                    <button className="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <BsBell className="fs-6" />
                     </button>
+                    <ul className="dropdown-menu dropdown-menu-lg-end">
+                      <li>
+                        <div className="dropdown-item" onClick={() => navigate(`/notification`)}>
+                          Notification
+                        </div>
+                      </li>
+                    </ul>
                     <button className="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <div className="row">
-                        <div className="col-4">
-                          <BsPersonCircle className="fs-3" />
+                        <div className="col-3">
+                          <BsPersonCircle className="fs-3 mb-2" />
                         </div>
                         <div className="col-8">
                           <p>{user?.data?.name}</p>
