@@ -1,9 +1,16 @@
 import React from "react";
 import logoAirplane from "../../assets/logoAirplane.png";
 import Moment from 'react-moment'
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
-function CardSchedule(props) {
-  const { loading, search } = props;
+function CardSchedule() {
+
+  const navigate = useNavigate()
+  const {searchSchedules} = useSelector((state) => state.searchSchedule)
+
+
 
   const dataMaskapai = [
     {
@@ -14,41 +21,44 @@ function CardSchedule(props) {
 
   return (
     <>
-      {loading ? (
-        <p> Loading... </p>
-      ) : search?.data?.schedules?.length === 0 ? (
+      {searchSchedules?.data?.length === 0 ? (
         <p className="fw-bold text-center">NO SCHEDULE</p>
       ) : (
-        search?.data?.schedules?.map((item, index) => (
+        searchSchedules?.data?.schedules?.map((item, index) => (
           <div className="card card-schedule">
             <div className="card-body">
-              <div className="row" key={index}>
-                {dataMaskapai.map((item, index) => (
+              <div className="row">
+                {dataMaskapai.map((itm, ind) => (
                   <>
-                    <div className="col" key={index}>
-                      <div>{item.image}</div>
+                    <div key={ind}>
+                      <div>{itm.image}</div>
                     </div>
-                    <div className="col" key={index}>
-                      <p>{item.nama}</p>
+                    <div className="col text-schedule" key={ind}>
+                      <p>{itm.nama}</p>
                     </div>
                   </>
                 ))}
-                <div className="col">
-                  <p>{search?.data.fromAirport.name}</p>
+                <div className="col text-schedule">
+                  {searchSchedules?.data.fromAirport?.name}
                 </div>
-                <div className="col">
-                  <p>{search?.data.toAirport.name}</p>
+                <div className="col text-center">
+                  <p className="fs-4 iconFillArrow text-schedule">
+                    <BsFillArrowRightCircleFill />
+                  </p>
                 </div>
-                <div className="col text-uppercase">
+                <div className="col text-schedule">
+                  {searchSchedules?.data.toAirport?.name}
+                </div>
+                <div className="col text-uppercase text-schedule" key={index}>
                   <div><Moment format="YYYY-MM-DD">{item.departure_time}</Moment></div>
                   <div><Moment format="hh:mm a">{item.departure_time}</Moment></div>
                 </div>
-                <div className="col text-uppercase">
+                <div className="col text-uppercase text-schedule">
                   <div><Moment format="YYYY-MM-DD">{item.arrival_time}</Moment></div>
                   <div><Moment format="hh:mm a">{item.arrival_time}</Moment></div>
                 </div>
-                <div className="col">
-                  <button className="btn bttn">Detail</button>
+                <div className="col" id="btn-select">
+                  <button className="btn bttn" id="btn-select-schedule" onClick={() => navigate(`/transaction/${item.id}`)}>Select</button>
                 </div>
               </div>
             </div>

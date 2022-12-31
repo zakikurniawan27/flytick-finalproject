@@ -4,11 +4,14 @@ import iconArrival from "../assets/arrival.png";
 import iconPerson from "../assets/person.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllAirport } from "../Redux/Actions/allAirportActions";
+import { getSearchSchedule } from "../Redux/Actions/scheduleActions";
 
 function Dropdown(props) {
 
-  const {fromAirport, setFromAirport, toAirport, setToAirport, departureTime, setDepartureTime, adult, setAdult, child, setChild, handleSearchSchedule} = props
+  const {adult, setAdult, child, setChild, fromAirport, toAirport, setFromAirport, setToAirport, departureTime, setDepartureTime, departureTimeNew} = props
   const [checkTrip, setCheckTrip] = useState(false);
+
+  
 
   const dispatch = useDispatch();
 
@@ -24,14 +27,17 @@ function Dropdown(props) {
 
   const currentDate = new Date().toISOString().split("T")[0];
 
+  
+
   useEffect(() => {
     dispatch(getAllAirport());
+    dispatch(getSearchSchedule(departureTimeNew, fromAirport, toAirport, adult, child))
   }, [dispatch]);
 
   return (
     <>
-      <div className="row">
-        <div className="col-2">
+      <div className="row gap-3">
+        <div className="col-2 radio-check">
           <input
             type="radio"
             id="radioCheck1"
@@ -39,11 +45,11 @@ function Dropdown(props) {
             name="radio-stacked"
             onClick={RoundTrip}
           />
-          <label htmlFor="radioCheck1" className="from-check-label">
+          <label htmlFor="radioCheck1" className="form-check-label">
             Round Trip
           </label>
         </div>
-        <div className="col-2">
+        <div className="col-2 radio-check">
           <input
             type="radio"
             id="radioCheck2"
@@ -51,18 +57,18 @@ function Dropdown(props) {
             name="radio-stacked"
             onClick={OneWay}
           />
-          <label htmlFor="radioCheck2" className="from-check-label">
+          <label htmlFor="radioCheck2" className="form-check-label">
             One way
           </label>
         </div>
       </div>
-      <div className="row g-1 justify-content-center">
+      <div className="row g-1 justify-content-center" id="form-search">
         <div className="col-4">
           <div className="d-flex flex-row align-items-center">
-            <span className="position-absolute ps-2">
-              <img src={iconDepature} alt="icon" />
+            <span className="position-absolute ps-2 span-icon">
+              <img src={iconDepature} alt="icon" className="icon"/>
             </span>
-            <select className="form-control ps-5" 
+            <select className="form-control ps-5 select-dropdown" 
               value={fromAirport} 
               onChange={(e) => {
                 e.preventDefault()
@@ -70,7 +76,7 @@ function Dropdown(props) {
               }}
             >
               <option value='' hidden>
-                from Where?
+                From ?
               </option>
               {allAirports?.data?.map((item, index) => (
                 <>
@@ -82,10 +88,10 @@ function Dropdown(props) {
         </div>
         <div className="col-4">
           <div className="d-flex flex-row align-items-center">
-            <span className="position-absolute ps-2">
-              <img src={iconArrival} alt="icon" />
+            <span className="position-absolute ps-2 span-icon">
+              <img src={iconArrival} alt="icon" className="icon"/>
             </span>
-            <select className="form-control ps-5"
+            <select className="form-control ps-5 select-dropdown"
               value={toAirport} 
               onChange={(e) => {
                 e.preventDefault()
@@ -93,7 +99,7 @@ function Dropdown(props) {
               }}
             >
               <option value='' hidden>
-                Where To?
+                To ?
               </option>
               {allAirports?.data?.map((item, index) => (
                 <>
@@ -109,8 +115,8 @@ function Dropdown(props) {
               <div className="input-group">
                 <input 
                   type="date" 
-                  min={currentDate} 
-                  className="form-control" 
+                  min={currentDate}
+                  className="form-control input-date" 
                   value={departureTime} 
                   onChange={(e) =>{
                     e.preventDefault()
@@ -123,7 +129,7 @@ function Dropdown(props) {
                 <input
                   type="date"
                   min={currentDate}
-                  className="form-control"
+                  className="form-control input-date"
                   disabled
                 />
               </div>
@@ -136,7 +142,7 @@ function Dropdown(props) {
                 <input 
                   type="date" 
                   min={currentDate} 
-                  className="form-control" 
+                  className="form-control input-date" 
                   value={departureTime}
                   onChange={(e) => {
                     e.preventDefault()
@@ -150,7 +156,7 @@ function Dropdown(props) {
                 <input 
                   type="date" 
                   min={currentDate} 
-                  className="form-control" 
+                  className="form-control input-date" 
                 />
               </div>
             </div>
@@ -158,10 +164,10 @@ function Dropdown(props) {
         )}
         <div className="col-4">
           <div className="d-flex flex-row align-items-center">
-            <span className="position-absolute ps-2">
-              <img src={iconPerson} alt="icon" />
+            <span className="position-absolute ps-2 span-icon">
+              <img src={iconPerson} alt="icon" className="icon"/>
             </span>
-            <select className="form-control ps-5" 
+            <select className="form-control ps-5 select-dropdown" 
               value={adult} 
               onChange={(e) => {
                 e.preventDefault()
@@ -181,10 +187,10 @@ function Dropdown(props) {
         </div>
         <div className="col-4">
           <div className="d-flex flex-row align-items-center">
-            <span className="position-absolute ps-2">
-              <img src={iconPerson} alt="icon" className="fs-6" />
+            <span className="position-absolute ps-2 span-icon">
+              <img src={iconPerson} alt="icon" className="fs-6 icon" />
             </span>
-            <select className="form-control ps-5" 
+            <select className="form-control ps-5 select-dropdown" 
               value={child}
               onChange={(e) => {
                 e.preventDefault()
@@ -203,7 +209,7 @@ function Dropdown(props) {
           </div>
         </div>
         <div className="input-group justify-content-center">
-          <button className="btn bttn mt-1" onClick={handleSearchSchedule}>Search</button>
+          <button className="btn bttn mt-1 btn-gonow" onClick={() => dispatch(getSearchSchedule(departureTimeNew, fromAirport, toAirport, adult, child))}>Search</button>
         </div>
       </div>
     </>

@@ -1,3 +1,17 @@
+p{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#explore{
+  margin-bottom: 5rem;
+}
+#logoFooter{
+  width: 12%;
+  margin-left: 0;
+}
+#about{
+  margin-left: 10rem;
+}
 .tag-line{
     font-family: 'Nunito Sans';
     font-size: 96px;
@@ -19,9 +33,8 @@
   background-color: green;
   color: white;
 }
-
-.logo{
-  width: 12%;
+.logoAirplane{
+  width: 7%;
 }
 .logoAirplane{
   width: 50%;
@@ -52,8 +65,8 @@
 .text-success-900{
   color: #63D471;
 }
-.card{
-  width: 24rem;
+.price{
+  font-family: 'Gill Sans';
 }
 .card-border{
   width: 26rem;
@@ -63,6 +76,12 @@
 }
 .card-schedule{
   width: 70rem;
+}
+.card-detail-schedule{
+  width: 43rem;
+}
+.card-history{
+  width: 50rem;
 }
 .text-all{
   font-family: 'Nunito Sans';
@@ -84,4 +103,10 @@
 .rating{
   width: 8%;
   height: 8%;
+}
+.transuc{
+  width: 30rem;
+}
+.iconFillArrow{
+  color:#5DEC6B;
 }
