@@ -37,9 +37,10 @@ const Notification = () => {
         }
       )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
       });
-    navigate(`/notification`);
+    window.location.reload();
+    // navigate(`/notification`);
   };
 
   return (
@@ -82,7 +83,7 @@ const Notification = () => {
                 notification.map((result, index) => {
                   return (
                     <MDBCardBody key={index}>
-                      <MDBCard className="mb-2" onClick={() => navigate(`/detail-notification/${result.id}`)}>
+                      <MDBCard className="mb-2">
                         <MDBCardBody>
                           <div className="d-flex flex-start">
                             <div className="w-100">
@@ -101,6 +102,11 @@ const Notification = () => {
                                 </MDBTypography>
                               </div>
                               <h6 className="text-dark my-3">{result.message}</h6>
+                            </div>
+                            <div className="">
+                              <a href=" " onClick={() => navigate(`/detail-notification/${result.id}`)} className="position">
+                                Detail
+                              </a>
                             </div>
                           </div>
                         </MDBCardBody>
