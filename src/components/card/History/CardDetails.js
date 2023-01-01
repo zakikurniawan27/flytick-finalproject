@@ -70,7 +70,7 @@ const CardDetails = (props) => {
                 </div>
               </div>
               <div className="row mt-5">
-                <p id="detail-ticket" onClick={() => navigate(`/history/detail/ticket/${item.id}`)}>
+                <p className="detail-ticket" onClick={() => navigate(`/history/detail/ticket/${item.id}`)}>
                   More Detail <BsArrowRight />
                 </p>
               </div>

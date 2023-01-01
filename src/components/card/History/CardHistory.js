@@ -1,5 +1,5 @@
 import React from 'react'
-import { BsFillArrowRightCircleFill } from 'react-icons/bs';
+import { BsArrowRight, BsFillArrowRightCircleFill } from 'react-icons/bs';
 import Moment from 'react-moment'
 import { useNavigate } from 'react-router-dom';
 
@@ -94,9 +94,9 @@ const CardHistory = (props) => {
                                 <p>{formatRupiah(item.total_cost)}</p>
                             </div>
                             <div className='text-center mt-3'>
-                                <button className='btn bttn' onClick={() => navigate(`/history/detail/${item.id}`)}>
-                                    Detail
-                                </button>
+                                <p className='detail-ticket' onClick={() => navigate(`/history/detail/${item.id}`)}>
+                                    See Detail <BsArrowRight />
+                                </p>
                             </div>
                         </div>
                     </div>
