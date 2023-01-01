@@ -27,6 +27,7 @@ import Country from "./pages/Admin/Country";
 import TransactionSucces from "./pages/Transaction/TransactionSucces";
 import History from "./pages/History/History";
 import DetailHistory from "./pages/History/DetailHistory";
+import DetailTicketHistory from "./pages/History/DetaiTicketHistory"
 import NotFound from "./pages/404/404.jsx";
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
             <Route path="/notification" element={<Notification />} />
             <Route path="/history/:id" element={<History />} />
             <Route path="/history/detail/:id" element={<DetailHistory />} />
+            <Route path="/history/detail/ticket/:id" element={<DetailTicketHistory/>}/>
             <Route path="/detail-notification/:id" element={<DetailNotification />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAllTicketReducer, getDetailTicketReducer, getDetailTicket2Reducer } from "../Reducers/ticketReducer";
+import { getAllTicketReducer, getDetailTicketReducer} from "../Reducers/ticketReducer";
 
 
 export const getAllTicket = (token) => async(dispatch) =>{
@@ -22,19 +22,6 @@ export const getDetailTicket = (id, token) => async(dispatch) =>{
             `${process.env.REACT_APP_BASE_URL}/api/ticket/${id}`
         )
         dispatch(getDetailTicketReducer(data))
-    } catch (error) {
-        alert(error.response.data.message)
-    }
-}
-
-export const getDetailTicket2 = (id, token) => async(dispatch) =>{
-    try {
-        if(!id) return
-        axios.defaults.headers['Authorization'] = token
-        const {data} = await axios.get(
-            `${process.env.REACT_APP_BASE_URL}/api/ticket/${id}`
-        )
-        dispatch(getDetailTicket2Reducer(data))
     } catch (error) {
         alert(error.response.data.message)
     }
