@@ -35,6 +35,14 @@ export default function User() {
     // console.log(dataProfile.data.data.biodata);
   };
 
+  const formatRupiah = (angka) => {
+    const rupiah = angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return `Rp ${rupiah}`;
+  };
+
+  const balance = `${user.balance}`;
+  const balanceRupiah = formatRupiah(balance);
+
   return (
     <section>
       {localStorage.getItem("token") ? (
@@ -96,7 +104,7 @@ export default function User() {
                       <MDBCardText>Balance</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{user.balance}</MDBCardText>
+                      <MDBCardText className="text-muted">{balanceRupiah}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
