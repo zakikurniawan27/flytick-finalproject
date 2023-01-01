@@ -2,8 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     tickets: [],
-    detailTickets: null,
-    detailTickets2: null
+    detailTickets: null
 }
 
 const ticketSlicer = createSlice({
@@ -15,13 +14,10 @@ const ticketSlicer = createSlice({
         },
         getDetailTicketReducer : (state, actions) => {
             state.detailTickets = actions.payload
-        },
-        getDetailTicket2Reducer : (state, actions) => {
-            state.detailTickets2 = actions.payload
         }
     }
 })
 
-export const {getAllTicketReducer, getDetailTicketReducer, getDetailTicket2Reducer} = ticketSlicer.actions
+export const {getAllTicketReducer, getDetailTicketReducer} = ticketSlicer.actions
 
 export default ticketSlicer.reducer

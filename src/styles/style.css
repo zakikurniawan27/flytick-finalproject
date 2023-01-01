@@ -2,8 +2,23 @@ p{
   margin-top: 0;
   margin-bottom: 0;
 }
+#logo-airplane{
+  width: 35%;
+}
 #explore{
   margin-bottom: 5rem;
+}
+#detail-ticket{
+  font-size: 13px;
+  color: #5DEC6B;
+  cursor: pointer;
+}
+#detail-ticket:hover{
+  color: green;
+}
+#qr-code{
+  width: 15%;
+  height: 15%;
 }
 #logoFooter{
   width: 12%;
@@ -59,6 +74,9 @@ p{
 .text-success-400{
   color: #7DB07C;
 }
+.text-success-600{
+  color: green;
+}
 .text-success-900{
   color: #63D471;
 }
@@ -77,6 +95,9 @@ p{
 .card-detail-schedule{
   width: 43rem;
 }
+.card-detail-ticket{
+  width: 54rem;
+}
 .card-history{
   width: 50rem;
 }
@@ -92,6 +113,9 @@ p{
 .text-title-comment{
   font-weight: 400;
   color: #6E7491;
+}
+.text-detail-ticket{
+  font-size: 14px;
 }
 .text-comment{
   font-family: 'Nunito Sans';
