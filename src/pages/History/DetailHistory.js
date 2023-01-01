@@ -22,16 +22,16 @@ const DetailHistory = () => {
     const dataMaskapai = [
         {
           nama: "TickAir",
-          image: <img src={logoAirplane} alt="" className="logoAirplane" />,
+          image: <img src={logoAirplane} alt="" id='logo-airplane'/>,
         },
     ];
     
     return (
     <>  
         <div className='container'>
-            <p className='fw-bold fs-5 text-success-900'>DETAIL</p>
-            <div className='d-flex justify-content-center gap-3'>
-                <CardDetails dataMaskapai={dataMaskapai} details={details}/>
+            <p className='fw-bold fs-5 text-success-900'>TICKET</p>
+            <div className='d-flex justify-content-center gap-3 row'>
+                <CardDetails dataMaskapai={dataMaskapai} details={details} navigate={navigate}/>
             </div>
             <button className='btn' onClick={() => navigate(`/history/${user?.data?.id}`)}>
                 back

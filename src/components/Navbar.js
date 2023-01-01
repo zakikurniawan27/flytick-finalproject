@@ -24,6 +24,7 @@ function Navbar() {
     dispatch(logout(navigate));
   };
 
+
   return (
     <>
       <nav className="navbar navbar-expand-md">
