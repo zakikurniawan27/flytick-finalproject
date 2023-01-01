@@ -1,11 +1,10 @@
 import axios from "axios";
 import { MDBBtn, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
-import Avatar from "react-avatar-edit";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 
-function EditPhoto(props) {
+function EditPhoto() {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -14,7 +13,6 @@ function EditPhoto(props) {
 
   const [show, setShow] = useState(false);
   const [imgCrop, setImgCrop] = useState(false);
-  const [storeImg, setStoreImg] = useState([]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,6 +22,10 @@ function EditPhoto(props) {
   useEffect(() => {
     getData();
   }, []);
+
+  // useEffect(() => {
+  //   console.log(imgCrop);
+  // }, [imgCrop]);
 
   const getData = async () => {
     const dataProfile = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/${id}`, {
@@ -41,18 +43,46 @@ function EditPhoto(props) {
 
   const onCrop = (view) => {
     setImgCrop(view);
+
+    // axios kirim gambar
+
+    let imageData = new FormData();
+    imageData.append("image", imgCrop);
+
+    const data = {
+      image: imageData,
+    };
+
+    axios
+      .put(`${process.env.REACT_APP_BASE_URL}/api/image`, data, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .then((response) => console.log(response))
+      .then(() => {
+        navigate(`/user/${id}`);
+      });
   };
 
-  const onClose = () => {
-    setImgCrop(null);
+  let imgData = new FormData();
+
+  const handleImg = async (e) => {
+    imgData.append("image", e.target.files[0]);
   };
 
-  const saveImg = () => {
-    setStoreImg([...storeImg, { imgCrop }]);
-    setShow(false);
+  const handleSubmit = async () => {
+    await axios
+      .put(`${process.env.REACT_APP_BASE_URL}/api/user/${id}`, imgData, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .then((data) => console.log(data))
+      .then(() => {
+        navigate(`/user/${id}`);
+      });
   };
-
-  const profileImage = () => {};
 
   return (
     <MDBCardBody className="text-center">
@@ -73,19 +103,22 @@ function EditPhoto(props) {
           <Button variant="outline-dark" onClick={handleShow}>
             Change Picture
           </Button>
-          <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={show} onHide={handleClose} animation={false}>
+          <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={show} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
               <Modal.Title id="contained-modal-title-vcenter">Update Profile</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               {" "}
-              <Avatar width={400} height={300} onCrop={onCrop} onClose={onClose} />
+              <Form.Group className="mb-4">
+                <Form.Label>Change Photo Profile</Form.Label>
+                <Form.Control type="file" onChange={handleImg} />
+              </Form.Group>{" "}
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
                 Cancel
               </Button>
-              <Button variant="primary" onClick={saveImg}>
+              <Button variant="primary" onClick={handleSubmit}>
                 Save Changes
               </Button>
             </Modal.Footer>

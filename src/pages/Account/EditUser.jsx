@@ -9,7 +9,7 @@ import EditPhoto from "../../components/EditPhoto";
 function EditUser() {
   const navigate = useNavigate();
 
-  const { id } = useParams;
+  const { id } = useParams();
 
   const token = localStorage.getItem("token");
 
@@ -47,32 +47,29 @@ function EditUser() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      name,
+      name: user.name,
       balance: Number(balance),
-      nik,
-      birth_place,
-      birth_date,
-      telp,
-      nationality,
-      no_passport,
-      issue_date,
-      expire_date,
+      nik: biodata.nik,
+      birth_place: biodata.birth_place,
+      birth_date: biodata.birth_date,
+      telp: biodata.telp,
+      nationality: biodata.nationality,
+      no_passport: biodata.no_passport,
+      issue_date: biodata.issue_date,
+      expire_date: biodata.expire_date,
     };
     await axios
-      .put(
-        `${process.env.REACT_APP_BASE_URL}/api/user/${id}`,
-        {
-          data,
+      .put(`${process.env.REACT_APP_BASE_URL}/api/user/${id}`, data, {
+        headers: {
+          Authorization: `${token}`,
         },
-        {
-          headers: {
-            Authorization: `${token}`,
-          },
-        }
-      )
+      })
+      .then((response) => console.log(response))
       .then(() => {
         navigate(`/user/${id}`);
       });
+
+    console.log(data);
   };
 
   const getData = async () => {
@@ -147,7 +144,7 @@ function EditUser() {
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>NIK</Form.Label>
-                      <Form.Control type="text" placeholder="Enter NIK" name="nik" value={nik} onChange={(e) => setBiodata({ ...biodata, [e.target.nik]: e.target.value })} required />
+                      <Form.Control type="text" placeholder="Enter NIK" name="nik" value={nik} onChange={(e) => setBiodata({ ...biodata, nik: e.target.value })} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Birth Place</Form.Label>
@@ -176,7 +173,7 @@ function EditUser() {
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>No Passport</Form.Label>
-                      <Form.Control type="text" placeholder="Enter No Passport" name="no_passport" value={no_passport} onChange={(e) => setBiodata({ ...biodata, [e.target.no_passport]: e.target.value })} required />
+                      <Form.Control type="text" placeholder="Enter No Passport" name="no_passport" value={no_passport} onChange={(e) => setBiodata({ ...biodata, no_passport: e.target.value })} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Issue Date</Form.Label>
@@ -186,7 +183,6 @@ function EditUser() {
                       <Form.Label>Expire Date</Form.Label>
                       <Form.Control type="date" placeholder="Enter Expire Date" name="expire_date" value={expire_date} onChange={(e) => setBiodata({ ...biodata, expire_date: e.target.value })} required />
                     </Form.Group>
-
                     <div className="text-center">
                       <Button className="px-4" variant="success" type="submit">
                         Save
