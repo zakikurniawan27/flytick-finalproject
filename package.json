@@ -21,6 +21,7 @@
     "react-avatar": "^5.0.3",
     "react-avatar-edit": "^1.2.0",
     "react-bootstrap": "^2.7.0",
+    "react-datepicker": "^4.8.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-moment": "^1.1.2",
@@ -28,6 +29,7 @@
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-social-login-buttons": "^3.6.1",
+    "reactstrap": "^9.1.5",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "web-vitals": "^2.1.4"
