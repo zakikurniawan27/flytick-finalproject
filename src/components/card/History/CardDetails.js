@@ -1,9 +1,9 @@
 import React from "react";
 import Moment from "react-moment";
-import { BsFillArrowRightCircleFill } from "react-icons/bs"
+import { BsArrowRight, BsFillArrowRightCircleFill } from "react-icons/bs"
 
 const CardDetails = (props) => {
-  const { dataMaskapai, details } = props;
+  const { dataMaskapai, details, navigate } = props;
   return (
     <>
       {details?.data?.tickets?.map((item) => (
@@ -22,16 +22,22 @@ const CardDetails = (props) => {
                   </>
                 ))}
               </div>
-              <div className="col">
-                <p className="fw-semibold fs-5">{item.schedule.flight.code}</p>
-                <p>{item.schedule.flight.class}</p>
+              <div className="row">
+                <div className="col">
+                  <p className="fw-semibold fs-5">{item.schedule.flight.code}</p>
+                  <p>{item.schedule.flight.class}</p>
+                </div>
+                <div className="col">
+                  {item.checked_in === false && <p className="text-danger fw-semibold text-end">Belum Check in</p>}
+                  {item.checked_in === true && <p className="text-success fw-semibold text-end">Sudah Check in</p>}
+                </div>
               </div>
               <div className="row mt-3">
                 <div className="col">
                   <p className="fw-semibold">{item.seat_number}</p>
                 </div>
                 <div className="col">
-                  <p className="fw-semibold text-end">{item.ticket_number}</p>
+                  <p className="fw-semibold text-end">{details?.data.invoice_number}</p>
                 </div>
               </div>
               <div className="row mt-4">
@@ -50,18 +56,23 @@ const CardDetails = (props) => {
               <div className="row mt-1">
                 <div className="col">
                   <p>
-                    <Moment format="hh:mm a">
+                    <Moment format="YYYY/MM/DD hh:mm a">
                       {item.schedule.departure_time}
                     </Moment>
                   </p>
                 </div>
                 <div className="col text-end">
                   <p>
-                    <Moment format="hh:mm a">
+                    <Moment format="YYYY/MM/DD hh:mm a">
                       {item.schedule.arrival_time}
                     </Moment>
                   </p>
                 </div>
+              </div>
+              <div className="row mt-5">
+                <p className="detail-ticket" onClick={() => navigate(`/history/detail/ticket/${item.id}`)}>
+                  More Detail <BsArrowRight />
+                </p>
               </div>
             </div>
           </div>
