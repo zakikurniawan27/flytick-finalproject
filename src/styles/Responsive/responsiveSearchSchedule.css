@@ -18,7 +18,10 @@
         font-size: 7px !important;
     }
     .logoAirplane{
-        width: 10%;
+        width: 27%;
+    }
+    .content-schedule{
+        margin-top: 1.5px !important;
     }
 }
 
@@ -36,13 +39,16 @@
     }
     .card-schedule{
         width: 25rem;
-        height: 9rem;
+        height: 11rem;
     }
     .text-schedule{
         font-size: 10px;
     }
     .logoAirplane{
-        width: 13%;
+        width: 27%;
+    }
+    .content-schedule{
+        margin-top: 10px !important;
     }
 }
 
@@ -59,14 +65,17 @@
         margin-top: 10.5rem !important;
     }
     .card-schedule{
-        width: 30rem;
-        height: 10.5rem;
+        width: 27.5rem;
+        height: 12.5rem;
     }
     .text-schedule{
         font-size: 13px;
     }
     .logoAirplane{
-        width: 13%;
+        width: 27%;
+    }
+    .content-schedule{
+        margin-top: 9px !important;
     }
 }
 
@@ -80,13 +89,16 @@
     }
     .card-schedule{
         width: 35rem;
-        height: 10.5rem;
+        height: 13.5rem;
     }
     .text-schedule{
         font-size: 13px;
     }
     .logoAirplane{
-        width: 13%;
+        width: 27%;
+    }
+    .content-schedule{
+        margin-top: 10px !important;
     }
 }
 
@@ -100,13 +112,16 @@
     }
     .card-schedule{
         width: 38rem;
-        height: 10.5rem;
+        height: 11rem;
     }
     .text-schedule{
         font-size: 14px;
     }
     .logoAirplane{
-        width: 10%;
+        width: 25%;
+    }
+    .content-schedule{
+        margin-top: 10px !important;
     }
 }
 
@@ -120,13 +135,16 @@
     }
     .card-schedule{
         width: 42rem;
-        height: 10.5rem;
+        height: 11.5rem;
     }
     .text-schedule{
         font-size: 14px;
     }
     .logoAirplane{
-        width: 10%;
+        width: 25%;
+    }
+    .content-schedule{
+        margin-top: 10px !important;
     }
 }
 
@@ -140,13 +158,13 @@
     }
     .card-schedule{
         width: 55rem;
-        height: 10.5rem;
+        height: 11rem;
     }
     .text-schedule{
         font-size: 14px;
     }
     .logoAirplane{
-        width: 10%;
+        width: 17%;
     }
 }
 
@@ -166,7 +184,7 @@
         font-size: 14px;
     }
     .logoAirplane{
-        width: 10%;
+        width: 15%;
     }
 }
 
@@ -186,6 +204,6 @@
         font-size: 15px;
     }
     .logoAirplane{
-        width: 10%;
+        width: 15%;
     }
 }

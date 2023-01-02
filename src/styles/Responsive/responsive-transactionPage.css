@@ -1,0 +1,215 @@
+@media (max-width: 425px) {
+    #col-4-detail-schedule{
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 14px;
+    }
+    #col-8-formTransaction{
+        width: 100%;
+        font-size: 14px;
+    }
+    #btn-back{
+        margin-bottom: 2rem;
+    }
+    #logo-airplane{
+        width: 13%;
+    }
+    .btn-buy{
+        font-size: 14px;
+    }
+    .form-control-transaction{
+        font-size: 14px;
+    }
+    .price{
+        font-size: 18px !important;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 525px) {
+    #col-4-detail-schedule{
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 14px;
+    }
+    #col-8-formTransaction{
+        width: 100%;
+        font-size: 14px;
+    }
+    #btn-back{
+        margin-bottom: 2rem;
+    }
+    #logo-airplane{
+        width: 13%;
+    }
+    .btn-buy{
+        font-size: 14px;
+    }
+    .form-control-transaction{
+        font-size: 14px;
+    }
+    .price{
+        font-size: 20px !important;
+    }
+}
+
+@media (min-width: 525px) and (max-width: 655px) {
+    #col-4-detail-schedule{
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 15px;
+    }
+    #col-8-formTransaction{
+        width: 100%;
+        font-size: 15px;
+    }
+    #btn-back{
+        margin-bottom: 2rem;
+    }
+    #logo-airplane{
+        width: 13%;
+    }
+    .btn-buy{
+        font-size: 15px;
+    }
+    .form-control-transaction{
+        font-size: 15px;
+    }
+    .price{
+        font-size: 21px !important;
+    }
+}
+
+@media (min-width: 655px) and (max-width: 725px) {
+    #col-4-detail-schedule{
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 15px;
+    }
+    #col-8-formTransaction{
+        width: 100%;
+        font-size: 15px;
+    }
+    #btn-back{
+        margin-bottom: 2rem;
+    }
+    #logo-airplane{
+        width: 13%;
+    }
+    .btn-buy{
+        font-size: 15px;
+    }
+    .form-control-transaction{
+        font-size: 15px;
+    }
+    .price{
+        font-size: 21px !important;
+    }
+}
+
+@media (min-width: 655px) and (max-width: 725px) {
+    #col-4-detail-schedule{
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 15px;
+    }
+    #col-8-formTransaction{
+        width: 100%;
+        font-size: 15px;
+    }
+    #btn-back{
+        margin-bottom: 2rem;
+    }
+    #logo-airplane{
+        width: 13%;
+    }
+    .btn-buy{
+        font-size: 15px;
+    }
+    .form-control-transaction{
+        font-size: 15px;
+    }
+    .price{
+        font-size: 21px !important;
+    }
+}
+
+@media (min-width: 725px) and (max-width: 855px) {
+    #col-4-detail-schedule{
+        width: 50%;
+        margin-top: 1rem;
+        font-size: 15px;
+    }
+    #col-8-formTransaction{
+        width: 50%;
+        font-size: 15px;
+    }
+    #btn-back{
+        margin-bottom: 2rem;
+    }
+    #logo-airplane{
+        width: 13%;
+    }
+    .btn-buy{
+        font-size: 15px;
+    }
+    .form-control-transaction{
+        font-size: 15px;
+    }
+    .price{
+        font-size: 21px !important;
+    }
+}
+
+@media (min-width: 855px) and (max-width: 955px) {
+    #col-4-detail-schedule{
+        width: 50%;
+        margin-top: 1rem;
+        font-size: 15px;
+    }
+    #col-8-formTransaction{
+        width: 50%;
+        font-size: 15px;
+    }
+    #btn-back{
+        margin-bottom: 2rem;
+    }
+    #logo-airplane{
+        width: 13%;
+    }
+    .btn-buy{
+        font-size: 15px;
+    }
+    .form-control-transaction{
+        font-size: 15px;
+    }
+    .price{
+        font-size: 21px !important;
+    }
+}
+
+@media (min-width: 955px) and (max-width: 1075px) {
+    #col-4-detail-schedule{
+        width: 40%;
+        margin-top: 1rem;
+        font-size: 16px;
+    }
+    #col-8-formTransaction{
+        width: 60%;
+        font-size: 16px;
+    }
+    #btn-back{
+        margin-bottom: 2rem;
+    }
+    #logo-airplane{
+        width: 15%;
+    }
+    .btn-buy{
+        font-size: 15px;
+    }
+    .form-control-transaction{
+        font-size: 15px;
+    }
+    .price{
+        font-size: 22px !important;
+    }
+}
