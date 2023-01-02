@@ -203,7 +203,7 @@ const Transaction = (props) => {
   ]);
 
   return (
-    <div className="container">
+    <div className="container-xl">
       <div className="row">
         <div className="col-8" id="col-8-formTransaction">
           {dws === 1 && ank === 0 && (
@@ -585,6 +585,7 @@ const Transaction = (props) => {
                   <img
                     src={logoAirplane}
                     alt="logoAirplane"
+                    id="logo-airplane"
                     className="logoAirplane"
                   />
                 </div>

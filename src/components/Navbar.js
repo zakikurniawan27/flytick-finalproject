@@ -92,9 +92,9 @@ function Navbar() {
                          </div>
                        </li>
                        <li>
-                         <a className="dropdown-item" href="/history">
-                           History
-                         </a>
+                          <button className="dropdown-item" onClick={() => navigate(`/history/${user?.data?.id}`)}>
+                            History
+                          </button>
                        </li>
                        <li>
                          <button className="dropdown-item" onClick={handleLogout}>
