@@ -88,6 +88,10 @@ function App() {
             <Protected roles={["admin"]}>
               <CreateUsers />
             </Protected>} />
+            <Route path="/cuser/:id" element={
+            <Protected roles={["admin"]}>
+              <CreateUsers />
+            </Protected>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />

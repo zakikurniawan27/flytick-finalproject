@@ -13,19 +13,32 @@ import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { createUser } from "../../../Redux/Actions/formAdminActions";
-import { useNavigate } from "react-router-dom";
+import { createUser, editUser } from "../../../Redux/Actions/formUserActions";
+import { useNavigate, useParams } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"
 
 const CreateUsers = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
   const { token } = useSelector((state) => state.auth)
+  const { viewEdit } = useSelector((state) => state.allUser)
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [role, setRole] = useState("")
   const [image, setImage] = useState("")
   const [showPassword, setShowPassword] = useState(false);
+  const [nik, setNik] = useState("")
+  const [balance, setBalance] = useState("")
+  const [birth_place, setBirthPlace] = useState("")
+  const [birth_date, setBirthDate] = useState(null)
+  const [nationality, setNationality] = useState("")
+  const [no_passport, setNoPassport] = useState("")
+  const [issue_date, setIssueDate] = useState(null)
+  const [expire_date, setExpireDate] = useState(null)
+  const [telp, setTelp] = useState("")
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -41,19 +54,183 @@ const CreateUsers = () => {
     setImage(event.target.files)
   }
 
-//   useEffect(() => {
-//     dispatch(getAllUser())
-//   },[dispatch])
+  const back = (() => {
+    navigate("/users")
+  })
+
+  useEffect(() => {
+    if(params.id){
+      setName(viewEdit?.data?.name)
+      setBalance(viewEdit?.data?.balance)
+      setBirthPlace(viewEdit?.data?.biodata?.birth_place)
+      setNationality(viewEdit?.data?.biodata?.nationality)
+      setNik(viewEdit?.data?.biodata?.nik)
+      setNoPassport(viewEdit?.data?.biodata?.no_passport)
+    }
+  },[params.id])
 
   return (
     <>
     <Sidebar>
     <Box m="20px">
+      {params.id ? (<Header
+        title="EDIT USER"
+      />) : (
       <Header
-        title="USERS"
-        subtitle="List of User"
-      />
-        <Box sx={{ height: 400, width: '100%' }}>
+        title="CREATE USER"
+      />)}
+        <Box sx={{ height: 475, width: '100%' }}>
+        {params.id ? (
+        <form>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+          <Typography variant="body2" align="left" gutterBottom>Name : </Typography>
+          <TextField
+                value={name}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setName(e.target.value);
+                }} 
+                label="Name" 
+                variant="outlined" 
+                fullWidth={true}
+                required={true} />
+          </Grid>    
+          <Grid item xs={6}>
+          <Typography variant="body2" align="left" gutterBottom>Balance : </Typography>
+          <TextField 
+                value={balance}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setBalance(e.target.value);
+                }} 
+                label="Balance" 
+                variant="outlined" 
+                fullWidth={true}
+                required={true} />
+          </Grid>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+          <Typography variant="body2" align="left" gutterBottom>NIK : </Typography>
+          <TextField 
+                value={nik}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setNik(e.target.value);
+                }} 
+                label="NIK" 
+                variant="outlined" 
+                fullWidth={true}
+                required={true} />
+          </Grid>
+          <Grid item xs={6}>
+          <Typography variant="body2" align="left" gutterBottom>Telephone : </Typography>
+          <TextField 
+                value={telp}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setTelp(e.target.value);
+                }} 
+                label="Telephone" 
+                variant="outlined" 
+                fullWidth={true}
+                required={true} />
+          </Grid>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+          <Typography variant="body2" align="left" gutterBottom>Birth Place : </Typography>
+          <TextField 
+                value={birth_place}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setBirthPlace(e.target.value);
+                }} 
+                label="Birth Place" 
+                variant="outlined" 
+                fullWidth={true}
+                required={true} />
+          </Grid>
+          <Grid item xs={6}>
+          <Typography variant="body2" align="left" gutterBottom>Nationality : </Typography>
+          <TextField 
+                value={nationality}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setNationality(e.target.value);
+                }} 
+                label="Nationality" 
+                variant="outlined" 
+                fullWidth={true}
+                required={true} />
+          </Grid>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+          <Typography variant="body2" align="left" gutterBottom>Birth Date : </Typography>
+          <DatePicker 
+                selected={birth_date}
+                onChange={date => setBirthDate(date)}
+                dateFormat="yyyy-MM-dd"
+                isClearable
+                showYearDropdown
+                scrollableMonthYearDropdown />
+          </Grid>
+          <Grid item xs={6}>
+          <Typography variant="body2" align="left" gutterBottom>Issue Date : </Typography>
+          <DatePicker 
+                selected={issue_date}
+                onChange={date => setIssueDate(date)}
+                dateFormat="yyyy-MM-dd"
+                minDate={new Date()}
+                isClearable
+                showYearDropdown
+                scrollableMonthYearDropdown />
+          </Grid>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+          <Typography variant="body2" align="left" gutterBottom>Image : </Typography>
+          <input
+                id="formFile"
+                className="form-control"
+                type="file"
+                label="Role"
+                onChange={handleUpload}
+                accept="image/*"
+                >
+          </input>
+          </Grid>
+          <Grid item xs={6}>
+          <Typography variant="body2" align="left" gutterBottom>Expire Date : </Typography>
+          <DatePicker 
+                selected={expire_date}
+                onChange={date => setExpireDate(date)}
+                dateFormat="yyyy-MM-dd"
+                minDate={new Date()}
+                isClearable
+                showYearDropdown
+                scrollableMonthYearDropdown />
+          </Grid>
+        </Grid>
+        <Typography variant="body2" align="left" gutterBottom>No Passport : </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+          <TextField 
+                value={no_passport}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setNoPassport(e.target.value);
+                }} 
+                label="No Passport" 
+                variant="outlined" 
+                fullWidth={true}
+                required={true} />
+          </Grid>
+        </Grid>                
+        </form>
+        ) : (
         <form>
         <Typography variant="body2" align="left" gutterBottom>Name : </Typography>
         <Grid container spacing={2}>
@@ -138,19 +315,39 @@ const CreateUsers = () => {
           </input>
           </Grid>
         </Grid>                
-        </form>
+        </form>)}
         </Box>
-        <Button variant="outlined" onClick={(e) => {
-          e.preventDefault()
-          dispatch(createUser({
-            name,
-            email,
-            password,
-            role,
-            image,
-          }, token, navigate))}
-        }>Submit</Button>
-    </Box>
+        {params.id ? (
+        <><Button variant="outlined" onClick={(e) => {
+              e.preventDefault();
+              dispatch(editUser(params.id, {
+                name,
+                balance,
+                nik,
+                birth_place,
+                birth_date,
+                telp,
+                nationality,
+                no_passport,
+                issue_date,
+                expire_date,
+                image,
+              }, token)) && navigate("/users")} 
+              }>Edit</Button>
+            <Button variant="outlined" onClick={back}>Back</Button></>
+        ) : (
+        <><Button variant="outlined" onClick={(e) => {
+              e.preventDefault()
+              dispatch(createUser({
+                name,
+                email,
+                password,
+                role,
+                image,
+              }, token, navigate))}
+              }>Submit</Button>
+            <Button variant="outlined" onClick={back}>Back</Button></>)}
+      </Box>
     </Sidebar>
     </>
   );

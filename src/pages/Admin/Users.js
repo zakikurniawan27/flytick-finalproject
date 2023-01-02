@@ -14,7 +14,7 @@ const Users = () => {
   const navigate = useNavigate()
   const params = useParams()
   const { allUsers } = useSelector((state) => state.allUser);
-  const { details } = useSelector((state) => state.allUser)
+  const { details } = useSelector((state) => state.allUser);
 
   useEffect(() => {
     dispatch(getAllUser())
@@ -79,12 +79,14 @@ const Users = () => {
             <tr>
               <td width="200">NIK</td>
               <td width="10">:</td>
-              <td>{details?.data?.biodata?.nik}</td>
+              <td>{details?.data?.biodata?.nik === "" ? ("-") : 
+              (details?.data?.biodata?.nik)}</td>
             </tr>
             <tr>
               <td width="200">No HP</td>
               <td width="10">:</td>
-              <td>{details?.data?.biodata?.telp}</td>
+              <td>{details?.data?.biodata?.telp === "" ? ("-") :
+              (details?.data?.biodata?.telp)}</td>
             </tr>
           </tbody>
         </Table>

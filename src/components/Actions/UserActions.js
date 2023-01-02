@@ -1,6 +1,6 @@
 import { Box, IconButton, Tooltip } from "@mui/material"
 import { Delete, Edit, Preview } from "@mui/icons-material"
-import { getDetailUser } from "../../Redux/Actions/allUserActions";
+import { delUser, getDetailUser, getViewEdit } from "../../Redux/Actions/allUserActions";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -16,12 +16,12 @@ const Actions = ({ params }) => {
                 </IconButton>
             </Tooltip>
             <Tooltip title="Edit">
-                <IconButton onClick={()=>{}}>
+                <IconButton onClick={()=>{dispatch(getViewEdit(params.id, navigate))}}>
                     <Edit />
                 </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
-                <IconButton onClick={()=>{}}>
+                <IconButton onClick={()=>{dispatch(delUser(params.id))}}>
                     <Delete />
                 </IconButton>
             </Tooltip>
