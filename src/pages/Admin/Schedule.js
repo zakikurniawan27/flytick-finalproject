@@ -58,7 +58,7 @@ const Schedule = () => {
       />
         <Box sx={{ height: 400, width: '100%' }}>
         {allSchedules?.data?.length > 0 ? (
-           <DataGrid checkboxSelection
+           <DataGrid 
            rows={allSchedules?.data}
            columns={columns}
            components={{ Toolbar: GridToolbar }}

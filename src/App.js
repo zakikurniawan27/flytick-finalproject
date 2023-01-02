@@ -26,10 +26,13 @@ import Flight from "./pages/Admin/Flight";
 import City from "./pages/Admin/City";
 import Country from "./pages/Admin/Country";
 import TransactionSucces from "./pages/Transaction/TransactionSucces";
+import CreateUsers from "./pages/Admin/Form/UsersForm"
+import Protected from "./components/Protected";
 import History from "./pages/History/History";
 import DetailHistory from "./pages/History/DetailHistory";
 import DetailTicketHistory from "./pages/History/DetaiTicketHistory"
 import NotFound from "./pages/404/404.jsx";
+import CreateAirport from "./pages/Admin/Form/AirportForm"
 
 function App() {
   const [adult, setAdult] = useState("");
@@ -47,19 +50,64 @@ function App() {
             <Route path="/transactionSuccess" element={<TransactionSucces />} />
             <Route path="/user/:id" element={<User />} />
             <Route path="/edit-user" element={<EditUser />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/airports" element={<Airport />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/flight" element={<Flight />} />
-            <Route path="/city" element={<City />} />
-            <Route path="/country" element={<Country />} />
+            <Route path="/dashboard" element={
+            <Protected roles={["admin"]}>
+              <Dashboard />
+            </Protected>} />
+            <Route path="/users" element={
+            <Protected roles={["admin"]}>
+              <Users />
+            </Protected>} />
+            <Route path="/users/:id" element={
+            <Protected roles={["admin"]}>
+              <Users />
+            </Protected>} />
+            <Route path="/airports" element={
+            <Protected roles={["admin"]}>
+              <Airport />
+            </Protected>} />
+            <Route path="/airports/:id" element={
+            <Protected roles={["admin"]}>
+              <Airport />
+            </Protected>} />
+            <Route path="/schedule" element={
+            <Protected roles={["admin"]}>
+              <Schedule />
+            </Protected>} />
+            <Route path="/flight" element={
+            <Protected roles={["admin"]}>
+              <Flight />
+            </Protected>} />
+            <Route path="/city" element={
+            <Protected roles={["admin"]}>
+              <City />
+            </Protected>} />
+            <Route path="/country" element={
+            <Protected roles={["admin"]}>
+              <Country />
+            </Protected>} />
             <Route path="/edit-user/:id" element={<EditUser />} />
             <Route path="/notification" element={<Notification />} />
             <Route path="/history/:id" element={<History />} />
             <Route path="/history/detail/:id" element={<DetailHistory />} />
             <Route path="/history/detail/ticket/:id" element={<DetailTicketHistory/>}/>
             <Route path="/detail-notification/:id" element={<DetailNotification />} />
+            <Route path="/cuser" element={
+            <Protected roles={["admin"]}>
+              <CreateUsers />
+            </Protected>} />
+            <Route path="/cuser/:id" element={
+            <Protected roles={["admin"]}>
+              <CreateUsers />
+            </Protected>} />
+            <Route path="/cairports" element={
+            <Protected roles={["admin"]}>
+              <CreateAirport />
+            </Protected>} />
+            <Route path="/cairports/:id" element={
+            <Protected roles={["admin"]}>
+              <CreateAirport />
+            </Protected>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
