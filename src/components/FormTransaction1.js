@@ -50,7 +50,7 @@ function FormTransaction1(props) {
               <input
                 id="email"
                 type="email"
-                className="form-control"
+                className="form-control form-control-transaction"
                 placeholder="masukan email anda"
                 value={email}
                 onChange={(e) => {
@@ -66,7 +66,7 @@ function FormTransaction1(props) {
               <input
                 id="nama"
                 type="text"
-                className="form-control"
+                className="form-control form-control-transaction"
                 placeholder="masukan nama anda"
                 value={nama}
                 onChange={(e) => {
@@ -84,7 +84,7 @@ function FormTransaction1(props) {
               <input
                 id="nik"
                 type="number"
-                className="form-control"
+                className="form-control form-control-transaction"
                 placeholder="masukan NIK anda"
                 value={nik}
                 onChange={(e) => {
@@ -100,7 +100,7 @@ function FormTransaction1(props) {
               <input
                 id="noTelp"
                 type="text"
-                className="form-control"
+                className="form-control form-control-transaction"
                 placeholder="masukan nomor telepon anda"
                 value={telp}
                 onChange={(e) => {
@@ -116,7 +116,7 @@ function FormTransaction1(props) {
                 Tempat lahir
               </label>
               <select 
-                className="form-control" 
+                className="form-control form-control-transaction" 
                 id="tempatLahir" 
                 value={birthPlace} 
                 onChange={(e) => {
@@ -138,7 +138,7 @@ function FormTransaction1(props) {
               <input
                 id="tanggalLahir"
                 type="date"
-                className="form-control"
+                className="form-control form-control-transaction"
                 value={birthDate}
                 onChange={(e) => {
                     e.preventDefault()
@@ -153,7 +153,7 @@ function FormTransaction1(props) {
                 Nationality
               </label>
               <select 
-                className="form-control" 
+                className="form-control form-control-transaction" 
                 id="nationality"
                 value={nationality}
                 onChange={(e) => {
@@ -176,7 +176,7 @@ function FormTransaction1(props) {
               <input
                 id="passport"
                 type="text"
-                className="form-control"
+                className="form-control form-control-transaction"
                 placeholder="masukan nomor passport anda"
                 value={passport}
                 onChange={(e) => {
@@ -194,7 +194,7 @@ function FormTransaction1(props) {
               <input
                 id="penerbitan"
                 type="date"
-                className="form-control"
+                className="form-control form-control-transaction"
                 value={issueDate}
                 onChange={(e) => {
                     e.preventDefault()
@@ -209,7 +209,7 @@ function FormTransaction1(props) {
               <input
                 id="tanggalLahir"
                 type="date"
-                className="form-control"
+                className="form-control form-control-transaction"
                 value={expireDate}
                 onChange={(e) => {
                     e.preventDefault()

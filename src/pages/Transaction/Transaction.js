@@ -205,7 +205,7 @@ const Transaction = (props) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-6">
+        <div className="col-8" id="col-8-formTransaction">
           {dws === 1 && ank === 0 && (
             <>
               <FormTransaction1
@@ -231,7 +231,7 @@ const Transaction = (props) => {
                 setExpireDate={setExpireDate}
               />
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data, token, navigate))}>BUY</button>
+                <button className="btn bttn btn-buy" onClick={() => dispatch(createTransaction(data, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -284,7 +284,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>BUY</button>
+                <button className="btn bttn btn-buy" onClick={() => dispatch(createTransaction(data2, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -337,7 +337,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data2, token, navigate))}>BUY</button>
+                <button className="btn bttn btn-buy" onClick={() => dispatch(createTransaction(data2, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -414,7 +414,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
+                <button className="btn bttn btn-buy" onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -491,7 +491,7 @@ const Transaction = (props) => {
                 />
               </div>
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
+                <button className="btn bttn btn-buy" onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
               </div>
             </>
           )}
@@ -567,20 +567,21 @@ const Transaction = (props) => {
                   setExpireDate3={setExpireDate3}
                 />
               </div>
+
               <div className="d-flex justify-content-end mt-3">
-                <button className="btn bttn" onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
+                <button className="btn bttn btn-buy"  onClick={() => dispatch(createTransaction(data3, token, navigate))}>BUY</button>
               </div>
             </>
           )}
         </div>
-        <div className="col-6">
-          <div className="card card-detail-schedule">
+        <div className="col-4" id="col-4-detail-schedule">
+          <div className="card ">
             <div className="card-body">
               <div className="row">
                 <div className="col-8">
                   <p className="fw-bold">Detail Jadwal</p>
                 </div>
-                <div className="col-4">
+                <div className="text-end">
                   <img
                     src={logoAirplane}
                     alt="logoAirplane"
@@ -628,7 +629,7 @@ const Transaction = (props) => {
           </div>
         </div>
       </div>
-      <button className="btn" onClick={() => navigate("/")}>
+      <button className="btn" id="btn-back" onClick={() => navigate("/")}>
         back
       </button>
     </div>

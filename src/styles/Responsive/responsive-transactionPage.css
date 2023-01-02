@@ -1,0 +1,71 @@
+@media (max-width: 425px) {
+    #col-4-detail-schedule{
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 14px;
+    }
+    #col-8-formTransaction{
+        width: 100%;
+        font-size: 14px;
+    }
+    #btn-back{
+        margin-bottom: 2rem;
+    }
+    .btn-buy{
+        font-size: 14px;
+    }
+    .form-control-transaction{
+        font-size: 14px;
+    }
+    .price{
+        font-size: 18px !important;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 525px) {
+    #col-4-detail-schedule{
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 14px;
+    }
+    #col-8-formTransaction{
+        width: 100%;
+        font-size: 14px;
+    }
+    #btn-back{
+        margin-bottom: 2rem;
+    }
+    .btn-buy{
+        font-size: 14px;
+    }
+    .form-control-transaction{
+        font-size: 14px;
+    }
+    .price{
+        font-size: 20px !important;
+    }
+}
+
+@media (min-width: 525px) and (max-width: 655px) {
+    #col-4-detail-schedule{
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 15px;
+    }
+    #col-8-formTransaction{
+        width: 100%;
+        font-size: 15px;
+    }
+    #btn-back{
+        margin-bottom: 2rem;
+    }
+    .btn-buy{
+        font-size: 15px;
+    }
+    .form-control-transaction{
+        font-size: 15px;
+    }
+    .price{
+        font-size: 21px !important;
+    }
+}
