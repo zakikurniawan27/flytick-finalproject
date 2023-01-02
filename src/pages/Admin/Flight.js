@@ -43,7 +43,7 @@ const Users = () => {
       />
         <Box sx={{ height: 400, width: '100%' }}>
         {flights?.data?.length > 0 ? (
-            <DataGrid checkboxSelection
+            <DataGrid 
             rows={flights?.data}
             columns={columns}
             components={{ Toolbar: GridToolbar }}
