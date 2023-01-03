@@ -5,7 +5,7 @@ const initialState = {
 }
 
 const flightSlicer = createSlice({
-    name: "allData",
+    name: "allFlight",
     initialState,
     reducers: {
         getAllFlightReducer: (state, action) => {

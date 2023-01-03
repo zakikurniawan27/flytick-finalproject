@@ -1,6 +1,6 @@
 import { Box, IconButton, Tooltip } from "@mui/material"
 import { Delete, Edit, Preview } from "@mui/icons-material"
-import { delUser, getDetailUser, getViewEdit } from "../../Redux/Actions/allUserActions";
+import { delAirport, getDetailsAirport, getViewEdit } from "../../Redux/Actions/allAirportActions";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ const Actions = ({ params }) => {
     return (
         <Box>
             <Tooltip title="Detail">
-                <IconButton onClick={()=>{dispatch(getDetailUser(params.id, navigate))}}>
+                <IconButton onClick={()=>{dispatch(getDetailsAirport(params.id, navigate))}}>
                     <Preview />
                 </IconButton>
             </Tooltip>
@@ -21,7 +21,7 @@ const Actions = ({ params }) => {
                 </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
-                <IconButton onClick={()=>{dispatch(delUser(params.id))}}>
+                <IconButton onClick={()=>{dispatch(delAirport(params.id))}}>
                     <Delete />
                 </IconButton>
             </Tooltip>
