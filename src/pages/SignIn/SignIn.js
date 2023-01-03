@@ -34,29 +34,29 @@ const SignIn = () => {
     }
   };
 
-  // const googleLogin = useGoogleLogin({
-  //   onSuccess: async (response) => {
-  //     try {
-  //       const data = {
-  //         access_token: response.access_token,
-  //       };
+  const googleLogin = useGoogleLogin({
+    onSuccess: async (response) => {
+      try {
+        const data = {
+          access_token: response.access_token,
+        };
 
-  //       const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/oauth/login/google`, data);
-  //       if (result.data.data.token) {
-  //         localStorage.setItem("token", result.data.data.token);
-  //         console.log(result);
-  //       }
-  //     } catch (error) {
-  //       alert(error.response.data.message);
-  //     }
-  //   },
-  //   onError: (error) => {
-  //     alert(error);
-  //   },
-  // });
+        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/oauth/login/google`, data);
+        if (result.data.data.token) {
+          localStorage.setItem("token", result.data.data.token);
+          console.log(result);
+        }
+      } catch (error) {
+        alert(error.response.data.message);
+      }
+    },
+    onError: (error) => {
+      alert(error);
+    },
+  });
 
   return (
-    <div className="signIn">
+    <div className="signIn  mb-5">
       <div className="signInAside" />
       <div className="signInForm">
         <div className="signInTitle">
@@ -93,9 +93,9 @@ const SignIn = () => {
 
             <div className="signInFieldbutton">
               <div className="googleButton">
-                {/* <button className="google" onClick={googleLogin}>
+                <button className="google px-2 py-1" onClick={googleLogin}>
                   <FaGoogle color="white" />
-                </button> */}
+                </button>
               </div>
             </div>
           </form>
