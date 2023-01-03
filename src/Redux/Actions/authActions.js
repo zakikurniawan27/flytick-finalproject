@@ -15,7 +15,7 @@ export const login = (data, navigate) => async (dispatch) => {
         navigate("/");
       }
     } catch (error) {
-      alert.error(error.response.data.message);
+      alert(error.response.data.message);
     }
   };
 export const me = (callback) => async (dispatch, getState) => {
