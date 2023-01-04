@@ -113,7 +113,7 @@ export default function User() {
                       <MDBCardText>NIK</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{biodata.nik}</MDBCardText>
+                      <MDBCardText className="text-muted">{biodata.nik != null ? biodata.nik : "-"}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -122,7 +122,7 @@ export default function User() {
                       <MDBCardText>Birth Place</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{biodata.birth_place}</MDBCardText>
+                      <MDBCardText className="text-muted">{biodata.birth_place != null ? biodata.birth_place : "-"}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -142,7 +142,7 @@ export default function User() {
                       <MDBCardText>Telp</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{biodata.telp}</MDBCardText>
+                      <MDBCardText className="text-muted">{biodata.telp != null ? biodata.telp : "-"}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -151,7 +151,7 @@ export default function User() {
                       <MDBCardText>Nationality</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{biodata.nationality}</MDBCardText>
+                      <MDBCardText className="text-muted">{biodata.nationality != null ? biodata.nationality : "-"}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -160,7 +160,7 @@ export default function User() {
                       <MDBCardText>No Passport</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{biodata.no_passport}</MDBCardText>
+                      <MDBCardText className="text-muted">{biodata.no_passport != null ? biodata.no_passport : "-"}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -170,7 +170,7 @@ export default function User() {
                     </MDBCol>
                     <MDBCol sm="9">
                       <MDBCardText className="text-muted">
-                        <Moment format="DD MMMM YYYY">{biodata.issue_date}</Moment>
+                        <Moment format="DD MMMM YYYY">{biodata.issue_date != null ? biodata.issue_date : "-"}</Moment>
                       </MDBCardText>
                     </MDBCol>
                   </MDBRow>
@@ -181,7 +181,7 @@ export default function User() {
                     </MDBCol>
                     <MDBCol sm="9">
                       <MDBCardText className="text-muted">
-                        <Moment format="DD MMMM YYYY">{biodata.expire_date}</Moment>
+                        <Moment format="DD MMMM YYYY">{biodata.expire_date != null ? biodata.expire_date : "-"}</Moment>
                       </MDBCardText>
                     </MDBCol>
                   </MDBRow>

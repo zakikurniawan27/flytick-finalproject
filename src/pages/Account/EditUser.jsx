@@ -148,7 +148,7 @@ function EditUser() {
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Birth Place</Form.Label>
-                      <Form.Control type="text" placeholder="Enter Birth Place" name="birth_place" value={birth_place} onChange={(e) => setBiodata({ ...biodata, birth_place: e.target.value })} required />
+                      <Form.Control type="text" placeholder="Enter Birth Place" name="birth_place" value={birth_place} onChange={(e) => setBiodata({ ...biodata, birth_place: e.target.value })} />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Birth Date</Form.Label>

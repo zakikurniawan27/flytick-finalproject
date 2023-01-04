@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ProfileLeft from "../../components/ProfileLeft";
 import PhotoProfile from "../../components/PhotoProfile";
-// import { useSelector } from "react-redux";
+import Pagination from "../../components/Pagination";
 
 const Notification = () => {
   const [notification, setNotification] = useState([]);
@@ -13,17 +13,28 @@ const Notification = () => {
 
   const token = localStorage.getItem("token");
 
-  useEffect(() => {
+  const getNotif = (no) => {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/api/notification`, {
         headers: {
           Authorization: `${token}`,
         },
+        params: {
+          page: no,
+        },
       })
       .then((response) => {
-        setNotification(response.data.data);
+        setNotification(response.data);
       });
-  }, []);
+  };
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPage = `${notification?.pagination?.totalPages}`;
+  console.log(totalPage);
+
+  useEffect(() => {
+    getNotif(currentPage);
+  }, [currentPage]);
 
   const handleReadAll = () => {
     axios
@@ -79,8 +90,8 @@ const Notification = () => {
             </div>
             <>
               {notification &&
-                notification?.length > 0 &&
-                notification.map((result, index) => {
+                notification?.data?.length > 0 &&
+                notification?.data?.map((result, index) => {
                   return (
                     <MDBCardBody key={index}>
                       <MDBCard className="mb-2">
@@ -115,6 +126,9 @@ const Notification = () => {
                   );
                 })}
             </>
+            <div className="d-flex justify-content-center">
+              <Pagination currentPage={currentPage} totalPage={totalPage} setCurrentPage={setCurrentPage} />
+            </div>{" "}
           </MDBCard>
         </MDBCol>
       </MDBRow>
