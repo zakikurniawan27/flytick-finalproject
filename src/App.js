@@ -32,6 +32,7 @@ import DetailHistory from "./pages/History/DetailHistory";
 import DetailTicketHistory from "./pages/History/DetaiTicketHistory"
 import NotFound from "./pages/404/404.jsx";
 import CreateAirport from "./pages/Admin/Form/AirportForm"
+import CreateSchedule from "./pages/Admin/Form/ScheduleForm";
 
 function App() {
   const [adult, setAdult] = useState("");
@@ -73,6 +74,10 @@ function App() {
             <Protected roles={["admin"]}>
               <Schedule />
             </Protected>} />
+            <Route path="/schedule/:id" element={
+            <Protected roles={["admin"]}>
+              <Schedule />
+            </Protected>} />
             <Route path="/flight" element={
             <Protected roles={["admin"]}>
               <Flight />
@@ -106,6 +111,14 @@ function App() {
             <Route path="/cairports/:id" element={
             <Protected roles={["admin"]}>
               <CreateAirport />
+            </Protected>} />
+            <Route path="/cschedules" element={
+            <Protected roles={["admin"]}>
+              <CreateSchedule />
+            </Protected>} />
+            <Route path="/cschedules/:id" element={
+            <Protected roles={["admin"]}>
+              <CreateSchedule />
             </Protected>} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -3,13 +3,14 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { useDispatch, useSelector} from "react-redux";
 import { getAllUser } from "../../Redux/Actions/allUserActions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import UserActions from "../../components/Actions/UserActions"
 import { useNavigate, useParams } from "react-router-dom";
 import { Table } from "reactstrap";
 
 const Users = () => {
+  const [refresh, setRefresh] = useState(false);
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const params = useParams()
@@ -18,7 +19,8 @@ const Users = () => {
 
   useEffect(() => {
     dispatch(getAllUser())
-  },[dispatch])
+    setRefresh(false);
+  },[dispatch, refresh])
 
   const addUser = (() => {
     navigate("/cuser")
@@ -51,7 +53,7 @@ const Users = () => {
         type: "actions",
         flex: 1,
         renderCell: (params) => (
-          <UserActions { ... { params }} />
+          <UserActions { ... { params }} refresh={setRefresh}/>
         ),
     },
   ];
