@@ -36,6 +36,10 @@
   margin-top: 20px;
 }
 
+.signInField a {
+  color: #56c361;
+}
+
 .signInFieldLabel {
   display: block;
   text-transform: uppercase;

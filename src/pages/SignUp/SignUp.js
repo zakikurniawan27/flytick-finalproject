@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
 
 import axios from "axios";
 
@@ -46,6 +47,27 @@ const SignUp = () => {
     }
   };
 
+  const googleLogin = useGoogleLogin({
+    onSuccess: async (response) => {
+      try {
+        const data = {
+          access_token: response.access_token,
+        };
+
+        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/oauth/login/google`, data);
+        if (result.data.data.token) {
+          localStorage.setItem("token", result.data.data.token);
+          console.log(result);
+        }
+      } catch (error) {
+        alert(error.response.data.message);
+      }
+    },
+    onError: (error) => {
+      alert(error);
+    },
+  });
+
   return (
     <div className="signUp">
       <div className="signUpAside" />
@@ -86,13 +108,13 @@ const SignUp = () => {
               <label className="signup">or sign up using </label>
             </div>
 
-            <div className="signUpFieldbutton">
+            {/* <div className="signUpFieldbutton">
               <div className="googleButton">
-                <button className="google">
+                <button className="google px-2 py-1" onClick={googleLogin}>
                   <FaGoogle color="white" />
                 </button>
               </div>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>

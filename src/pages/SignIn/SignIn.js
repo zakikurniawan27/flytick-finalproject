@@ -56,7 +56,7 @@ const SignIn = () => {
   // });
 
   return (
-    <div className="signIn">
+    <div className="signIn  mb-5">
       <div className="signInAside" />
       <div className="signInForm">
         <div className="signInTitle">
@@ -69,8 +69,11 @@ const SignIn = () => {
               <input type="email" id="email" className="signInFieldInput" placeholder="Enter your email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
 
-            <div className="signInField">
+            <div className="signInField position-relative">
               <label className="signInFieldLabel">Password</label>
+              <a href="https://flytick-dev.up.railway.app/api/user/forgot-password" className="position-absolute top-0 end-0">
+                Forgot Password ?
+              </a>
               <input type="password" id="password" className="signInFieldInput" placeholder="Enter your password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             </div>
 
@@ -88,13 +91,13 @@ const SignIn = () => {
               <label className="signup">or sign up using </label>
             </div>
 
-            <div className="signInFieldbutton">
+            {/* <div className="signInFieldbutton">
               <div className="googleButton">
-                {/* <button className="google" onClick={googleLogin}>
+                <button className="google px-2 py-1" onClick={googleLogin}>
                   <FaGoogle color="white" />
-                </button> */}
+                </button>
               </div>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>

@@ -1,49 +1,47 @@
 import React, { useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllcity } from '../Redux/Actions/cityActions'
-import { getAllCountry } from '../Redux/Actions/countryActions'
+import { getAllcity } from '../../Redux/Actions/cityActions'
+import { getAllCountry } from '../../Redux/Actions/countryActions'
 
-function FormTransaction2(props) {
+function FormTransaction3(props) {
     const {
-        email2, 
-        setEmail2, 
-        nama2, 
-        setNama2, 
-        nik2, 
-        setNik2, 
-        telp2, 
-        setTelp2,
-        birthPlace2,
-        setBirthPlace2,
-        birthDate2,
-        setBirthDate2,
-        nationality2,
-        setNationality2,
-        passport2,
-        setPassport2,
-        issueDate2,
-        setIssueDate2,
-        expireDate2,
-        setExpireDate2
+        email3, 
+        setEmail3, 
+        nama3, 
+        setNama3, 
+        nik3, 
+        setNik3, 
+        telp3, 
+        setTelp3,
+        birthPlace3,
+        setBirthPlace3,
+        birthDate3,
+        setBirthDate3,
+        nationality3,
+        setNationality3,
+        passport3,
+        setPassport3,
+        issueDate3,
+        setIssueDate3,
+        expireDate3,
+        setExpireDate3
     }= props
 
     const dispatch = useDispatch()
     const {countries} = useSelector((state) => state.country)
     const {cities} = useSelector((state) => state.city)
 
-
     useEffect(() => {
         dispatch(getAllCountry())
         dispatch(getAllcity())
     },[dispatch])
-    
     
   return (
     <>
         <div className='card '>
             <div className='card-body'>
                 <p className='text-center fw-bold'>
-                    Data Penumpang 2
+                    Data Penumpang 3
                 </p>
                 <div className='row mt-5'>
                     <div className='col'>
@@ -55,10 +53,10 @@ function FormTransaction2(props) {
                             type="email" 
                             className='form-control'
                             placeholder='masukan email anda'
-                            value={email2}
+                            value={email3}
                             onChange={(e) => {
                                 e.preventDefault()
-                                setEmail2(e.target.value)
+                                setEmail3(e.target.value)
                             }}/>
                     </div>
                     <div className='col'>
@@ -70,10 +68,10 @@ function FormTransaction2(props) {
                             type="text" 
                             className='form-control'
                             placeholder='masukan nama anda'
-                            value={nama2}
+                            value={nama3}
                             onChange={(e) => {
                                 e.preventDefault()
-                                setNama2(e.target.value)
+                                setNama3(e.target.value)
                             }}/>
                     </div>
                 </div>
@@ -87,10 +85,10 @@ function FormTransaction2(props) {
                             type="number" 
                             className='form-control'
                             placeholder='masukan NIK anda'
-                            value={nik2}
+                            value={nik3}
                             onChange={(e) => {
                                 e.preventDefault()
-                                setNik2(e.target.value)
+                                setNik3(e.target.value)
                             }}/>
                     </div>
                     <div className='col'>
@@ -102,10 +100,10 @@ function FormTransaction2(props) {
                             type="text" 
                             className='form-control'
                             placeholder='masukan nomor telepon anda'
-                            value={telp2}
+                            value={telp3}
                             onChange={(e) => {
                                 e.preventDefault()
-                                setTelp2(e.target.value)
+                                setTelp3(e.target.value)
                             }}/>
                     </div>
                 </div>
@@ -117,10 +115,10 @@ function FormTransaction2(props) {
                         <select 
                             className='form-control' 
                             id='tempatLahir'
-                            value={birthPlace2}
+                            value={birthPlace3}
                             onChange={(e) => {
                                 e.preventDefault()
-                                setBirthPlace2(e.target.value)
+                                setBirthPlace3(e.target.value)
                             }}
                             >
                             <option value="">
@@ -142,10 +140,10 @@ function FormTransaction2(props) {
                             type="date" 
                             className='form-control'
                             placeholder='masukan nomor telepon anda'
-                            value={birthDate2}
+                            value={birthDate3}
                             onChange={(e) => {
                                 e.preventDefault()
-                                setBirthDate2(e.target.value)
+                                setBirthDate3(e.target.value)
                             }}
                             />
                     </div>
@@ -158,10 +156,10 @@ function FormTransaction2(props) {
                         <select 
                             className='form-control' 
                             id='nationality'
-                            value={nationality2}
+                            value={nationality3}
                             onChange={(e) => {
                                 e.preventDefault()
-                                setNationality2(e.target.value)
+                                setNationality3(e.target.value)
                             }}
                             >
                             <option value="">
@@ -181,10 +179,10 @@ function FormTransaction2(props) {
                             type="text" 
                             className='form-control'
                             placeholder='masukan nomor passport anda'
-                            value={passport2}
+                            value={passport3}
                             onChange={(e) => {
                                 e.preventDefault()
-                                setPassport2(e.target.value)
+                                setPassport3(e.target.value)
                             }}
                             />
                     </div>
@@ -198,10 +196,10 @@ function FormTransaction2(props) {
                             id='penerbitan'
                             type="date" 
                             className='form-control'
-                            value={issueDate2}
+                            value={issueDate3}
                             onChange={(e) => {
                                 e.preventDefault()
-                                setIssueDate2(e.target.value)
+                                setIssueDate3(e.target.value)
                             }}
                             />
                     </div>
@@ -213,10 +211,10 @@ function FormTransaction2(props) {
                             id='tanggalLahir'
                             type="date" 
                             className='form-control'
-                            value={expireDate2}
+                            value={expireDate3}
                             onChange={(e) => {
                                 e.preventDefault()
-                                setExpireDate2(e.target.value)
+                                setExpireDate3(e.target.value)
                             }}
                             />
                     </div>
@@ -227,4 +225,4 @@ function FormTransaction2(props) {
   )
 }
 
-export default FormTransaction2
+export default FormTransaction3
