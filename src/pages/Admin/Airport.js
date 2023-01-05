@@ -3,13 +3,14 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { useDispatch, useSelector} from "react-redux";
 import { getAllAirport } from "../../Redux/Actions/allAirportActions"; 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import AirportActions from "../../components/Actions/AirportActions"
 import { useNavigate, useParams } from "react-router-dom";
 import { Table } from "reactstrap";
 
 const Airport = () => {
+  const [refresh, setRefresh] = useState(false);
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const params = useParams()
@@ -18,7 +19,8 @@ const Airport = () => {
 
   useEffect(() => {
     dispatch(getAllAirport())
-  },[dispatch])
+    setRefresh(false);
+  },[dispatch, refresh])
 
   const addAirport = (() => {
     navigate("/cairports")
@@ -48,7 +50,7 @@ const Airport = () => {
         type: "actions",
         flex: 1,
         renderCell: (params) => (
-          <AirportActions { ... { params }} />
+          <AirportActions { ... { params }} refresh={setRefresh}/>
         ),
     },
   ];

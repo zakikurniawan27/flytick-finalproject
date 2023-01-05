@@ -4,7 +4,7 @@ import { delAirport, getDetailsAirport, getViewEdit } from "../../Redux/Actions/
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const Actions = ({ params }) => {
+const Actions = ({ params, refresh }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const Actions = ({ params }) => {
                 </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
-                <IconButton onClick={()=>{dispatch(delAirport(params.id))}}>
+                <IconButton onClick={()=>{dispatch(delAirport(params.id)); refresh(true)}}>
                     <Delete />
                 </IconButton>
             </Tooltip>
