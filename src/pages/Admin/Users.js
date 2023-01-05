@@ -102,6 +102,7 @@ const Users = () => {
         <Box sx={{ height: 400, width: '100%' }}>
         {allUsers?.data?.length > 0 ? (
             <DataGrid
+            sx={{ overflowX: 'scroll' }}
             rows={allUsers?.data}
             columns={columns}
             components={{ Toolbar: GridToolbar }}
