@@ -86,13 +86,13 @@ const SignUp = () => {
               <label className="signup">or sign up using </label>
             </div>
 
-            <div className="signUpFieldbutton">
+            {/* <div className="signUpFieldbutton">
               <div className="googleButton">
                 <button className="google">
                   <FaGoogle color="white" />
                 </button>
               </div>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>
