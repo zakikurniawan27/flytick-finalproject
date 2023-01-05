@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { BsPersonCircle, BsBell } from "react-icons/bs";
-import axios from "axios";
 import { logout, me } from "../Redux/Actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -25,6 +24,7 @@ function Navbar() {
     dispatch(logout(navigate));
   };
 
+
   return (
     <>
       <nav className="navbar navbar-expand-md">
@@ -38,7 +38,7 @@ function Navbar() {
           <div className="collapse navbar-collapse " id="navbarScroll">
             <div className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <a className="nav-link mt-1" aria-current="page" href="/">
                   Home
                 </a>
               </li>
@@ -58,29 +58,61 @@ function Navbar() {
               ) : (
                 <>
                   <div className="btn-group btn-group-sm me-auto">
-                    <button className="btn" type="button">
+                    {/* <button className="btn" type="button" onClick={() => navigate(`/notification`)}> */}
+                    <button className="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <BsBell className="fs-6" />
                     </button>
+                    <ul className="dropdown-menu dropdown-menu-lg-end">
+                      <li>
+                        <div className="dropdown-item" onClick={() => navigate(`/notification`)}>
+                          Notification
+                        </div>
+                      </li>
+                    </ul>
                     <button className="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <div className="row">
-                        <div className="col-4">
-                          <BsPersonCircle className="fs-3" />
+                        <div className="col-3">
+                          <BsPersonCircle className="fs-3 mb-2" />
                         </div>
                         <div className="col-8">
                           <p>{user?.data?.name}</p>
                         </div>
                       </div>
                     </button>
+                    {user?.data?.role === "admin" && (
+                       <ul className="dropdown-menu dropdown-menu-lg-end">
+                        <li>
+                         <a className="dropdown-item" href="/dashboard">
+                           Dashboard
+                         </a>
+                       </li>
+                       <li>
+                         <div className="dropdown-item" onClick={() => navigate(`/user/${user?.data?.id}`)}>
+                           My Profil
+                         </div>
+                       </li>
+                       <li>
+                          <button className="dropdown-item" onClick={() => navigate(`/history/${user?.data?.id}`)}>
+                            History
+                          </button>
+                       </li>
+                       <li>
+                         <button className="dropdown-item" onClick={handleLogout}>
+                           Logout
+                         </button>
+                       </li>
+                     </ul>
+                    )}
                     <ul className="dropdown-menu dropdown-menu-lg-end">
                       <li>
-                        <a className="dropdown-item" href="/user">
+                        <button className="dropdown-item pe-auto" onClick={() => navigate(`/user/${user?.data?.id}`)}>
                           My Profil
-                        </a>
+                        </button>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="/history">
+                        <button className="dropdown-item" onClick={() => navigate(`/history/${user?.data?.id}`)}>
                           History
-                        </a>
+                        </button>
                       </li>
                       <li>
                         <button className="dropdown-item" onClick={handleLogout}>
