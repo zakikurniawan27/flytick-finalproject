@@ -34,6 +34,10 @@ import DetailTicketHistory from "./pages/History/DetaiTicketHistory"
 import NotFound from "./pages/404/404.jsx";
 import CreateAirport from "./pages/Admin/Form/AirportForm"
 import CreateSchedule from "./pages/Admin/Form/ScheduleForm";
+import TicketVerification from "./pages/Admin/TicketVerification";
+import CreateFlight from "./pages/Admin/Form/FlightForm";
+import CreateCity from "./pages/Admin/Form/CityForm";
+import CreateCountry from "./pages/Admin/Form/CountryForm";
 
 function App() {
   const [adult, setAdult] = useState("");
@@ -83,11 +87,23 @@ function App() {
             <Protected roles={["admin"]}>
               <Flight />
             </Protected>} />
+            <Route path="/flight/:id" element={
+            <Protected roles={["admin"]}>
+              <Flight />
+            </Protected>} />
             <Route path="/city" element={
             <Protected roles={["admin"]}>
               <City />
             </Protected>} />
+            <Route path="/city/:id" element={
+            <Protected roles={["admin"]}>
+              <City />
+            </Protected>} />
             <Route path="/country" element={
+            <Protected roles={["admin"]}>
+              <Country />
+            </Protected>} />
+            <Route path="/country/:id" element={
             <Protected roles={["admin"]}>
               <Country />
             </Protected>} />
@@ -120,6 +136,34 @@ function App() {
             <Route path="/cschedules/:id" element={
             <Protected roles={["admin"]}>
               <CreateSchedule />
+            </Protected>} />
+            <Route path="/admin/verification/:id" element={
+            <Protected roles={["admin"]}>
+              <TicketVerification />
+            </Protected>}/>
+            <Route path="/cflight" element={
+            <Protected roles={["admin"]}>
+              <CreateFlight />
+            </Protected>} />
+            <Route path="/cflight/:id" element={
+            <Protected roles={["admin"]}>
+              <CreateFlight />
+            </Protected>} />
+            <Route path="/ccity" element={
+            <Protected roles={["admin"]}>
+              <CreateCity />
+            </Protected>} />
+            <Route path="/ccity/:id" element={
+            <Protected roles={["admin"]}>
+              <CreateCity />
+            </Protected>} />
+            <Route path="/ccountry" element={
+            <Protected roles={["admin"]}>
+              <CreateCountry />
+            </Protected>} />
+            <Route path="/ccountry/:id" element={
+            <Protected roles={["admin"]}>
+              <CreateCountry />
             </Protected>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
