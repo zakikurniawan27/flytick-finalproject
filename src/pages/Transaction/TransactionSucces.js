@@ -4,11 +4,14 @@ import centangHijau from '../../assets/centang-hijau.png'
 
 const TransactionSucces = () => {
     const navigate = useNavigate()
+
     useEffect(() => {
-        setInterval(() => {
+        const interval = setInterval(() => {
             navigate('/')
-        },3000)
-      }, [navigate]);
+        },2000)
+
+        return () => clearInterval(interval)
+      }, []);
     return (
     <>
         <div className='container'>
