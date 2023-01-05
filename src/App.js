@@ -34,6 +34,7 @@ import DetailTicketHistory from "./pages/History/DetaiTicketHistory"
 import NotFound from "./pages/404/404.jsx";
 import CreateAirport from "./pages/Admin/Form/AirportForm"
 import CreateSchedule from "./pages/Admin/Form/ScheduleForm";
+import TicketVerification from "./pages/Admin/TicketVerification";
 
 function App() {
   const [adult, setAdult] = useState("");
@@ -120,6 +121,10 @@ function App() {
             <Route path="/cschedules/:id" element={
             <Protected roles={["admin"]}>
               <CreateSchedule />
+            </Protected>} />
+            <Route path="/admin/verification/:id" element={
+            <Protected roles={["admin"]}>
+              <TicketVerification />
             </Protected>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
