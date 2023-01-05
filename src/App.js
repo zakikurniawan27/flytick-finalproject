@@ -34,6 +34,7 @@ import DetailTicketHistory from "./pages/History/DetaiTicketHistory"
 import NotFound from "./pages/404/404.jsx";
 import CreateAirport from "./pages/Admin/Form/AirportForm"
 import CreateSchedule from "./pages/Admin/Form/ScheduleForm";
+import TicketVerification from "./pages/Admin/TicketVerification";
 import CreateFlight from "./pages/Admin/Form/FlightForm";
 import CreateCity from "./pages/Admin/Form/CityForm";
 import CreateCountry from "./pages/Admin/Form/CountryForm";
@@ -136,6 +137,10 @@ function App() {
             <Protected roles={["admin"]}>
               <CreateSchedule />
             </Protected>} />
+            <Route path="/admin/verification/:id" element={
+            <Protected roles={["admin"]}>
+              <TicketVerification />
+            </Protected>}/>
             <Route path="/cflight" element={
             <Protected roles={["admin"]}>
               <CreateFlight />

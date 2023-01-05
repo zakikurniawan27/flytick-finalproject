@@ -108,13 +108,13 @@ const SignUp = () => {
               <label className="signup">or sign up using </label>
             </div>
 
-            <div className="signUpFieldbutton">
+            {/* <div className="signUpFieldbutton">
               <div className="googleButton">
                 <button className="google px-2 py-1" onClick={googleLogin}>
                   <FaGoogle color="white" />
                 </button>
               </div>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>
