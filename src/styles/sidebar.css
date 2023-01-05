@@ -13,7 +13,7 @@ main{
 .sidebar{
     background: #63D471;
     color: #fff;
-    height: 100vh;
+    height: 650px;
     width: 200px;
     transition: all 0.5s;
 }
@@ -48,4 +48,14 @@ main{
 }
 .icon, .link_text{
     font-size: 15px;
+}
+
+@media (max-width: 784px) {
+.sidebar {
+    background: #63D471;
+    color: #fff;
+    height: 600px;
+    width: 200px;
+    transition: all 0.5s;
+}
 }
