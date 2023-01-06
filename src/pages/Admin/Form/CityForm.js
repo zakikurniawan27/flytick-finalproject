@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Typography from "@mui/material/Typography";
 import { createCity, editCity } from "../../../Redux/Actions/formCityActions"
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const CreateCity = () => {
   const dispatch = useDispatch();
@@ -51,9 +52,9 @@ const CreateCity = () => {
                   setName(e.target.value);
                 }} 
                 label="Name" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -66,9 +67,9 @@ const CreateCity = () => {
                   setCountryID(e.target.value);
                 }} 
                 label="Country ID" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>       
         </form>
@@ -79,7 +80,16 @@ const CreateCity = () => {
               dispatch(editCity(params.id, {
                 name,
                 country_id: Number(country_id),
-              }, token)) && navigate("/city")} 
+              }, token)) && navigate("/city");
+              toast.info('City Edited', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });} 
               }>Edit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>
         ) : (
@@ -88,7 +98,16 @@ const CreateCity = () => {
               dispatch(createCity({
                 name,
                 country_id: Number(country_id),
-              }, token, navigate))}
+              }, token, navigate));
+              toast.info('City Created', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });}
               }>Submit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>)}
       </Box>

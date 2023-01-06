@@ -17,6 +17,7 @@ import { createUser, editUser } from "../../../Redux/Actions/formUserActions";
 import { useNavigate, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
+import { toast } from "react-toastify";
 
 const CreateUsers = () => {
   const dispatch = useDispatch();
@@ -92,9 +93,9 @@ const CreateUsers = () => {
                   setName(e.target.value);
                 }} 
                 label="Name" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>    
           <Grid item xs={6}>
           <Typography variant="body2" align="left" gutterBottom>Balance : </Typography>
@@ -105,9 +106,10 @@ const CreateUsers = () => {
                   setBalance(e.target.value);
                 }} 
                 label="Balance" 
-                variant="outlined" 
+                id="outlined-required" 
+                type="number"
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -120,9 +122,10 @@ const CreateUsers = () => {
                   setNik(e.target.value);
                 }} 
                 label="NIK" 
-                variant="outlined" 
+                id="outlined-required" 
+                type="number"
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
           <Grid item xs={6}>
           <Typography variant="body2" align="left" gutterBottom>Telephone : </Typography>
@@ -133,9 +136,10 @@ const CreateUsers = () => {
                   setTelp(e.target.value);
                 }} 
                 label="Telephone" 
-                variant="outlined" 
+                id="outlined-required"
+                type="number" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -148,9 +152,9 @@ const CreateUsers = () => {
                   setBirthPlace(e.target.value);
                 }} 
                 label="Birth Place" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
           <Grid item xs={6}>
           <Typography variant="body2" align="left" gutterBottom>Nationality : </Typography>
@@ -161,9 +165,9 @@ const CreateUsers = () => {
                   setNationality(e.target.value);
                 }} 
                 label="Nationality" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -224,9 +228,9 @@ const CreateUsers = () => {
                   setNoPassport(e.target.value);
                 }} 
                 label="No Passport" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>                
         </form>
@@ -242,9 +246,9 @@ const CreateUsers = () => {
                   setName(e.target.value);
                 }} 
                 label="Name" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Typography variant="body2" align="left" gutterBottom>Email : </Typography>
@@ -257,9 +261,9 @@ const CreateUsers = () => {
                   setEmail(e.target.value);
                 }} 
                 label="Email" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Typography variant="body2" align="left" gutterBottom>Password : </Typography>
@@ -332,7 +336,16 @@ const CreateUsers = () => {
                 issue_date,
                 expire_date,
                 image,
-              }, token)) && navigate("/users")} 
+              }, token)) && navigate("/users");
+              toast.info('User Edited', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });} 
               }>Edit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>
         ) : (
@@ -344,7 +357,16 @@ const CreateUsers = () => {
                 password,
                 role,
                 image,
-              }, token, navigate))}
+              }, token, navigate)); 
+              toast.info('User Created', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });}
               }>Submit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>)}
       </Box>

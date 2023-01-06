@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Typography from "@mui/material/Typography";
 import { createAirports, editAirports } from "../../../Redux/Actions/formAirportActions";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const CreateAirport = () => {
   const dispatch = useDispatch();
@@ -55,9 +56,9 @@ const CreateAirport = () => {
                   setCode(e.target.value);
                 }} 
                 label="Code" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
           <Grid item xs={5}>
           <Typography variant="body2" align="left" gutterBottom>Name : </Typography>
@@ -68,9 +69,9 @@ const CreateAirport = () => {
                   setName(e.target.value);
                 }} 
                 label="Name" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -83,9 +84,9 @@ const CreateAirport = () => {
                   setCityid(e.target.value);
                 }} 
                 label="City ID" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
           <Grid item xs={5}>
           <Typography variant="body2" align="left" gutterBottom>Country ID : </Typography>
@@ -96,9 +97,9 @@ const CreateAirport = () => {
                   setCountryid(e.target.value);
                 }} 
                 label="Country ID" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -111,9 +112,9 @@ const CreateAirport = () => {
                   setMapslink(e.target.value);
                 }} 
                 label="Maps Link" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
           <Grid item xs={5}>
           <Typography variant="body2" align="left" gutterBottom>Maps Embed : </Typography>
@@ -124,9 +125,8 @@ const CreateAirport = () => {
                   setMapsembed(e.target.value);
                 }} 
                 label="Maps Embed" 
-                variant="outlined" 
-                fullWidth={true}
-                required={true} />
+                id="outlined" 
+                fullWidth={true} />
           </Grid>
         </Grid>                
         </form>
@@ -141,7 +141,16 @@ const CreateAirport = () => {
                 country_id: Number(country_id),
                 maps_link,
                 maps_embed,
-              }, token)) && navigate("/airports")} 
+              }, token)) && navigate("/airports");
+              toast.info('Airport Edited', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });} 
               }>Edit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>
         ) : (
@@ -154,7 +163,16 @@ const CreateAirport = () => {
                 country_id: Number(country_id),
                 maps_link,
                 maps_embed,
-              }, token, navigate))}
+              }, token, navigate));
+              toast.info('Airport Created', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });}
               }>Submit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>)}
       </Box>

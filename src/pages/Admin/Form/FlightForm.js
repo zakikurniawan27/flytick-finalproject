@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Typography from "@mui/material/Typography";
 import { createFlight, editFlight } from "../../../Redux/Actions/formFlightActions"
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const CreateFlight = () => {
   const dispatch = useDispatch();
@@ -53,9 +54,9 @@ const CreateFlight = () => {
                   setCode(e.target.value);
                 }} 
                 label="Code" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -68,9 +69,9 @@ const CreateFlight = () => {
                   setCapacity(e.target.value);
                 }} 
                 label="Capacity" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -83,9 +84,9 @@ const CreateFlight = () => {
                   setCurrentAirport(e.target.value);
                 }} 
                 label="Current Airport" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>                
         </form>
@@ -97,7 +98,16 @@ const CreateFlight = () => {
                 code,
                 capacity: Number(capacity),
                 current_airport: Number(current_airport),
-              }, token)) && navigate("/flight")} 
+              }, token)) && navigate("/flight");
+              toast.info('Flight Edited', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });} 
               }>Edit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>
         ) : (
@@ -107,7 +117,16 @@ const CreateFlight = () => {
                 code,
                 capacity: Number(capacity),
                 current_airport: Number(current_airport),
-              }, token, navigate))}
+              }, token, navigate));
+              toast.info('Flight Created', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });}
               }>Submit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>)}
       </Box>
