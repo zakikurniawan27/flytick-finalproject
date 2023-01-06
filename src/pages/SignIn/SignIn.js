@@ -40,11 +40,12 @@ const SignIn = () => {
         const data = {
           access_token: response.access_token,
         };
-
-        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/oauth/login/google`, data);
-        if (result.data.data.token) {
-          localStorage.setItem("token", result.data.data.token);
-          console.log(result);
+        console.log(data);
+        const datas = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/oauth/login/google`, data);
+        console.log(datas);
+        if (datas.data) {
+          localStorage.setItem("token", datas.data);
+          window.location.reload();
         }
       } catch (error) {
         alert(error.response.data.message);
