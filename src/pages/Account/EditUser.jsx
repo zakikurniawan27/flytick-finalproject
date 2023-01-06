@@ -156,7 +156,7 @@ function EditUser() {
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Telp</Form.Label>
-                      <Form.Control type="text" placeholder="Enter Telp" name="telp" value={telp} onChange={(e) => setBiodata({ ...biodata, telp: e.target.value })} required />
+                      <Form.Control max="13" type="text" placeholder="Enter Telp" name="telp" value={telp} onChange={(e) => setBiodata({ ...biodata, telp: e.target.value })} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Nationality</Form.Label>
