@@ -3,6 +3,7 @@ import { Delete, Edit, Preview } from "@mui/icons-material"
 import { delSchedule, getViewEdit, getDetailsSchedule } from "../../Redux/Actions/scheduleActions";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Actions = ({ params, refresh }) => {
     const dispatch = useDispatch();
@@ -21,7 +22,16 @@ const Actions = ({ params, refresh }) => {
                 </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
-                <IconButton onClick={()=>{dispatch(delSchedule(params.id)); refresh(true)}}>
+                <IconButton onClick={()=>{dispatch(delSchedule(params.id)); refresh(true);
+                toast.info('Schedule Deleted', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    }); }}>
                     <Delete />
                 </IconButton>
             </Tooltip>

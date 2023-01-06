@@ -38,6 +38,8 @@ import TicketVerification from "./pages/Admin/TicketVerification";
 import CreateFlight from "./pages/Admin/Form/FlightForm";
 import CreateCity from "./pages/Admin/Form/CityForm";
 import CreateCountry from "./pages/Admin/Form/CountryForm";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [adult, setAdult] = useState("");
@@ -167,6 +169,7 @@ function App() {
             </Protected>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <ToastContainer autoClose={5000} />
           <Footer />
         </Provider>
       </GoogleOAuthProvider>
