@@ -5,6 +5,9 @@ import axios from "axios";
 import ProfileLeft from "../../components/ProfileLeft";
 import EditProfile from "../../components/EditProfile";
 import Moment from "react-moment";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import "../../styles/signIn.css";
 
 export default function User() {
   const { id } = useParams();
@@ -40,7 +43,7 @@ export default function User() {
     return `Rp ${rupiah}`;
   };
 
-  const balance = `${user.balance}`;
+  const balance = `${user.balance || <Skeleton />}`;
   const balanceRupiah = formatRupiah(balance);
 
   return (
@@ -61,9 +64,11 @@ export default function User() {
             <MDBCol lg="9" md="8">
               <MDBRow>
                 <MDBCol>
-                  <MDBBreadcrumb className=" rounded-3 p-3 mb-4" style={{ backgroundColor: "#eee" }}>
+                  <MDBBreadcrumb className="BC rounded-3 p-3 mb-4" style={{ backgroundColor: "#eee" }}>
                     <MDBBreadcrumbItem>
-                      <a href="/">Home</a>
+                      <a href="/" className="text-decoration-none">
+                        Home
+                      </a>
                     </MDBBreadcrumbItem>
                     <MDBBreadcrumbItem>Profile</MDBBreadcrumbItem>
                   </MDBBreadcrumb>
@@ -77,7 +82,7 @@ export default function User() {
                       <MDBCardText>Name</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{user.name}</MDBCardText>
+                      <MDBCardText className="text-muted">{user.name || <Skeleton />}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -86,7 +91,7 @@ export default function User() {
                       <MDBCardText>Email</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{user.email}</MDBCardText>
+                      <MDBCardText className="text-muted">{user.email || <Skeleton />}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -95,7 +100,7 @@ export default function User() {
                       <MDBCardText>Role</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{user.role}</MDBCardText>
+                      <MDBCardText className="text-muted">{user.role || <Skeleton />}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -113,7 +118,7 @@ export default function User() {
                       <MDBCardText>NIK</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{biodata.nik != null ? biodata.nik : "-"}</MDBCardText>
+                      <MDBCardText className="text-muted">{biodata.nik != null ? biodata.nik || <Skeleton /> : "-"}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -122,7 +127,7 @@ export default function User() {
                       <MDBCardText>Birth Place</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{biodata.birth_place != null ? biodata.birth_place : "-"}</MDBCardText>
+                      <MDBCardText className="text-muted">{biodata.birth_place != null ? biodata.birth_place || <Skeleton /> : "-"}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -142,7 +147,7 @@ export default function User() {
                       <MDBCardText>Telp</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{biodata.telp != null ? biodata.telp : "-"}</MDBCardText>
+                      <MDBCardText className="text-muted">{biodata.telp != null ? biodata.telp || <Skeleton /> : "-"}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -151,7 +156,7 @@ export default function User() {
                       <MDBCardText>Nationality</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{biodata.nationality != null ? biodata.nationality : "-"}</MDBCardText>
+                      <MDBCardText className="text-muted">{biodata.nationality != null ? biodata.nationality || <Skeleton /> : "-"}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -160,7 +165,7 @@ export default function User() {
                       <MDBCardText>No Passport</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{biodata.no_passport != null ? biodata.no_passport : "-"}</MDBCardText>
+                      <MDBCardText className="text-muted">{biodata.no_passport != null ? biodata.no_passport || <Skeleton /> : "-"}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -170,7 +175,7 @@ export default function User() {
                     </MDBCol>
                     <MDBCol sm="9">
                       <MDBCardText className="text-muted">
-                        <Moment format="DD MMMM YYYY">{biodata.issue_date != null ? biodata.issue_date : "-"}</Moment>
+                        <Moment format="DD MMMM YYYY">{biodata.issue_date != null ? biodata.issue_date || <Skeleton /> : "-"}</Moment>
                       </MDBCardText>
                     </MDBCol>
                   </MDBRow>
@@ -181,7 +186,7 @@ export default function User() {
                     </MDBCol>
                     <MDBCol sm="9">
                       <MDBCardText className="text-muted">
-                        <Moment format="DD MMMM YYYY">{biodata.expire_date != null ? biodata.expire_date : "-"}</Moment>
+                        <Moment format="DD MMMM YYYY">{biodata.expire_date != null ? biodata.expire_date || <Skeleton /> : "-"}</Moment>
                       </MDBCardText>
                     </MDBCol>
                   </MDBRow>

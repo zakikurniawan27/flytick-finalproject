@@ -40,6 +40,11 @@
   color: #56c361;
 }
 
+.BC a {
+  color: #56c361;
+  text-decoration: none;
+}
+
 .signInFieldLabel {
   display: block;
   text-transform: uppercase;
@@ -75,6 +80,26 @@
   color: white;
   border: none;
   outline: none;
+  border-radius: 5px;
+  padding: 10px 40px;
+  font-weight: 500;
+}
+.signInFieldButtonOutline {
+  border: 1px solid;
+  border-color: #56c361;
+  background-color: white;
+  color: #56c361;
+  outline: 1px;
+  border-radius: 5px;
+  padding: 10px 40px;
+  font-weight: 500;
+}
+.signInFieldButtonOutline:hover {
+  border: 2px;
+  border-color: #5dec6b;
+  background-color: #5dec6b;
+  color: white;
+  outline: 1px;
   border-radius: 5px;
   padding: 10px 40px;
   font-weight: 500;
