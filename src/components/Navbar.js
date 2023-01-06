@@ -79,6 +79,30 @@ function Navbar() {
                         </div>
                       </div>
                     </button>
+                    {user?.data?.role === "admin" && (
+                       <ul className="dropdown-menu dropdown-menu-lg-end">
+                        <li>
+                         <a className="dropdown-item" href="/dashboard">
+                           Dashboard
+                         </a>
+                       </li>
+                       <li>
+                         <button className="dropdown-item" onClick={() => navigate(`/user/${user?.data?.id}`)}>
+                           My Profil
+                         </button>
+                       </li>
+                       <li>
+                          <button className="dropdown-item" onClick={() => navigate(`/history/${user?.data?.id}`)}>
+                            History
+                          </button>
+                       </li>
+                       <li>
+                         <button className="dropdown-item" onClick={handleLogout}>
+                           Logout
+                         </button>
+                       </li>
+                     </ul>
+                    )}
                     <ul className="dropdown-menu dropdown-menu-lg-end">
                       <li>
                         <button className="dropdown-item pe-auto" onClick={() => navigate(`/user/${user?.data?.id}`)}>

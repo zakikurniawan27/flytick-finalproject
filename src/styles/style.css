@@ -84,8 +84,19 @@ p{
 .card-schedule{
   width: 70rem;
 }
-.card-detail-schedule{
+/* .card-detail-schedule{
   width: 43rem;
+} */
+.card-detail-ticket{
+  width: 54rem;
+}
+.detail-ticket{
+  font-size: 13px;
+  color: #5DEC6B;
+  cursor: pointer;
+}
+.detail-ticket:hover{
+  color: green;
 }
 .card-detail-ticket{
   width: 54rem;

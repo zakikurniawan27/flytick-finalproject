@@ -15,11 +15,11 @@ const CardHistory = (props) => {
         <p className='fw-bold fs-5 text-success-900'>
             HISTORY
         </p>
-        {transactions.length === 0  ? (
+        {transactions?.data?.length === 0  ? (
             <p className='text-center fs-4 fw-bold'>
                 NO HISTORY
             </p>
-        ): transactions.data === 0 ? ( 
+        ): transactions?.data === 0 ? ( 
             <p className=' text-center fs-4 fw-bold'>
                 KOSONG
             </p>

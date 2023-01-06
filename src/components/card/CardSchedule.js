@@ -43,7 +43,7 @@ function CardSchedule() {
                     </div>
                   </>
                 ))}
-              <div className="row mt-3">
+              <div className="row mt-3 content-schedule">
                 <div className="col">
                   <p className="text-schedule">
                     {item.fClass}
@@ -56,7 +56,7 @@ function CardSchedule() {
                 </div>
               </div>
               </div>
-              <div className="row mt-3">
+              <div className="row mt-3 content-schedule">
                 <div className="col text-schedule">
                   {searchSchedules?.data.fromAirport?.name}
                 </div>
@@ -76,7 +76,7 @@ function CardSchedule() {
                   <div><Moment format="YYYY-MM-DD">{item.arrival_time}</Moment></div>
                   <div><Moment format="hh:mm a">{item.arrival_time}</Moment></div>
                 </div>
-                <div className="col" id="btn-select">
+                <div className="col text-end" id="btn-select">
                   <button className="btn bttn" id="btn-select-schedule" onClick={() => navigate(`/transaction/${item.id}`)}>Select</button>
                 </div>
               </div>

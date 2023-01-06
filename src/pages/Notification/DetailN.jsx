@@ -5,6 +5,8 @@ import axios from "axios";
 import { BsArrowLeft } from "react-icons/bs";
 import ProfileLeft from "../../components/ProfileLeft";
 import PhotoProfile from "../../components/PhotoProfile";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const DetailN = () => {
   const { id } = useParams();
@@ -37,7 +39,7 @@ const DetailN = () => {
         }
       )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
       });
   }, []);
 
@@ -56,7 +58,7 @@ const DetailN = () => {
         <MDBCol lg="9" md="8">
           <MDBRow>
             <MDBCol>
-              <MDBBreadcrumb className=" rounded-3 p-3 mb-4" style={{ backgroundColor: "#eee" }}>
+              <MDBBreadcrumb className="BC rounded-3 p-3 mb-4" style={{ backgroundColor: "#eee" }}>
                 <MDBBreadcrumbItem>
                   <a href="/">Home</a>
                 </MDBBreadcrumbItem>
@@ -72,8 +74,8 @@ const DetailN = () => {
 
           <MDBCard>
             <MDBCardBody>
-              <div className="mb-3">
-                <a href="/notification">
+              <div className="mb-3 BC">
+                <a href="/notification" className="">
                   <BsArrowLeft className="mx-1" />
                   back
                 </a>
@@ -84,8 +86,8 @@ const DetailN = () => {
                     <div className="w-100">
                       <div className=" justify-content-between align-items-center mb-3">
                         <MDBTypography>
-                          <h5 className="fw-bold text-capitalize text-success"> {detailNotif.topic}</h5>
-                          <h6 className="text-dark my-3">{detailNotif.message}</h6>
+                          <h5 className="fw-bold text-capitalize text-success"> {detailNotif.topic || <Skeleton />}</h5>
+                          <h6 className="text-dark my-3">{detailNotif.message || <Skeleton />}</h6>
                         </MDBTypography>
                       </div>
                     </div>

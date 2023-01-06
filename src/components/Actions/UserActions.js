@@ -1,16 +1,27 @@
 import { Box, IconButton, Tooltip } from "@mui/material"
 import { Delete, Edit, Preview } from "@mui/icons-material"
+import { delUser, getDetailUser, getViewEdit } from "../../Redux/Actions/allUserActions";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const Actions = ({ params }) => {
+const Actions = ({ params, refresh }) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     return (
         <Box>
+            <Tooltip title="Detail">
+                <IconButton onClick={()=>{dispatch(getDetailUser(params.id, navigate))}}>
+                    <Preview />
+                </IconButton>
+            </Tooltip>
             <Tooltip title="Edit">
-                <IconButton onClick={()=>{}}>
+                <IconButton onClick={()=>{dispatch(getViewEdit(params.id, navigate))}}>
                     <Edit />
                 </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
-                <IconButton onClick={()=>{}}>
+                <IconButton onClick={()=>{dispatch(delUser(params.id)); refresh(true)}}>
                     <Delete />
                 </IconButton>
             </Tooltip>
