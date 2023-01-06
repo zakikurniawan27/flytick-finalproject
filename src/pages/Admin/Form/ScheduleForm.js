@@ -10,6 +10,7 @@ import { createSchedule, editSchedule } from "../../../Redux/Actions/formSchedul
 import { useNavigate, useParams } from "react-router-dom";
 import DateTimePicker from 'react-datetime-picker';
 import "react-datetime-picker/dist/DateTimePicker.css"
+import { toast } from "react-toastify";
 
 const CreateSchedule = () => {
   const dispatch = useDispatch();
@@ -56,9 +57,10 @@ const CreateSchedule = () => {
                   setFlightid(e.target.value);
                 }} 
                 label="Flight ID" 
-                variant="outlined" 
+                id="outlined-required" 
+                type="number"
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
           <Grid item xs={5}>
           <Typography variant="body2" align="left" gutterBottom>Cost : </Typography>
@@ -69,9 +71,10 @@ const CreateSchedule = () => {
                   setCost(e.target.value);
                 }} 
                 label="Cost" 
-                variant="outlined" 
+                id="outlined-required" 
+                type="number"
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -84,9 +87,10 @@ const CreateSchedule = () => {
                   setFromairport(e.target.value);
                 }} 
                 label="From Airport" 
-                variant="outlined" 
+                id="outlined-required"
+                type="number" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
           <Grid item xs={5}>
           <Typography variant="body2" align="left" gutterBottom>To Airport : </Typography>
@@ -97,9 +101,10 @@ const CreateSchedule = () => {
                   setToairport(e.target.value);
                 }} 
                 label="To Airport" 
-                variant="outlined" 
+                id="outlined-required" 
+                type="number"
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -110,6 +115,7 @@ const CreateSchedule = () => {
                 onChange={setDeparturetime}
                 format="yyyy-MM-dd HH:mm:ss"
                 placeholder="Choose a Date and Time" 
+                required
                 />
           </Grid>
           <Grid item xs={5}>
@@ -119,6 +125,7 @@ const CreateSchedule = () => {
                 onChange={setArrivaltime}
                 format="yyyy-MM-dd HH:mm:ss"
                 placeholder="Choose a Date and Time" 
+                required
                  />
           </Grid>
         </Grid>                
@@ -134,7 +141,16 @@ const CreateSchedule = () => {
                 to_airport: Number(to_airport),
                 departure_time,
                 arrival_time,
-              }, token)) && navigate("/schedule")} 
+              }, token)) && navigate("/schedule");
+              toast.info('Schedule Edited', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });} 
               }>Edit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>
         ) : (
@@ -147,7 +163,16 @@ const CreateSchedule = () => {
                 to_airport: Number(to_airport),
                 departure_time,
                 arrival_time,
-              }, token, navigate))}
+              }, token, navigate));
+              toast.info('Schedule Created', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });}
               }>Submit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>)}
       </Box>

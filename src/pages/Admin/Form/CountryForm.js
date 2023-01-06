@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Typography from "@mui/material/Typography";
 import { createCountry, editCountry } from "../../../Redux/Actions/formCountryActions"
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const CreateCountry = () => {
   const dispatch = useDispatch();
@@ -51,9 +52,9 @@ const CreateCountry = () => {
                   setCode(e.target.value);
                 }} 
                 label="Code" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -66,9 +67,9 @@ const CreateCountry = () => {
                   setName(e.target.value);
                 }} 
                 label="Name" 
-                variant="outlined" 
+                id="outlined-required" 
                 fullWidth={true}
-                required={true} />
+                required />
           </Grid>
         </Grid>                
         </form>
@@ -79,7 +80,16 @@ const CreateCountry = () => {
               dispatch(editCountry(params.id, {
                 code,
                 name,
-              }, token)) && navigate("/country")} 
+              }, token)) && navigate("/country");
+              toast.info('Country Edited', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });} 
               }>Edit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>
         ) : (
@@ -88,7 +98,16 @@ const CreateCountry = () => {
               dispatch(createCountry({
                 code,
                 name,
-              }, token, navigate))}
+              }, token, navigate));
+              toast.info('Country Created', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });}
               }>Submit</Button>
             <Button variant="outlined" onClick={back}>Back</Button></>)}
       </Box>
