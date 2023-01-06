@@ -148,7 +148,7 @@ function EditUser() {
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>NIK</Form.Label>
-                      <Form.Control type="text" placeholder="Enter NIK" name="nik" value={nik} onChange={(e) => setBiodata({ ...biodata, nik: e.target.value })} required />
+                      <Form.Control minLength={16} maxLength={16} type="text" placeholder="Enter NIK" name="nik" value={nik} onChange={(e) => setBiodata({ ...biodata, nik: e.target.value })} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Birth Place</Form.Label>
@@ -160,7 +160,7 @@ function EditUser() {
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Telp</Form.Label>
-                      <Form.Control max="13" type="text" placeholder="Enter Telp" name="telp" value={telp} onChange={(e) => setBiodata({ ...biodata, telp: e.target.value })} required />
+                      <Form.Control maxLength={13} type="text" placeholder="Enter Telp" name="telp" value={telp} onChange={(e) => setBiodata({ ...biodata, telp: e.target.value })} required />
                     </Form.Group>
                     <Form.Group className="mb-4">
                       <Form.Label>Nationality</Form.Label>

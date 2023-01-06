@@ -91,7 +91,7 @@ const SignUp = () => {
 
             <div className="signUpField">
               <label className="signUpFieldLabel">Password</label>
-              <input type="password" id="password" className="signUpFieldInput" placeholder="Enter your password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <input type="password" minLength="8" id="password" className="signUpFieldInput" placeholder="Enter your password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             </div>
 
             <div className="signUpField">
