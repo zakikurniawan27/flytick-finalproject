@@ -87,9 +87,9 @@ function Navbar() {
                          </a>
                        </li>
                        <li>
-                         <div className="dropdown-item" onClick={() => navigate(`/user/${user?.data?.id}`)}>
+                         <button className="dropdown-item" onClick={() => navigate(`/user/${user?.data?.id}`)}>
                            My Profil
-                         </div>
+                         </button>
                        </li>
                        <li>
                           <button className="dropdown-item" onClick={() => navigate(`/history/${user?.data?.id}`)}>
