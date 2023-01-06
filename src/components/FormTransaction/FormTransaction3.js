@@ -97,7 +97,7 @@ function FormTransaction3(props) {
                         </label>
                         <input 
                             id='noTelp'
-                            type="text" 
+                            type="number" 
                             className='form-control'
                             placeholder='masukan nomor telepon anda'
                             value={telp3}
@@ -176,7 +176,7 @@ function FormTransaction3(props) {
                         </label>
                         <input 
                             id='passport'
-                            type="text" 
+                            type="number" 
                             className='form-control'
                             placeholder='masukan nomor passport anda'
                             value={passport3}

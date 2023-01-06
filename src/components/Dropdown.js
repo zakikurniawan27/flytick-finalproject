@@ -100,9 +100,9 @@ function Dropdown(props) {
               <option value='' hidden>
                 To ?
               </option>
-              {allAirports?.data?.map((item, index) => (
+              {allAirports?.data?.map((item, index1) => (
                 <>
-                  <option value={item.id} key={index}>({item.code}) {item.name}</option>
+                  <option value={item.id} key={index1}>({item.code}) {item.name}</option>
                 </>
               ))}
             </select>

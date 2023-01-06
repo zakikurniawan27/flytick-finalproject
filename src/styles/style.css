@@ -98,6 +98,17 @@ p{
 .detail-ticket:hover{
   color: green;
 }
+.card-detail-ticket{
+  width: 54rem;
+}
+.detail-ticket{
+  font-size: 13px;
+  color: #5DEC6B;
+  cursor: pointer;
+}
+.detail-ticket:hover{
+  color: green;
+}
 .card-history{
   width: 50rem;
 }

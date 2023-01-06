@@ -12,7 +12,7 @@ const CardHistory = (props) => {
     
     return (
     <>  
-        <p className='fw-bold fs-5 text-success-900'>
+        <p className='fw-bold fs-5 text-success-900 text-history'>
             HISTORY
         </p>
         {transactions?.data?.length === 0  ? (
@@ -34,13 +34,15 @@ const CardHistory = (props) => {
                                 </div>
                             </div>
                             <div className='row mt-3'>
-                                <div className='col fs-5 fw-semibold text-success-900'>
+                                <div className='col fs-5 fw-semibold text-success-900 text-history'>
                                     {item.tickets.map((i) => i.type === "Adult").length >= 1 && item.tickets.map((i) => i.schedule.flight.code)[0]}
                                 </div>
                             </div>
                             <div className='row mt-2'>
                                 <div className='col fw-semibold'>
-                                    {item.invoice_number}
+                                    <p>
+                                        {item.invoice_number}
+                                    </p>
                                 </div>
                                 <div className='col text-end'>
                                     <p><Moment format='DD/MM/YYYY hh:mm a'>{item.transaction_time}</Moment></p>

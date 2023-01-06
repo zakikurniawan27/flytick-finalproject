@@ -26,10 +26,10 @@ function CardSchedule() {
 
   return (
     <>
-      {searchSchedules?.data?.schedules.length === 0 ? (
+      {searchSchedules?.data?.length === 0 ? (
         <p className="fw-bold text-center">NO SCHEDULE</p>
       ) : (
-        searchSchedules?.data?.schedules?.map((item, index) => (
+        searchSchedules?.data?.map((item, index) => (
           <div className="card card-schedule">
             <div className="card-body">
               <div className="row">
@@ -46,35 +46,35 @@ function CardSchedule() {
               <div className="row mt-3 content-schedule">
                 <div className="col">
                   <p className="text-schedule">
-                    {item.fClass}
+                    {item.flight.fClass}
                   </p>
                 </div>
                 <div className="col text-end">
-                  <p className="text-schedule">
+                  <p className="text-schedule" key={index}>
                     {formatRupiah(item.cost)}
                   </p>
                 </div>
               </div>
               </div>
               <div className="row mt-3 content-schedule">
-                <div className="col text-schedule">
-                  {searchSchedules?.data.fromAirport?.name}
+                <div className="col text-schedule" key={index}>
+                  {item.fromAirport.name}
                 </div>
                 <div className="col text-center">
                   <p className="fs-4 iconFillArrow text-schedule">
                     <BsFillArrowRightCircleFill />
                   </p>
                 </div>
-                <div className="col text-schedule">
-                  {searchSchedules?.data.toAirport?.name}
-                </div>
-                <div className="col text-uppercase text-schedule" key={index}>
-                  <div><Moment format="YYYY-MM-DD">{item.departure_time}</Moment></div>
-                  <div><Moment format="hh:mm a">{item.departure_time}</Moment></div>
+                <div className="col text-schedule" key={index}>
+                  {item.toAirport.name}
                 </div>
                 <div className="col text-uppercase text-schedule">
-                  <div><Moment format="YYYY-MM-DD">{item.arrival_time}</Moment></div>
-                  <div><Moment format="hh:mm a">{item.arrival_time}</Moment></div>
+                  <div key={index}><Moment format="YYYY-MM-DD">{item.departure_time}</Moment></div>
+                  <div key={index}><Moment format="hh:mm a">{item.departure_time}</Moment></div>
+                </div>
+                <div className="col text-uppercase text-schedule">
+                  <div key={index}><Moment format="YYYY-MM-DD">{item.arrival_time}</Moment></div>
+                  <div key={index}><Moment format="hh:mm a">{item.arrival_time}</Moment></div>
                 </div>
                 <div className="col text-end" id="btn-select">
                   <button className="btn bttn" id="btn-select-schedule" onClick={() => navigate(`/transaction/${item.id}`)}>Select</button>

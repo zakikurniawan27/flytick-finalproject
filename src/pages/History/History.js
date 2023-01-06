@@ -34,7 +34,7 @@ const History = () => {
         <div className="d-flex justify-content-center">
           <Pagination currentPage={currentPage} totalPage={totalPage} setCurrentPage={setCurrentPage} />
         </div>
-        <a className="text-decoration-none" onClick={() => navigate("/")}>
+        <a className="text-decoration-none" href="." onClick={() => navigate("/")}>
           <BsArrowLeft className="mx-1" />
           back
         </a>

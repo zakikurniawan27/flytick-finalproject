@@ -1,0 +1,38 @@
+@media (max-width: 425px) {
+    .text-history{
+        font-size: 12px !important;
+    }
+    .card-history{
+        width: 22rem;
+        height: 18rem;
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 525px) {
+    .text-history{
+        font-size: 14px !important;
+    }
+    .card-history{
+        width: 25rem;
+        height: 18rem;
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 525px) and (max-width: 625px) {
+    .text-history{
+        font-size: 17px !important;
+    }
+    .card-history{
+        width: 29rem;
+        height: 19rem;
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 625px) and (max-width: 725px) {
+    .card-history{
+        font-size: 15px;
+    }
+}
