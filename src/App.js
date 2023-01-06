@@ -3,6 +3,7 @@ import "./styles/style.css";
 import "./styles/Responsive/responsiveHomePage.css";
 import "./styles/Responsive/responsiveSearchSchedule.css"
 import "./styles/Responsive/responsive-transactionPage.css"
+import "./styles/Responsive/responsive-History.css"
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";

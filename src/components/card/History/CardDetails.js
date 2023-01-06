@@ -24,7 +24,7 @@ const CardDetails = (props) => {
               </div>
               <div className="row">
                 <div className="col">
-                  <p className="fw-semibold fs-5">{item.schedule.flight.code}</p>
+                  <p className="fw-semibold fs-5 text-history">{item.schedule.flight.code}</p>
                   <p>{item.schedule.flight.class}</p>
                 </div>
                 <div className="col">
