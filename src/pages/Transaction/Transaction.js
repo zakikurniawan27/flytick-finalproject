@@ -1805,7 +1805,7 @@ const Transaction = (props) => {
               </p>
               <div className="row mt-3">
                 <div className="col">
-                  <p>{searchSchedule?.searchSchedules?.data?.fromAirport?.name}</p>
+                  <p>{searchSchedule?.detail?.data?.fromAirport?.name}</p>
                 </div>
                 <div className="col text-center">
                   <p className="fs-4 iconFillArrow">
@@ -1813,7 +1813,7 @@ const Transaction = (props) => {
                   </p>
                 </div>
                 <div className="col text-end">
-                  <p>{searchSchedule?.searchSchedules?.data?.toAirport?.name}</p>
+                  <p>{searchSchedule?.detail?.data?.toAirport?.name}</p>
                 </div>
               </div>
               <div className="row">

@@ -29,7 +29,7 @@ const DetailHistory = () => {
     return (
     <>  
         <div className='container'>
-            <p className='fw-bold fs-5 text-success-900'>TICKET</p>
+            <p className='fw-bold fs-5 text-success-900 text-history'>TICKET</p>
             <div className='d-flex justify-content-center gap-3 row'>
                 <CardDetails dataMaskapai={dataMaskapai} details={details} navigate={navigate}/>
             </div>
