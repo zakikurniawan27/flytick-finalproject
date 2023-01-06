@@ -116,7 +116,7 @@ const Notification = () => {
                                   )}
                                 </MDBTypography>
                               </div>
-                              <h6 className="text-dark mt-3 mb-4">{result.message || <Skeleton />}</h6>
+                              {/* <h6 className="text-dark mt-3 mb-4">{result.message || <Skeleton />}</h6> */}
                             </div>
                             <div className=" position-absolute bottom-0 end-0 mx-3 my-1">
                               <a href="" onClick={() => navigate(`/detail-notification/${result.id}`)} className="text-decoration-none">

@@ -86,7 +86,7 @@ const DetailN = () => {
                     <div className="w-100">
                       <div className=" justify-content-between align-items-center mb-3">
                         <MDBTypography>
-                          <h5 className="fw-bold text-capitalize text-success"> {detailNotif.topic || <Skeleton />}</h5>
+                          <h5 className="fw-bold text-capitalize text-primary"> {detailNotif.topic || <Skeleton />}</h5>
                           <h6 className="text-dark my-3">{detailNotif.message || <Skeleton />}</h6>
                         </MDBTypography>
                       </div>
