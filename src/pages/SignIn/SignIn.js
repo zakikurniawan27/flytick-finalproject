@@ -34,27 +34,27 @@ const SignIn = () => {
     }
   };
 
-  const googleLogin = useGoogleLogin({
-    onSuccess: async (response) => {
-      try {
-        const data = {
-          access_token: response.access_token,
-        };
-        console.log(data);
-        const datas = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/oauth/login/google`, data);
-        console.log(datas);
-        if (datas.data) {
-          localStorage.setItem("token", datas.data);
-          window.location.reload();
-        }
-      } catch (error) {
-        alert(error.response.data.message);
-      }
-    },
-    onError: (error) => {
-      alert(error);
-    },
-  });
+  // const googleLogin = useGoogleLogin({
+  //   onSuccess: async (response) => {
+  //     try {
+  //       const data = {
+  //         access_token: response.access_token,
+  //       };
+  //       console.log(data);
+  //       const datas = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/oauth/login/google`, data);
+  //       console.log(datas);
+  //       if (datas.data) {
+  //         localStorage.setItem("token", datas.data);
+  //         window.location.reload();
+  //       }
+  //     } catch (error) {
+  //       alert(error.response.data.message);
+  //     }
+  //   },
+  //   onError: (error) => {
+  //     alert(error);
+  //   },
+  // });
 
   return (
     <div className="signIn  mb-5">
@@ -88,17 +88,17 @@ const SignIn = () => {
               </div>
             </div>
 
-            <div className="signInFieldbutton">
+            {/* <div className="signInFieldbutton">
               <label className="signup">or sign up using </label>
-            </div>
+            </div> */}
 
-            <div className="signInFieldbutton">
+            {/* <div className="signInFieldbutton">
               <div className="googleButton">
                 <button className="google px-2 py-1" onClick={googleLogin}>
                   <FaGoogle color="white" />
                 </button>
               </div>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>
