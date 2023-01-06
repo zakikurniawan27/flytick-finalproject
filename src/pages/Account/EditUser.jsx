@@ -6,6 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import EditPhoto from "../../components/EditPhoto";
 
+import "../../styles/signIn.css";
+
 function EditUser() {
   const navigate = useNavigate();
 
@@ -111,12 +113,14 @@ function EditUser() {
           <MDBCol lg="9" md="8">
             <MDBRow>
               <MDBCol>
-                <MDBBreadcrumb className=" rounded-3 p-3 mb-4" style={{ backgroundColor: "#eee" }}>
+                <MDBBreadcrumb className="BC rounded-3 p-3 mb-4" style={{ backgroundColor: "#eee" }}>
                   <MDBBreadcrumbItem>
-                    <a href="/">Home</a>
+                    <a href="/" className="text-decoration-none">
+                      Home
+                    </a>
                   </MDBBreadcrumbItem>
                   <MDBBreadcrumbItem>
-                    <a href="" onClick={() => navigate(`/user/${user.id}`)}>
+                    <a href="" className="text-decoration-none" onClick={() => navigate(`/user/${user.id}`)}>
                       Profile
                       {/* <a href="">Profile */}
                     </a>
@@ -184,9 +188,12 @@ function EditUser() {
                       <Form.Control type="date" placeholder="Enter Expire Date" name="expire_date" value={expire_date} onChange={(e) => setBiodata({ ...biodata, expire_date: e.target.value })} required />
                     </Form.Group>
                     <div className="text-center">
-                      <Button className="px-4" variant="success" type="submit">
+                      {/* <Button className="px-4" variant="success" type="submit">
                         Save
-                      </Button>
+                      </Button> */}
+                      <div className="signInFieldbutton">
+                        <button className="signInFieldButton">Save</button>
+                      </div>
                     </div>
                   </form>
                 </MDBCardBody>
